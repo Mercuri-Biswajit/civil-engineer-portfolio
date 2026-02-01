@@ -24,6 +24,11 @@ const skills = [
         name: 'Sustainable Design',
         description: 'Committed to eco-friendly practices and LEED certification standards'
     },
+    {
+        icon: '🌱',
+        name: 'BOQ',
+        description: 'Detailed BOQ with BBS'
+    },
 ];
 
 // PROJECTS DATA
