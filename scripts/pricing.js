@@ -11,7 +11,6 @@ const pricing = [
         features: [
             'Site analysis and planning',
             'Floor plans and elevations',
-            '3D visualization',
             'Interior space planning',
             'Up to 3 design revisions',
             'CAD drawings delivery'
