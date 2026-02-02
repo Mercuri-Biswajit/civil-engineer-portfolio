@@ -25,10 +25,25 @@ const skills = [
         description: 'Committed to eco-friendly practices and LEED certification standards'
     },
     {
-        icon: '🌱',
-        name: 'BOQ',
-        description: 'Detailed BOQ with BBS'
+        icon: '📊',
+        name: 'Project Management',
+        description: 'Experienced in managing construction projects from planning to completion'
     },
+    {
+        icon: '💻',
+        name: 'Revit & BIM',
+        description: 'Advanced skills in Building Information Modeling and 3D structural modeling'
+    },
+    {
+        icon: '🔍',
+        name: 'Site Inspection',
+        description: 'Thorough site assessment and quality control during construction phases'
+    },
+    {
+        icon: '⚙️',
+        name: 'Cost Estimation',
+        description: 'Accurate budget planning and material quantity surveying for projects'
+    }
 ];
 
 // PROJECTS DATA
@@ -65,52 +80,6 @@ const education = [
         year: '2025',
         degree: 'Vastu Sastra',
         school: 'PTS CAD'
-    }
-];
-
-// BLOG POSTS DATA
-const blogPosts = [
-    {
-        date: 'Jan 15, 2026',
-        category: 'SUSTAINABILITY',
-        title: 'The Future of Green Infrastructure',
-        excerpt: 'Exploring innovative sustainable practices in modern civil engineering and their impact on urban development...',
-        icon: '🌿'
-    },
-    {
-        date: 'Jan 10, 2026',
-        category: 'TECHNOLOGY',
-        title: 'BIM Revolution in Construction',
-        excerpt: 'How Building Information Modeling is transforming the way we design, build, and maintain infrastructure projects...',
-        icon: '🏗️'
-    },
-    {
-        date: 'Jan 5, 2026',
-        category: 'ANALYSIS',
-        title: 'Seismic Design Considerations',
-        excerpt: 'Essential guidelines for earthquake-resistant structures in high-risk zones and latest code updates...',
-        icon: '📊'
-    },
-    {
-        date: 'Dec 28, 2025',
-        category: 'MATERIALS',
-        title: 'Advanced Concrete Technologies',
-        excerpt: 'Latest developments in self-healing concrete, ultra-high performance concrete, and sustainable alternatives...',
-        icon: '🧱'
-    },
-    {
-        date: 'Dec 20, 2025',
-        category: 'INNOVATION',
-        title: '3D Printing in Construction',
-        excerpt: 'Exploring how additive manufacturing is revolutionizing the construction industry with faster build times...',
-        icon: '🖨️'
-    },
-    {
-        date: 'Dec 15, 2025',
-        category: 'SUSTAINABILITY',
-        title: 'Carbon Neutral Buildings',
-        excerpt: 'Strategies and technologies for achieving net-zero carbon emissions in modern building design...',
-        icon: '♻️'
     }
 ];
 
@@ -252,51 +221,6 @@ function renderEducation() {
     `).join('');
 }
 
-// Render Blog Posts (Blog Page)
-function renderBlogPosts() {
-    const blogGrid = document.getElementById('blogGrid');
-    if (!blogGrid) return;
-    
-    blogGrid.innerHTML = blogPosts.map(post => `
-        <div class="blog-card" data-category="${post.category}">
-            <div class="blog-image">${post.icon}</div>
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <span class="blog-date">${post.date}</span>
-                    <span>•</span>
-                    <span class="blog-category">${post.category}</span>
-                </div>
-                <h3 class="blog-title">${post.title}</h3>
-                <p class="blog-excerpt">${post.excerpt}</p>
-                <a href="#" class="blog-read-more">READ MORE →</a>
-            </div>
-        </div>
-    `).join('');
-}
-
-// Render Blog Preview (Home Page - First 3)
-function renderBlogPreview() {
-    const blogPreview = document.getElementById('blogPreview');
-    if (!blogPreview) return;
-    
-    const topPosts = blogPosts.slice(0, 3);
-    blogPreview.innerHTML = topPosts.map(post => `
-        <div class="blog-card">
-            <div class="blog-image">${post.icon}</div>
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <span class="blog-date">${post.date}</span>
-                    <span>•</span>
-                    <span class="blog-category">${post.category}</span>
-                </div>
-                <h3 class="blog-title">${post.title}</h3>
-                <p class="blog-excerpt">${post.excerpt}</p>
-                <a href="blog.html" class="blog-read-more">READ MORE →</a>
-            </div>
-        </div>
-    `).join('');
-}
-
 // Render Pricing (Home Page)
 function renderPricing() {
     const pricingGrid = document.getElementById('pricingGrid');
@@ -348,32 +272,6 @@ function setupProjectFilter() {
     });
 }
 
-// Filter Blog Posts
-function setupBlogFilter() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const blogCards = document.querySelectorAll('.blog-card');
-    
-    if (filterButtons.length === 0 || blogCards.length === 0) return;
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filter = button.getAttribute('data-filter');
-            
-            // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            // Filter blog posts
-            blogCards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        });
-    });
-}
 
 // ===========================
 // NAVIGATION & INTERACTIONS
