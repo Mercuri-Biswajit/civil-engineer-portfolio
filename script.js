@@ -45,33 +45,39 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Contact Form Handler
+// Contact Form Handler with EmailJS
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Get form data
-        const formData = {
-            name: e.target.name.value,
-            email: e.target.email.value,
-            phone: e.target.phone.value,
-            service: e.target.service.value,
-            message: e.target.message.value
-        };
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
         
-        // INSTRUCTIONS: Replace this alert with your actual form submission logic
-        // Options:
-        // 1. EmailJS - https://www.emailjs.com/
-        // 2. Formspree - https://formspree.io/
-        // 3. Custom backend API
-        // 4. Google Forms integration
+        // Show loading state
+        submitBtn.textContent = 'SENDING...';
+        submitBtn.disabled = true;
         
-        console.log('Form Data:', formData);
-        alert(`Thank you, ${formData.name}! Your message has been received. We'll get back to you soon at ${formData.email}.`);
-        
-        // Reset form
-        e.target.reset();
+        // Send email using EmailJS
+        emailjs.sendForm(
+            'service_8oaz2r4',      // Replace with your Service ID
+            'template_shnekuq',     // Replace with your Template ID
+            contactForm
+        )
+        .then(() => {
+            // Success
+            alert('✅ Thank you! Your message has been sent successfully. I will get back to you soon.');
+            contactForm.reset();
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        })
+        .catch((error) => {
+            // Error
+            console.error('EmailJS Error:', error);
+            alert('❌ Oops! Something went wrong. Please try again or contact me directly via email.');
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
     });
 }
 
