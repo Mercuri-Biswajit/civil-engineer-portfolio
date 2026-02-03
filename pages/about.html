@@ -10,11 +10,6 @@
     />
 
     <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../css/header.css" />
-    <link rel="stylesheet" href="../css/footer.css" />
-    <link rel="stylesheet" href="../css/utilities.css" />
-    <link rel="stylesheet" href="../css/components/about.css" />
-    <link rel="stylesheet" href="../css/components/contact.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,7 +25,7 @@
         <div class="logo">
           <a href="../index.html"
             ><img
-              src="../assets/My__Logo.png"
+              src="../assets/logo/My__Logo.png"
               alt="Biswajit Deb Barman"
               class="logo-img"
           /></a>
@@ -39,15 +34,14 @@
           <a href="../index.html" class="nav-link">HOME</a>
           <a href="./projects.html" class="nav-link">PROJECTS</a>
           <a href="./about.html" class="nav-link active">ABOUT</a>
-          <a href="./blog.html" class="nav-link">BLOG</a>
         </div>
         <a
-          href="./assets/Biswajit_Deb_Barman__CV.pdf"
+          href="../assets/pdf/Biswajit_Deb_Barman__CV.pdf"
           download
           class="btn-nav-cta"
           >DOWNLOAD RESUME</a
         >
-        <div class="hamburger" id="hamburger">
+        <div class="hamburger" id="hamburger" aria-label="Toggle navigation">
           <span></span>
           <span></span>
           <span></span>
@@ -73,6 +67,44 @@
     <section class="about-page">
       <div class="container">
         <div class="about-grid">
+          <div class="about-section">
+            <h2 class="section-subtitle">Core Skills</h2>
+            <div class="competencies-grid">
+              <div class="competency-item">
+                <span class="competency-icon">📐</span>
+                <span class="competency-name"
+                  >Structural Analysis & Design</span
+                >
+              </div>
+              <div class="competency-item">
+                <span class="competency-icon">🏗️</span>
+                <span class="competency-name">Construction Management</span>
+              </div>
+              <div class="competency-item">
+                <span class="competency-icon">💻</span>
+                <span class="competency-name">CAD Software</span>
+              </div>
+              <div class="competency-item">
+                <span class="competency-icon">🌱</span>
+                <span class="competency-name">Sustainable Design</span>
+              </div>
+              <div class="competency-item">
+                <span class="competency-icon">📊</span>
+                <span class="competency-name">Cost Estimation</span>
+              </div>
+              <div class="competency-item">
+                <span class="competency-icon">⚙️</span>
+                <span class="competency-name">Quality Assurance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-section">
+            <h2 class="section-subtitle">Education & Certifications</h2>
+            <div class="education-timeline" id="educationTimeline">
+              <!-- Education items will be added here via JavaScript -->
+            </div>
+          </div>
           <div class="about-main">
             <div class="about-section">
               <h2 class="section-subtitle">Professional Summary</h2>
@@ -93,68 +125,9 @@
                 environmental responsibility.
               </p>
             </div>
-
-            <div class="about-section">
-              <h2 class="section-subtitle">Core Skills</h2>
-              <div class="competencies-grid">
-                <div class="competency-item">
-                  <span class="competency-icon">📐</span>
-                  <span class="competency-name"
-                    >Structural Analysis & Design</span
-                  >
-                </div>
-                <div class="competency-item">
-                  <span class="competency-icon">🏗️</span>
-                  <span class="competency-name">Construction Management</span>
-                </div>
-                <div class="competency-item">
-                  <span class="competency-icon">💻</span>
-                  <span class="competency-name">CAD Software</span>
-                </div>
-                <div class="competency-item">
-                  <span class="competency-icon">🌱</span>
-                  <span class="competency-name">Sustainable Design</span>
-                </div>
-                <div class="competency-item">
-                  <span class="competency-icon">📊</span>
-                  <span class="competency-name">Project Planning</span>
-                </div>
-                <div class="competency-item">
-                  <span class="competency-icon">⚙️</span>
-                  <span class="competency-name">Quality Assurance</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="about-section">
-              <h2 class="section-subtitle">Education & Certifications</h2>
-              <div class="education-timeline" id="educationTimeline">
-                <!-- Education items will be added here via JavaScript -->
-              </div>
-            </div>
           </div>
 
           <div class="about-sidebar">
-            <div class="stats-card">
-              <h3>Quick Stats</h3>
-              <div class="stat-item">
-                <div class="stat-number">5+</div>
-                <div class="stat-label">Years Experience</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">25+</div>
-                <div class="stat-label">Projects Completed</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">Certifications</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Client Satisfaction</div>
-              </div>
-            </div>
-
             <div class="contact-card">
               <h3>Get In Touch</h3>
               <div class="contact-info">
@@ -176,139 +149,11 @@
             <div class="download-card">
               <h3>Resume</h3>
               <a
-                href="../assets/Biswajit_Deb_Barman__CV.pdf"
+                href="../assets/pdf/Biswajit_Deb_Barman__CV.pdf"
                 class="btn btn-primary btn-block"
                 >DOWNLOAD CV</a
               >
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Get in Touch Section -->
-    <section class="get-in-touch">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-number">04</span>
-          <h2 class="section-title">GET IN TOUCH</h2>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-info-section">
-            <h3 class="contact-subtitle">Let's Discuss Your Project</h3>
-            <p class="contact-description">
-              Have a project in mind? I'm here to help bring your vision to life
-              with professional civil engineering services. Get in touch and
-              let's create something exceptional together.
-            </p>
-            <div class="contact-methods">
-              <div class="contact-method">
-                <div class="contact-method-icon">📧</div>
-                <div class="contact-method-info">
-                  <h4>Email</h4>
-                  <a href="mailto:biswajitdebbarman.civil@gmail.com"
-                    >biswajitdebbarman.civil@gmail.com</a
-                  >
-                </div>
-              </div>
-              <div class="contact-method">
-                <div class="contact-method-icon">📱</div>
-                <div class="contact-method-info">
-                  <h4>Phone</h4>
-                  <a href="tel:+917602120054">+91 7602120054</a>
-                </div>
-              </div>
-              <div class="contact-method">
-                <div class="contact-method-icon">📍</div>
-                <div class="contact-method-info">
-                  <h4>Location</h4>
-                  <p>Chanditala, Raiganj, West Bengal, India</p>
-                </div>
-              </div>
-            </div>
-            <!-- <div class="social-links">
-              <h4>Connect on Social Media</h4>
-              <div class="social-icons">
-                <a
-                  href="https://www.linkedin.com/in/biswajit-deb-barman/"
-                  target="_blank"
-                  class="social-icon"
-                >
-                  <span>in</span>
-                </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=61585030424249"
-                  target="_blank"
-                  class="social-icon"
-                >
-                  <span>f</span>
-                </a>
-                <a
-                  href="https://www.instagram.com/biswajit.deb.barman/"
-                  target="_blank"
-                  class="social-icon"
-                >
-                  <span>ig</span>
-                </a>
-              </div>
-            </div> -->
-          </div>
-          <div class="contact-form-section">
-            <form class="contact-form" id="contactForm">
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="from_name"
-                  required
-                  placeholder="Enter your name"
-                />
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="reply_to"
-                  required
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="+91 12345 67890"
-                />
-              </div>
-              <div class="form-group">
-                <label for="service">Service Interested In</label>
-                <select id="service" name="service">
-                  <option value="">Select a service</option>
-                  <option value="architectural">Architectural Plan</option>
-                  <option value="structural">Structural Plan</option>
-                  <option value="estimation">Cost Estimation</option>
-                  <option value="complete">Complete Package</option>
-                  <option value="consultation">Consultation</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="message">Project Details</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  placeholder="Tell me about your project..."
-                ></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary btn-block">
-                SEND MESSAGE
-              </button>
-            </form>
           </div>
         </div>
       </div>
@@ -322,7 +167,7 @@
             <div class="logo">
               <a href="../index.html"
                 ><img
-                  src="../assets/My__Logo.png"
+                  src="../assets/logo/My__Logo.png"
                   alt="Biswajit Deb Barman"
                   class="footer-logo-img"
               /></a>
@@ -335,7 +180,6 @@
               <a href="../index.html">Home</a>
               <a href="./projects.html">Projects</a>
               <a href="./about.html">About</a>
-              <a href="./blog.html">Blog</a>
             </div>
             <div class="footer-column">
               <h4>Connect</h4>

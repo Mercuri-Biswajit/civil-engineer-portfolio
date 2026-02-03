@@ -1,3 +1,14 @@
+@import url("./css/header.css");
+@import url("./css/footer.css");
+@import url("./css/utilities.css");
+
+/* Page components */
+@import url("./css/components/hero.css");
+@import url("./css/components/projects.css");
+@import url("./css/components/blog.css");
+@import url("./css/components/contact.css");
+@import url("./css/components/about.css");
+
 /* ===========================
    ROOT CSS - VARIABLES & RESET
    =========================== */

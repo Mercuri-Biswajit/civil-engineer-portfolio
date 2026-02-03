@@ -5,9 +5,9 @@
 
 const education = [
     {
-        year: '2016 - 2020',
-        degree: 'B. Tech Civil Engineering',
-        school: 'Surendra Institute of Engineering and Management, Siliguri'
+        year: '2020',
+        degree: 'B.Tech Civil Engineering',
+        school: 'Surendra Institute of Engineering and Management'
     },
     {
         year: '2021',
