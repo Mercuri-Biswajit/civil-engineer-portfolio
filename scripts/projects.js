@@ -5,14 +5,14 @@ const projects = [
         title: 'Green Valley Housing Complex',
         description: 'Designed foundation and structural systems for a 200-unit sustainable housing development with rainwater harvesting and energy-efficient features.',
         tags: ['Sustainable', 'Multi-Unit', 'Foundation Design'],
-        image: '../images/G-Floor_Model_28_x_41__foot.png'
+        image: '../assets/images/G-Floor_Model_28_x_41__foot.png'
     },
     {
         category: 'COMMERCIAL',
         title: 'Tech Campus Development',
         description: 'Structural engineering for a modern 15-story office complex with open floor plans, seismic considerations, and smart building integration.',
         tags: ['High-Rise', 'Seismic Design', 'Smart Building'],
-        image: '../images/G-Floor_Model_28_x_41__foot.png'
+        image: '../assets/images/G-Floor_Model_28_x_41__foot.png'
     },
 ];
 

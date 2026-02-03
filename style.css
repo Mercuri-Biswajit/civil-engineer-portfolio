@@ -1,0 +1,119 @@
+/* ===========================
+   ROOT CSS - VARIABLES & RESET
+   =========================== */
+
+:root {
+  /* Color Palette - Minimalistic Blue & White Theme */
+  --color-primary: #2563eb;
+  --color-primary-dark: #1e40af;
+  --color-accent: #3b82f6;
+  --color-bg-dark: #ffffff;
+  --color-bg-darker: #f8fafc;
+  --color-bg-card: #ffffff;
+  --color-text: #1e293b;
+  --color-text-dim: #64748b;
+  --color-border: #e2e8f0;
+
+  /* Typography */
+  --font-display: "Oswald", sans-serif;
+  --font-body: "Work Sans", sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+
+  /* Effects */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 2px 8px rgba(10, 132, 255, 0.1);
+  --shadow-md: 0 4px 16px rgba(10, 132, 255, 0.15);
+  --shadow-lg: 0 8px 32px rgba(10, 132, 255, 0.2);
+}
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--font-body);
+  background: var(--color-bg-dark);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Page Header (Shared across pages) */
+.page-header {
+  padding: 10rem 0 5rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(
+    circle at top right,
+    rgba(37, 99, 235, 0.05) 0%,
+    transparent 70%
+  );
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 2;
+}
+
+.page-label {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+}
+
+.page-description {
+  font-size: 1.2rem;
+  color: var(--color-text-dim);
+  max-width: 700px;
+}
