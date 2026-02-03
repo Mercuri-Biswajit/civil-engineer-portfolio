@@ -1,3 +1,13 @@
+// ===========================
+// MAIN NAVIGATION & COMMON FUNCTIONS
+// ===========================
+// This file contains navigation, scroll effects, and intersection observer
+// Individual content is managed in separate files:
+// - skills.js (Skills section)
+// - projects.js (Projects section)
+// - education.js (Education section)
+// - pricing.js (Pricing section)
+// - blog.js (Blog section)
 
 // ===========================
 // NAVIGATION & INTERACTIONS
@@ -35,6 +45,36 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Contact Form Handler
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = {
+            name: e.target.name.value,
+            email: e.target.email.value,
+            phone: e.target.phone.value,
+            service: e.target.service.value,
+            message: e.target.message.value
+        };
+        
+        // INSTRUCTIONS: Replace this alert with your actual form submission logic
+        // Options:
+        // 1. EmailJS - https://www.emailjs.com/
+        // 2. Formspree - https://formspree.io/
+        // 3. Custom backend API
+        // 4. Google Forms integration
+        
+        console.log('Form Data:', formData);
+        alert(`Thank you, ${formData.name}! Your message has been received. We'll get back to you soon at ${formData.email}.`);
+        
+        // Reset form
+        e.target.reset();
+    });
+}
+
 // Newsletter Form Handler
 const newsletterForm = document.getElementById('newsletterForm');
 if (newsletterForm) {
@@ -64,33 +104,3 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, observerOptions);
-
-// ===========================
-// INITIALIZATION
-// ===========================
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Render content based on current page
-    renderSkills();
-    renderProjectsPreview();
-    renderProjects();
-    renderEducation();
-    renderBlogPosts();
-    renderBlogPreview();
-    renderPricing();
-    
-    // Setup filters
-    setupProjectFilter();
-    setupBlogFilter();
-    
-    // Set up scroll animations for cards
-    setTimeout(() => {
-        const cards = document.querySelectorAll('.skill-card, .project-card, .blog-card, .stat-card, .pricing-card');
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            observer.observe(card);
-        });
-    }, 100);
-});

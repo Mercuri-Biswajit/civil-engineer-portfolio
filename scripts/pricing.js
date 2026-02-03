@@ -28,7 +28,6 @@ const pricing = [
             'Load calculations',
             'Reinforcement detailing',
             'Up to 3 design revisions',
-            'Engineer stamped drawings'
         ],
         icon: '🏗️',
         popular: false
@@ -39,7 +38,6 @@ const pricing = [
         description: 'Detailed project cost estimation and BOQ',
         features: [
             'Material quantity takeoff',
-            'Labor cost estimation',
             'Bill of Quantities (BOQ)',
             'Cost breakdown analysis',
             'Up to 3 revisions',
@@ -56,9 +54,7 @@ const pricing = [
             'Architectural planning',
             'Structural design',
             'Complete cost estimate',
-            'Project timeline',
             'Up to 3 design revisions',
-            'All documentation',
             'Priority support'
         ],
         icon: '⭐',
@@ -85,7 +81,7 @@ function renderPricing() {
             <ul class="pricing-features">
                 ${plan.features.map(feature => `<li>✓ ${feature}</li>`).join('')}
             </ul>
-            <a href="#" class="btn ${plan.popular ? 'btn-primary' : 'btn-secondary'} btn-block">GET QUOTE</a>
+            <a href="#" class="btn ${plan.popular ? 'btn-primary' : 'btn-secondary'} btn-block">CONTACT ME</a>
         </div>
     `).join('');
 }
