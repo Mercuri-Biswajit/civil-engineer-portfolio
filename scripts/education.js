@@ -5,24 +5,19 @@
 
 const education = [
     {
-        year: '2020 - 2022',
-        degree: 'Master of Science in Structural Engineering',
-        school: 'University of Engineering & Technology'
-    },
-    {
         year: '2016 - 2020',
-        degree: 'Bachelor of Science in Civil Engineering',
-        school: 'State Technical University'
+        degree: 'B. Tech Civil Engineering',
+        school: 'Surendra Institute of Engineering and Management, Siliguri'
     },
     {
         year: '2021',
-        degree: 'Professional Engineer (PE) License',
-        school: 'State Board of Professional Engineers'
+        degree: 'AutoCAD 2D',
+        school: 'Udemy'
     },
     {
         year: '2022',
-        degree: 'LEED Accredited Professional',
-        school: 'U.S. Green Building Council'
+        degree: 'Learn Practical Building Construction',
+        school: 'Udemy'
     }
 ];
 
