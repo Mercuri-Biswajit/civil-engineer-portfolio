@@ -41,7 +41,10 @@ html {
     scroll-behavior: smooth;
 }
 
+html,
 body {
+    width: 100%;
+    max-width: 100%;
     font-family: var(--font-body);
     background: var(--color-bg-dark);
     color: var(--color-text);
@@ -50,9 +53,9 @@ body {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 .container {
@@ -760,7 +763,7 @@ img {
 .projects-preview {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .project-card {
@@ -1365,6 +1368,13 @@ img {
     gap: 1.5rem;
 }
 
+.contact-form,
+.contact-form-section {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
 .form-group {
     display: flex;
     flex-direction: column;
@@ -1423,7 +1433,7 @@ img {
     padding: 4rem 0 2rem;
 }
 
-.footer-logo-img{
+.footer-logo-img {
     width: 20%;
 }
 
@@ -1552,25 +1562,27 @@ img {
 }
 
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background: #ffffff;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        transition: var(--transition);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
+      .nav-menu {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-x: hidden;
+  }
 
     .nav-menu.active {
-        left: 0;
+        transform: translateX(0);
     }
-    
+
     .nav-cta-btn {
         margin-left: 0;
         margin-top: 1rem;
@@ -1594,12 +1606,39 @@ img {
         transform: rotate(-45deg) translate(8px, -8px);
     }
 
+    .hero {
+        min-height: auto;
+        padding: 120px 0 60px;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+
     .hero-title {
         font-size: 3rem;
     }
 
     .page-title {
         font-size: 2.5rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 
     .section-title {
@@ -1632,5 +1671,63 @@ img {
 
     .newsletter-form form {
         flex-direction: column;
+    }
+
+    .footer-logo-img {
+        width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+    .project-content,
+    .blog-content,
+    .contact-form-section {
+        padding: 1.5rem;
+    }
+
+    .project-title,
+    .blog-title {
+        font-size: 1.3rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px;
+        /* prevents iOS zoom */
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-form-section {
+        padding: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px;
+        padding: 1rem;
+    }
+
+    .btn-block {
+        padding: 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
     }
 }
