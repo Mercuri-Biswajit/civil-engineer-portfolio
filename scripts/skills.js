@@ -5,14 +5,14 @@
 
 const skills = [
     {
-        icon: '🏗️',
-        name: 'Structural Design',
-        description: 'Expert in designing safe and efficient structural systems for buildings and infrastructure'
-    },
-    {
         icon: '📐',
         name: 'AutoCAD 2D',
         description: 'Proficient in AutoCAD, Revit, and Building Information Modeling for precise technical drawings'
+    },
+    {
+        icon: '🏗️',
+        name: 'Structural Design',
+        description: 'Expert in designing safe and efficient structural systems for buildings and infrastructure'
     },
     {
         icon: '🔬',

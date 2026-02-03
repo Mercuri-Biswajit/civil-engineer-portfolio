@@ -79,9 +79,10 @@
           <div class="hero-image-container">
             <img
               src="./assets/Hero_Image_Civil_Engineer.png"
-              loading="lazy"
               alt="Building Plans and Structural Design"
               class="hero-image"
+              fetchpriority="high"
+              loading="eager"
             />
             <div class="hero-image-overlay"></div>
           </div>
@@ -371,10 +372,10 @@
       })();
     </script>
 
-    <script src="./script.js"></script>
-    <script src="./scripts/skills.js"></script>
-    <script src="./scripts/projects.js"></script>
-    <script src="./scripts/pricing.js"></script>
-    <script src="./scripts/blog.js"></script>
+    <script src="./script.js" defer></script>
+    <script src="./scripts/skills.js" defer></script>
+    <script src="./scripts/projects.js" defer></script>
+    <script src="./scripts/pricing.js" defer></script>
+    <script src="./scripts/blog.js" defer></script>
   </body>
 </html>

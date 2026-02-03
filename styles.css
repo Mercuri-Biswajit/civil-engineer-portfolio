@@ -418,6 +418,7 @@ img {
   animation: scrollAnimation 2s ease-in-out infinite;
 }
 
+
 /* ===========================
    PAGE HEADER (Other Pages)
    =========================== */
@@ -520,7 +521,7 @@ img {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .skill-card {
@@ -1595,6 +1596,10 @@ img {
     font-size: 0.85rem;
   }
 
+  .blueprint-grid,
+  .hero-image-overlay {
+    display: none;
+  }
   .hamburger {
     display: flex;
   }
