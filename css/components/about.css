@@ -132,3 +132,173 @@
     flex-direction: column;
   }
 }
+
+/* ===========================
+   ABOUT ME SECTION
+   =========================== */
+
+.about-me {
+  padding: 6rem 0;
+  background: var(--color-bg-darker);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.about-image-wrapper {
+  position: relative;
+}
+
+.about-image-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3/4;
+}
+
+.about-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.2) 0%,
+    rgba(59, 130, 246, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-subtitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.about-description strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.about-highlights {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--color-bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  transition: var(--transition);
+}
+
+.highlight-item:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.highlight-icon {
+  font-size: 2rem;
+  min-width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 8px;
+}
+
+.highlight-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.highlight-content p {
+  font-size: 0.95rem;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+}
+
+.about-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Responsive Design for About Me */
+@media (max-width: 968px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-image {
+    aspect-ratio: 4/3;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-me {
+    padding: 4rem 0;
+  }
+
+  .about-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .about-description {
+    font-size: 1rem;
+  }
+
+  .highlight-item {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .about-cta {
+    flex-direction: column;
+  }
+
+  .about-cta .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
