@@ -22,7 +22,7 @@ if (hamburger && navMenu) {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
-    
+
     // Close mobile menu when clicking a link
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
@@ -44,53 +44,6 @@ window.addEventListener('scroll', () => {
         navbar.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
     }
 });
-
-// Contact Form Handler with EmailJS
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        // Show loading state
-        submitBtn.textContent = 'SENDING...';
-        submitBtn.disabled = true;
-        
-        // Send email using EmailJS
-        emailjs.sendForm(
-            'service_8oaz2r4',      // Replace with your Service ID
-            'template_shnekuq',     // Replace with your Template ID
-            contactForm
-        )
-        .then(() => {
-            // Success
-            alert('✅ Thank you! Your message has been sent successfully. I will get back to you soon.');
-            contactForm.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        })
-        .catch((error) => {
-            // Error
-            console.error('EmailJS Error:', error);
-            alert('❌ Oops! Something went wrong. Please try again or contact me directly via email.');
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        });
-    });
-}
-
-// Newsletter Form Handler
-const newsletterForm = document.getElementById('newsletterForm');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = e.target.querySelector('input[type="email"]').value;
-        alert(`Thank you for subscribing with ${email}! (This is a demo - connect to your email service)`);
-        e.target.reset();
-    });
-}
 
 // ===========================
 // SCROLL ANIMATIONS

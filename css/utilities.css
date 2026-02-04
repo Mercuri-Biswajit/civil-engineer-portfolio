@@ -152,52 +152,7 @@
   font-size: 0.95rem;
 }
 
-/* ===========================
-   QUICK STATS
-   =========================== */
-.quick-stats {
-  padding: var(--spacing-xl) 0;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.stat-card {
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  padding: 1rem;
-  text-align: center;
-  transition: var(--transition);
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.stat-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
-}
-
-.stat-number {
-  font-family: var(--font-display);
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-}
-
-.stat-label {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--color-text-dim);
-  letter-spacing: 0.1em;
-}
-
 /* Additional Stats Components */
-.stats-card,
 .contact-card,
 .download-card {
   background: #ffffff;
@@ -207,7 +162,6 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.stats-card h3,
 .contact-card h3,
 .download-card h3 {
   font-family: var(--font-display);
@@ -216,13 +170,6 @@
   color: var(--color-primary);
 }
 
-.stat-item {
-  margin-bottom: 1.5rem;
-  text-align: center;
-  padding: 1rem;
-  background: #f8fafc;
-  border-radius: 6px;
-}
 
 .contact-info {
   display: flex;
@@ -446,6 +393,7 @@
 }
 
 @keyframes scrollAnimation {
+
   0%,
   100% {
     transform: translateY(0);
@@ -457,6 +405,7 @@
 }
 
 @keyframes gridPulse {
+
   0%,
   100% {
     opacity: 0.3;

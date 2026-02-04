@@ -21,7 +21,7 @@ const projects = [
 function renderProjectsPreview() {
     const projectsPreview = document.getElementById('projectsPreview');
     if (!projectsPreview) return;
-    
+
     const topProjects = projects.slice(0, 3);
     projectsPreview.innerHTML = topProjects.map(project => `
         <div class="project-card">
@@ -42,7 +42,7 @@ function renderProjectsPreview() {
 function renderProjects() {
     const projectsGrid = document.getElementById('projectsGrid');
     if (!projectsGrid) return;
-    
+
     projectsGrid.innerHTML = projects.map(project => `
         <div class="project-card" data-category="${project.category}">
             <img src="${project.image}" alt="${project.title}" class="project-image-real">
@@ -67,17 +67,17 @@ function renderProjects() {
 function setupProjectFilter() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     if (filterButtons.length === 0) return;
-    
+
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             const filter = button.getAttribute('data-filter');
-            
+
             // Update active button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            
+
             // Filter projects
             projectCards.forEach(card => {
                 if (filter === 'all' || card.getAttribute('data-category') === filter) {
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjectsPreview();
     renderProjects();
     setupProjectFilter();
-    
+
     // Set up scroll animations for project cards
     setTimeout(() => {
         const projectCards = document.querySelectorAll('.project-card');
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            
+
             // Use intersection observer if available from main script
             if (typeof observer !== 'undefined') {
                 observer.observe(card);
@@ -118,10 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in other scripts (if needed)
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { 
-        projects, 
-        renderProjects, 
+    module.exports = {
+        projects,
+        renderProjects,
         renderProjectsPreview,
-        setupProjectFilter 
+        setupProjectFilter
     };
 }
