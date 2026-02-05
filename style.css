@@ -14,20 +14,20 @@
    =========================== */
 
 :root {
-  /* Color Palette - Minimalistic Blue & White Theme */
-  --color-primary: #2563eb;
-  --color-primary-dark: #1e40af;
-  --color-accent: #3b82f6;
-  --color-bg-dark: #ffffff;
-  --color-bg-darker: #f8fafc;
-  --color-bg-card: #ffffff;
-  --color-text: #1e293b;
-  --color-text-dim: #64748b;
-  --color-border: #e2e8f0;
+  /* Color Palette - Navy Blue & Light Gray Theme (Updated) */
+  --color-primary: #1E293B;
+  --color-primary-dark: #0F172A;
+  --color-accent: #64748B;
+  --color-bg-dark: #F5F7FA;
+  --color-bg-darker: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-text: #1E293B;
+  --color-text-dim: #64748B;
+  --color-border: #E2E8F0;
 
-  /* Typography */
-  --font-display: "Oswald", sans-serif;
-  --font-body: "Work Sans", sans-serif;
+  /* Typography - Modern Sans-Serif */
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -38,9 +38,9 @@
 
   /* Effects */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-sm: 0 2px 8px rgba(10, 132, 255, 0.1);
-  --shadow-md: 0 4px 16px rgba(10, 132, 255, 0.15);
-  --shadow-lg: 0 8px 32px rgba(10, 132, 255, 0.2);
+  --shadow-sm: 0 2px 8px rgba(30, 41, 59, 0.08);
+  --shadow-md: 0 4px 16px rgba(30, 41, 59, 0.12);
+  --shadow-lg: 0 8px 32px rgba(30, 41, 59, 0.15);
 }
 
 /* CSS Reset */
@@ -81,7 +81,7 @@ img {
 /* Page Header (Shared across pages) */
 .page-header {
   padding: 10rem 0 5rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+  background: linear-gradient(135deg, #F5F7FA 0%, #E0F2FE 100%);
   position: relative;
   overflow: hidden;
 }
@@ -95,7 +95,7 @@ img {
   height: 100%;
   background: radial-gradient(
     circle at top right,
-    rgba(37, 99, 235, 0.05) 0%,
+    rgba(30, 41, 59, 0.05) 0%,
     transparent 70%
   );
 }
@@ -112,6 +112,7 @@ img {
   color: var(--color-primary);
   display: block;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .page-title {
