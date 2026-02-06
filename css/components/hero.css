@@ -161,6 +161,15 @@
 
 @media (max-width: 768px) {
 
+  .hero{
+    padding: 110px 0 50px;
+    min-height: auto;
+  }
+
+  .hero-title{
+    font-size: 2.5rem;
+  }
+
   .blueprint-grid,
   .hero-image-overlay {
     display: none;

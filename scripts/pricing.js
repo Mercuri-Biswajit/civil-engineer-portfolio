@@ -46,20 +46,6 @@ const pricing = [
         icon: '💰',
         popular: false
     },
-    {
-        name: 'Complete Package',
-        price: 'Best Value',
-        description: 'All-inclusive design and estimation services',
-        features: [
-            'Architectural planning',
-            'Structural design',
-            'Complete cost estimate',
-            'Up to 3 design revisions',
-            'Priority support'
-        ],
-        icon: '⭐',
-        popular: true
-    }
 ];
 
 // ===========================
@@ -81,7 +67,6 @@ function renderPricing() {
             <ul class="pricing-features">
                 ${plan.features.map(feature => `<li>✓ ${feature}</li>`).join('')}
             </ul>
-            <a href="#" class="btn ${plan.popular ? 'btn-primary' : 'btn-secondary'} btn-block">CONTACT ME</a>
         </div>
     `).join('');
 }

@@ -6,6 +6,7 @@
   padding: var(--spacing-xl) 0;
 }
 
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -21,6 +22,9 @@
   line-height: 1.8;
   color: var(--color-text-dim);
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .competencies-grid {
@@ -43,7 +47,7 @@
 
 .competency-item:hover {
   border-color: var(--color-primary);
-  transform: translateX(5px);
+  transform: translateX(8px);
 }
 
 .competency-icon {
@@ -70,17 +74,11 @@
   gap: 1rem;
 }
 
-.education-item {
-  padding: 0.5rem 1rem;
-  border-left: 4px solid var(--color-primary);
-  background: var(--color-bg-dark);
-  border-radius: 8px;
-  transition: var(--transition);
-}
 
 .education-item:hover {
   background: #ffffff;
   transform: translateX(6px);
+  box-shadow: var(--shadow-md);
 }
 
 .education-year {
@@ -118,20 +116,13 @@
     grid-template-columns: 1fr;
   }
 
-  .newsletter-content {
-    grid-template-columns: 1fr;
-  }
 
   .competencies-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 768px) {
-  .newsletter-form form {
-    flex-direction: column;
-  }
-}
+@media (max-width: 768px) {}
 
 /* ===========================
    ABOUT ME SECTION
@@ -175,18 +166,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(30, 41, 59, 0.1) 0%,
-    rgba(100, 116, 139, 0.05) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(30, 41, 59, 0.1) 0%,
+      rgba(100, 116, 139, 0.05) 100%);
   pointer-events: none;
-}
-
-.about-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 .about-subtitle {
@@ -302,6 +285,7 @@
     text-align: center;
   }
 }
+
 /* ===========================
    ANIMATION ENHANCEMENTS
    =========================== */
@@ -367,9 +351,12 @@
 
 /* Pulse Animation for Icons */
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
@@ -418,10 +405,6 @@
 }
 
 /* Page Header Animation */
-.page-header {
-  position: relative;
-  overflow: hidden;
-}
 
 .page-header::after {
   content: '';
@@ -438,6 +421,7 @@
   0% {
     left: -100%;
   }
+
   100% {
     left: 100%;
   }
@@ -470,15 +454,6 @@
    =========================== */
 
 /* Override existing page-header styles for centering */
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 70vh;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
 
 .hero-content-wrapper {
   position: relative;
@@ -514,7 +489,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     linear-gradient(rgba(30, 41, 59, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(30, 41, 59, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -526,6 +501,7 @@
   0% {
     transform: translate(0, 0);
   }
+
   100% {
     transform: translate(50px, 50px);
   }
@@ -568,15 +544,20 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) rotate(0deg);
   }
+
   25% {
     transform: translate(30px, -30px) rotate(90deg);
   }
+
   50% {
     transform: translate(-20px, 20px) rotate(180deg);
   }
+
   75% {
     transform: translate(40px, 10px) rotate(270deg);
   }
@@ -632,10 +613,13 @@
 }
 
 @keyframes dotPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0;
     transform: scale(0);
   }
+
   50% {
     opacity: 0.6;
     transform: scale(1.5);
@@ -672,26 +656,32 @@
   .page-header {
     min-height: 50vh;
   }
-  
+
   .animated-shape {
     opacity: 0.3;
   }
-  
+
+  .animated-shape,
+  .animated-grid,
+  .dot, .blueprint-grid {
+    display: none !important;
+  }
+
   .shape-1 {
     width: 200px;
     height: 200px;
   }
-  
+
   .shape-2 {
     width: 150px;
     height: 150px;
   }
-  
+
   .shape-3 {
     width: 100px;
     height: 100px;
   }
-  
+
   .hero-content-wrapper {
     padding: 1.5rem;
   }
@@ -701,11 +691,11 @@
   .page-header {
     min-height: 45vh;
   }
-  
+
   .page-title {
     font-size: 2.5rem;
   }
-  
+
   .animated-grid {
     background-size: 30px 30px;
   }
@@ -713,6 +703,5 @@
 
 /* Ensure content stays above background */
 .page-header .container {
-  position: relative;
   z-index: 10;
 }

@@ -167,10 +167,15 @@
 
 @media (max-width: 480px) {
   .project-content {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .project-title {
     font-size: 1.3rem;
+  }
+
+  .project-image-real {
+    height: auto;
+    object-fit: contain;
   }
 }

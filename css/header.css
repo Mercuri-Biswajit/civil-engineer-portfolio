@@ -1,6 +1,9 @@
 /* ===========================
    NAVIGATION STYLES
    =========================== */
+body {
+  overflow: hidden;
+}
 
 .navbar {
   position: fixed;
@@ -124,15 +127,15 @@
 
 /* Navbar CTA Button */
 .btn-nav-cta {
-  padding: 0.7rem 1.8rem;
+  padding: 0.5rem 2rem;
   background: var(--color-primary);
   color: #ffffff;
   font-family: var(--font-display);
   font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 10px;
   transition: var(--transition);
   white-space: nowrap;
   border: 2px solid var(--color-primary);

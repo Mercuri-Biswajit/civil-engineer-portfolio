@@ -21,6 +21,7 @@ if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        document.body.classList.toggle('nav-open');
     });
 
     // Close mobile menu when clicking a link
