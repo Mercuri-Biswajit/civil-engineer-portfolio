@@ -1,11 +1,13 @@
 /* ===========================
    UTILITY STYLES
-   Buttons, Section Headers, Skills, Stats, Pricing, Animations
+   Section Components & Patterns
    =========================== */
 
 /* ===========================
    SECTION HEADERS
+   Standard section header pattern
    =========================== */
+
 .section-header {
   display: flex;
   align-items: center;
@@ -19,6 +21,7 @@
   font-weight: 700;
   color: var(--color-primary);
   opacity: 0.2;
+  line-height: 1;
 }
 
 .section-title {
@@ -26,6 +29,8 @@
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: 0.05em;
+  color: var(--color-text);
+  line-height: 1.2;
 }
 
 .section-subtitle {
@@ -42,57 +47,10 @@
 }
 
 /* ===========================
-   BUTTONS - Updated Design
-   =========================== */
-.btn {
-  padding: 1rem 2rem;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 30px;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: #ffffff;
-  border-color: var(--color-primary);
-}
-
-.btn-primary:hover {
-  background: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-secondary {
-  background: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-}
-
-.btn-secondary:hover {
-  background: var(--color-primary);
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-.btn-block {
-  width: 100%;
-  text-align: center;
-}
-
-/* ===========================
    SKILLS SECTION
+   Skills grid and cards
    =========================== */
+
 .skills {
   padding: var(--spacing-xl) 0;
   background: var(--color-bg-dark);
@@ -141,6 +99,7 @@
 .skill-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  display: block;
 }
 
 .skill-name {
@@ -148,63 +107,20 @@
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: var(--color-text);
 }
 
 .skill-description {
   color: var(--color-text-dim);
   font-size: 0.95rem;
-}
-
-/* Additional Stats Components */
-.contact-card,
-.download-card {
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.contact-card h3,
-.download-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  color: var(--color-primary);
-}
-
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: var(--color-text-dim);
-  text-decoration: none;
-  padding: 1rem;
-  background: var(--color-bg-dark);
-  transition: var(--transition);
-  border-radius: 6px;
-}
-
-.contact-link:hover {
-  color: var(--color-primary);
-  background: #E0F2FE;
-  transform: translateX(5px);
-}
-
-.contact-icon {
-  font-size: 1.5rem;
+  line-height: 1.6;
 }
 
 /* ===========================
-   PRICING SECTION
+   PRICING/SERVICES SECTION
+   Pricing cards and features
    =========================== */
+
 .pricing {
   padding: var(--spacing-xl) 0;
   background: var(--color-bg-dark);
@@ -216,6 +132,7 @@
   color: var(--color-text-dim);
   margin-bottom: 3rem;
   margin-top: -2rem;
+  line-height: 1.6;
 }
 
 .pricing-grid {
@@ -264,6 +181,7 @@
 .pricing-icon {
   font-size: 3rem;
   margin-bottom: 1.5rem;
+  display: block;
 }
 
 .pricing-name {
@@ -292,6 +210,7 @@
 .pricing-features {
   list-style: none;
   margin-bottom: 2rem;
+  padding: 0;
 }
 
 .pricing-features li {
@@ -305,12 +224,20 @@
   border-bottom: none;
 }
 
+.pricing-features li::before {
+  content: "✓ ";
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
 .pricing-note {
   background: #ffffff;
   border-left: 4px solid var(--color-primary);
   padding: 1.5rem 2rem;
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
 }
 
 .pricing-note p {
@@ -325,123 +252,224 @@
 }
 
 /* ===========================
-   EDUCATION SECTION
+   STATS SECTION
+   Statistics and counters
    =========================== */
-.education-item {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  border: 1px solid var(--color-border);
-  margin-bottom: 1.5rem;
-  transition: var(--transition);
-  padding: 1rem;
-  border-left: 4px solid var(--color-primary);
-  background: #ffffff;
-  border-radius: 8px;
+
+.stats {
+  padding: var(--spacing-xl) 0;
+  background: var(--color-bg-darker);
 }
 
-.education-item:hover {
-  border-color: var(--color-primary);
-  transform: translateX(5px);
-}
-
-.education-icon {
-  font-size: 2.5rem;
-  color: var(--color-primary);
-  min-width: 60px;
-  text-align: center;
-}
-
-.education-degree {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.education-school {
-  color: var(--color-text-dim);
-  font-size: 1rem;
-}
-
-/* About Sidebar */
-.about-sidebar {
-  display: flex;
-  flex-direction: column;
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
 }
 
+.stat-card {
+  text-align: center;
+  padding: 2rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 /* ===========================
-   ANIMATIONS
+   TESTIMONIALS (Optional)
    =========================== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.testimonials {
+  padding: var(--spacing-xl) 0;
+  background: var(--color-bg-dark);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
-@keyframes scrollAnimation {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(15px);
-  }
+.testimonial-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
 }
 
-@keyframes gridPulse {
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
 
-  0%,
-  100% {
-    opacity: 0.3;
-  }
+.testimonial-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-dim);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
 
-  50% {
-    opacity: 0.5;
-  }
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.testimonial-role {
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+}
+
+/* ===========================
+   CTA SECTIONS
+   Call-to-action blocks
+   =========================== */
+
+.cta-section {
+  padding: var(--spacing-xl) 0;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #ffffff;
+  text-align: center;
+}
+
+.cta-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cta-description {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ===========================
+   CONTACT SECTION
+   Contact forms and info
+   =========================== */
+
+.contact-section {
+  padding: var(--spacing-xl) 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-input,
+.form-textarea {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
+}
+
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
 }
 
 /* ===========================
    RESPONSIVE UTILITIES
    =========================== */
+
+@media (max-width: 1024px) {
+  .stats-grid,
+  .pricing-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
-  a,button {
-    min-height: 44px;
-  }
-
-  .section-title {
-    font-size: 1.5rem;
-    line-height: 1.3;
-  }
-
-  p{
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
   .section-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+    margin-bottom: 3rem;
   }
 
   .section-title {
@@ -454,30 +482,105 @@
 
   .skills-grid,
   .stats-grid,
-  .pricing-grid {
+  .pricing-grid,
+  .testimonials-grid {
     grid-template-columns: 1fr;
   }
-
-  .page-title {
-    font-size: 2.5rem;
+  
+  .cta-title {
+    font-size: 2rem;
   }
-
-  .btn-block {
-    padding: 1.2rem;
-    font-size: 0.9rem;
+  
+  .cta-description {
+    font-size: 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .cta-buttons .btn {
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .skill-card,
+  .pricing-card,
+  .stat-card,
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+  
+  .pricing-name {
+    font-size: 1.25rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
+/* ===========================
+   SCROLL ANIMATIONS
+   Applied via JavaScript
+   =========================== */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   LOADING STATES
+   =========================== */
+
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-bg-dark) 25%, var(--color-border) 50%, var(--color-bg-dark) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }

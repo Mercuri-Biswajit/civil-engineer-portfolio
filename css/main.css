@@ -7,8 +7,8 @@
    BASE STYLES
    Foundation styles and variables
    =========================== */
-@import url("./base/reset.css");
 @import url("./base/variables.css");
+@import url("./base/reset.css");
 
 /* ===========================
    LAYOUT COMPONENTS
@@ -21,10 +21,10 @@
    COMPONENTS
    Reusable UI components
    =========================== */
+@import url("./components/buttons.css");
 @import url("./components/hero.css");
 @import url("./components/projects.css");
 @import url("./components/about.css");
-@import url("./components/buttons.css");
 
 /* ===========================
    UTILITIES
@@ -33,15 +33,22 @@
 @import url("./utilities/utilities.css");
 @import url("./utilities/helpers.css");
 
+/* ===========================
+   GLOBAL STYLES
+   Base styles applied globally
+   =========================== */
 
 /* Container */
 .container {
-  max-width: 1300px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--container-padding);
 }
 
-/* Page Header (Shared across pages) */
+/* ===========================
+   PAGE HEADER (Shared across pages)
+   =========================== */
+
 .page-header {
   padding: 5rem 5rem;
   background: linear-gradient(135deg, #F5F7FA 0%, #E0F2FE 100%);
@@ -67,7 +74,7 @@
 }
 
 .page-header .container {
-  
+  position: relative;
   z-index: 2;
 }
 
@@ -94,10 +101,64 @@
   font-size: 1.2rem;
   color: var(--color-text-dim);
   max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===========================
+   RESPONSIVE STYLES
+   =========================== */
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
   * {
     max-width: 100%;
+  }
+  
+  .page-header {
+    min-height: 50vh;
+    padding: 3rem 2rem;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-description {
+    font-size: 1rem;
+  }
+  
+  a, button {
+    min-height: 44px; /* Touch-friendly */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .page-header {
+    padding: 2rem 1rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+}
+
+/* ===========================
+   ACCESSIBILITY
+   =========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
