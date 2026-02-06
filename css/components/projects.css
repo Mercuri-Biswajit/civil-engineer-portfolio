@@ -40,6 +40,28 @@
   opacity: 1;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+/* Mirror Effect */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
+  transition: left 0.6s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  left: 100%;
 }
 
 .project-card.hidden {
@@ -177,6 +199,27 @@
   transition: var(--transition);
   border-radius: 6px;
   font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mirror Effect for Filter Buttons */
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(30, 41, 59, 0.1),
+      transparent);
+  transition: left 0.5s ease;
+}
+
+.filter-btn:hover::before {
+  left: 100%;
 }
 
 .filter-btn:hover,
@@ -249,6 +292,7 @@
    =========================== */
 
 @media (max-width: 1024px) {
+
   .projects-grid,
   .projects-preview {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -256,6 +300,7 @@
 }
 
 @media (max-width: 768px) {
+
   .projects-grid,
   .projects-preview {
     grid-template-columns: 1fr;
@@ -268,11 +313,11 @@
   .filter-btn {
     width: 100%;
   }
-  
+
   .project-title {
     font-size: 1.5rem;
   }
-  
+
   .project-content {
     padding: 1.5rem;
   }
@@ -292,12 +337,12 @@
     max-height: 250px;
     object-fit: contain;
   }
-  
+
   .project-tag {
     font-size: 0.8rem;
     padding: 0.3rem 0.8rem;
   }
-  
+
   .project-modal-content {
     padding: 2rem 1.5rem;
   }

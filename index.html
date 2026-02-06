@@ -20,6 +20,9 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Work+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -96,12 +99,12 @@
     <!-- Skills Section -->
     <section class="skills">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
           <span class="section-number">01</span>
           <h2 class="section-title">SOFTWARE EXPERTISE</h2>
         </div>
         <div class="skills-grid" id="skillsGrid">
-          <!-- Skills will be added here via JavaScript -->
+          <!-- Skills will be added here via JavaScript with AOS attributes -->
         </div>
       </div>
     </section>
@@ -109,14 +112,14 @@
     <!-- Recent Projects Teaser -->
     <section class="recent-projects">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
           <span class="section-number">02</span>
           <h2 class="section-title">FEATURED WORK</h2>
         </div>
         <div class="projects-preview" id="projectsPreview">
-          <!-- Top 3 projects will be added here via JavaScript -->
+          <!-- Top 3 projects will be added here via JavaScript with AOS attributes -->
         </div>
-        <div class="section-cta">
+        <div class="section-cta" data-aos="fade-up" data-aos-delay="400">
           <a href="./pages/projects.html" class="btn btn-primary"
             >VIEW ALL PROJECTS
           </a>
@@ -124,38 +127,36 @@
       </div>
     </section>
 
-    <!-- What I do Section -->
-    <section class="pricing">
+    <!-- Services Section -->
+    <section class="services">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
           <span class="section-number">03</span>
           <h2 class="section-title">SERVICES PROVIDED</h2>
         </div>
-        <p class="pricing-subtitle">
+        <p class="services-subtitle" data-aos="fade-up" data-aos-delay="100">
           Professional engineering design services with transparent and
           commitment to quality.
         </p>
-        <div class="pricing-grid" id="pricingGrid">
-          <!-- Pricing cards will be added here via JavaScript -->
+        <div class="services-grid" id="servicesGrid">
+          <!-- Services cards will be added here via JavaScript with AOS attributes -->
         </div>
-        <!-- <div class="pricing-note">
-          <p>
-            <strong>Note:</strong> Each plan includes up to 3 design revisions.
-            Additional designs are available at ₹1,000 per design.
-          </p>
-        </div> -->
       </div>
     </section>
 
     <!-- About Me Section -->
     <section class="about-me">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
           <span class="section-number">04</span>
           <h2 class="section-title">ABOUT ME</h2>
         </div>
         <div class="about-content">
-          <div class="about-image-wrapper">
+          <div
+            class="about-image-wrapper"
+            data-aos="fade-right"
+            data-aos-duration="800"
+          >
             <div class="about-image-container">
               <img
                 src="./assets/images/hero/Hero_Image_Civil_Engineer.png"
@@ -165,7 +166,7 @@
               <div class="about-image-overlay"></div>
             </div>
           </div>
-          <div class="about-text">
+          <div class="about-text" data-aos="fade-left" data-aos-duration="800">
             <h3 class="about-subtitle">Professional Summary</h3>
             <p class="about-description">
               Hello! I'm <strong>Er. Biswajit Deb Barman</strong>, a dedicated
@@ -182,21 +183,33 @@
               client expectations.
             </p>
             <div class="about-highlights">
-              <div class="highlight-item">
+              <div
+                class="highlight-item"
+                data-aos="zoom-in"
+                data-aos-delay="100"
+              >
                 <div class="highlight-icon">🎓</div>
                 <div class="highlight-content">
                   <h4>Education</h4>
                   <p>Bachelor of Engineering in Civil Engineering</p>
                 </div>
               </div>
-              <div class="highlight-item">
+              <div
+                class="highlight-item"
+                data-aos="zoom-in"
+                data-aos-delay="200"
+              >
                 <div class="highlight-icon">💼</div>
                 <div class="highlight-content">
                   <h4>Experience</h4>
                   <p>Specialized in Structural & Architectural Design</p>
                 </div>
               </div>
-              <div class="highlight-item">
+              <div
+                class="highlight-item"
+                data-aos="zoom-in"
+                data-aos-delay="300"
+              >
                 <div class="highlight-icon">📍</div>
                 <div class="highlight-content">
                   <h4>Location</h4>
@@ -204,7 +217,7 @@
                 </div>
               </div>
             </div>
-            <div class="about-cta">
+            <div class="about-cta" data-aos="fade-up" data-aos-delay="400">
               <a href="./pages/about.html" class="btn btn-primary"
                 >MORE ABOUT ME</a
               >
@@ -269,10 +282,11 @@
     </footer>
 
     <!-- Scripts -->
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/main.js" defer></script>
     <script src="./js/modules/skills.js" defer></script>
     <script src="./js/modules/projects.js" defer></script>
-    <script src="./js/modules/pricing.js" defer></script>
+    <script src="./js/modules/services.js" defer></script>
+    <script src="./js/utils/page-animations.js" defer></script>
   </body>
 </html>

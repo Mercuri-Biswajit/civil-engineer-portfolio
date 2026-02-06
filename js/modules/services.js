@@ -1,9 +1,9 @@
 // ===========================
-// PRICING DATA
+// SERVICES DATA
 // ===========================
-// Add or edit pricing plans here. Each plan needs: name, price, description, features array, icon, and popular flag
+// Add or edit service plans here. Each plan needs: name, price, description, features array, icon, and popular flag
 
-const pricing = [
+const services = [
     {
         name: 'Architectural Plan',
         price: 'Custom Quote',
@@ -52,20 +52,20 @@ const pricing = [
 // RENDER FUNCTION
 // ===========================
 
-// Render Pricing (Home Page)
-function renderPricing() {
-    const pricingGrid = document.getElementById('pricingGrid');
-    if (!pricingGrid) return;
+// Render Services (Home Page)
+function renderServices() {
+    const servicesGrid = document.getElementById('servicesGrid');
+    if (!servicesGrid) return;
     
-    pricingGrid.innerHTML = pricing.map(plan => `
-        <div class="pricing-card ${plan.popular ? 'popular' : ''}">
-            ${plan.popular ? '<div class="pricing-badge">RECOMMENDED</div>' : ''}
-            <div class="pricing-icon">${plan.icon}</div>
-            <h3 class="pricing-name">${plan.name}</h3>
-            <div class="pricing-price">${plan.price}</div>
-            <p class="pricing-description">${plan.description}</p>
-            <ul class="pricing-features">
-                ${plan.features.map(feature => `<li> ${feature}</li>`).join('')}
+    servicesGrid.innerHTML = services.map(service => `
+        <div class="services-card ${service.popular ? 'popular' : ''}">
+            ${service.popular ? '<div class="services-badge">RECOMMENDED</div>' : ''}
+            <div class="services-icon">${service.icon}</div>
+            <h3 class="services-name">${service.name}</h3>
+            <div class="services-price">${service.price}</div>
+            <p class="services-description">${service.description}</p>
+            <ul class="services-features">
+                ${service.features.map(feature => `<li> ${feature}</li>`).join('')}
             </ul>
         </div>
     `).join('');
@@ -75,14 +75,14 @@ function renderPricing() {
 // INITIALIZATION
 // ===========================
 
-// Initialize pricing when DOM is ready
+// Initialize services when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    renderPricing();
+    renderServices();
     
-    // Set up scroll animations for pricing cards
+    // Set up scroll animations for service cards
     setTimeout(() => {
-        const pricingCards = document.querySelectorAll('.pricing-card');
-        pricingCards.forEach(card => {
+        const serviceCards = document.querySelectorAll('.services-card');
+        serviceCards.forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
@@ -97,5 +97,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in other scripts (if needed)
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { pricing, renderPricing };
+    module.exports = { services, renderServices };
 }

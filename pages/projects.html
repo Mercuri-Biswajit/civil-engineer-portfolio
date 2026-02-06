@@ -18,6 +18,9 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Work+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Navigation -->
@@ -68,11 +71,16 @@
         <div class="animated-grid"></div>
       </div>
       <div class="container">
-        <h1 class="page-title">
+        <h1 class="page-title" data-aos="fade-down" data-aos-duration="800">
           <span class="page-label">PORTFOLIO</span>
           MY PROJECTS
         </h1>
-        <p class="page-description">
+        <p
+          class="page-description"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          data-aos-duration="800"
+        >
           A showcase of structural engineering projects demonstrating
           innovation, precision, and commitment to excellence in infrastructure
           development.
@@ -83,7 +91,7 @@
     <!-- Filter Buttons -->
     <section class="filter-section">
       <div class="container">
-        <div class="filter-buttons">
+        <div class="filter-buttons" data-aos="fade-up" data-aos-duration="600">
           <button class="filter-btn active" data-filter="all">
             ALL PROJECTS
           </button>
@@ -154,7 +162,9 @@
       </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/main.js" defer></script>
     <script src="../js/modules/projects.js" defer></script>
+    <script src="../js/utils/page-animations.js" defer></script>
   </body>
 </html>
