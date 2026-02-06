@@ -14,7 +14,7 @@
 .projects-grid,
 .projects-preview {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
 }
 
@@ -148,6 +148,7 @@
 
 /* Responsive - Projects */
 @media (max-width: 1024px) {
+
   .projects-grid,
   .projects-preview {
     grid-template-columns: 1fr;

@@ -5,8 +5,6 @@
 /* Page components */
 @import url("./css/components/hero.css");
 @import url("./css/components/projects.css");
-@import url("./css/components/blog.css");
-@import url("./css/components/contact.css");
 @import url("./css/components/about.css");
 
 /* ===========================
@@ -34,7 +32,7 @@
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
-  --spacing-xl: 6rem;
+  --spacing-xl: 5rem;
 
   /* Effects */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -80,7 +78,7 @@ img {
 
 /* Page Header (Shared across pages) */
 .page-header {
-  padding: 10rem 0 5rem;
+  padding: 5rem 5rem;
   background: linear-gradient(135deg, #F5F7FA 0%, #E0F2FE 100%);
   position: relative;
   overflow: hidden;
@@ -92,12 +90,10 @@ img {
   top: 0;
   right: 0;
   width: 50%;
-  height: 100%;
-  background: radial-gradient(
-    circle at top right,
-    rgba(30, 41, 59, 0.05) 0%,
-    transparent 70%
-  );
+  height: 70%;
+  background: radial-gradient(circle at top right,
+      rgba(30, 41, 59, 0.05) 0%,
+      transparent 70%);
 }
 
 .page-header .container {
