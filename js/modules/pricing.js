@@ -65,7 +65,7 @@ function renderPricing() {
             <div class="pricing-price">${plan.price}</div>
             <p class="pricing-description">${plan.description}</p>
             <ul class="pricing-features">
-                ${plan.features.map(feature => `<li>✓ ${feature}</li>`).join('')}
+                ${plan.features.map(feature => `<li> ${feature}</li>`).join('')}
             </ul>
         </div>
     `).join('');
