@@ -252,54 +252,6 @@
 }
 
 /* ===========================
-   STATS SECTION
-   Statistics and counters
-   =========================== */
-
-.stats {
-  padding: var(--spacing-xl) 0;
-  background: var(--color-bg-darker);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-
-.stat-card {
-  text-align: center;
-  padding: 2rem;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  transition: var(--transition);
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-primary);
-}
-
-.stat-number {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-
-.stat-label {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--color-text-dim);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* ===========================
    TESTIMONIALS (Optional)
    =========================== */
 
