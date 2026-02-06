@@ -21,12 +21,14 @@ Professional portfolio website for **Er. Biswajit Deb Barman**, a Civil Engineer
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 - **HTML5** - Semantic markup
 - **CSS3** - Modern styling with CSS Grid and Flexbox
 - **JavaScript (ES6+)** - Vanilla JS for interactivity
 - **Google Fonts** - Oswald & Work Sans typography
 
 ### Libraries
+
 - **AOS (Animate On Scroll)** - Scroll animations on About page
 
 ## 📁 Project Structure
@@ -41,14 +43,22 @@ portfolio/
 │   ├── projects.html          # Projects showcase page
 │   └── about.html             # About me page
 │
-├── css/
-│   ├── header.css             # Navigation styles
-│   ├── footer.css             # Footer styles
-│   ├── utilities.css          # Utility classes and reusable styles
-│   └── components/
-│       ├── hero.css           # Hero section styles
-│       ├── projects.css       # Projects section styles
-│       └── about.css          # About page styles
+css/
+├── main.css
+├── base/
+│   ├── reset.css
+│   └── variables.css
+├── layout/
+│   ├── header.css
+│   └── footer.css
+├── components/
+│   ├── buttons.css
+│   ├── hero.css
+│   ├── projects.css
+│   └── about.css
+└── utilities/
+    ├── utilities.css
+    └── helpers.css
 │
 ├── scripts/
 │   ├── skills.js              # Skills section data and rendering
@@ -69,6 +79,7 @@ portfolio/
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary:** #1E293B (Navy Blue)
 - **Primary Dark:** #0F172A
 - **Accent:** #64748B (Slate Gray)
@@ -78,6 +89,7 @@ portfolio/
 - **Border:** #E2E8F0
 
 ### Typography
+
 - **Display Font:** Oswald (Headings)
 - **Body Font:** Work Sans (Content)
 
@@ -89,14 +101,14 @@ Edit `scripts/projects.js`:
 
 ```javascript
 const projects = [
-    {
-        category: 'RESIDENTIAL', // or 'COMMERCIAL'
-        title: 'Your Project Title',
-        description: 'Detailed project description...',
-        tags: ['Tag1', 'Tag2', 'Tag3'],
-        image: '../assets/projects_images/your-image.png'
-    },
-    // Add more projects...
+  {
+    category: "RESIDENTIAL", // or 'COMMERCIAL'
+    title: "Your Project Title",
+    description: "Detailed project description...",
+    tags: ["Tag1", "Tag2", "Tag3"],
+    image: "../assets/projects_images/your-image.png",
+  },
+  // Add more projects...
 ];
 ```
 
@@ -106,12 +118,12 @@ Edit `scripts/skills.js`:
 
 ```javascript
 const skills = [
-    {
-        icon: '📐',
-        name: 'Skill Name',
-        description: 'Skill description...'
-    },
-    // Add more skills...
+  {
+    icon: "📐",
+    name: "Skill Name",
+    description: "Skill description...",
+  },
+  // Add more skills...
 ];
 ```
 
@@ -121,12 +133,12 @@ Edit `scripts/education.js`:
 
 ```javascript
 const education = [
-    {
-        year: '2024',
-        degree: 'Degree Name',
-        school: 'Institution Name'
-    },
-    // Add more education...
+  {
+    year: "2024",
+    degree: "Degree Name",
+    school: "Institution Name",
+  },
+  // Add more education...
 ];
 ```
 
@@ -136,21 +148,22 @@ Edit `scripts/pricing.js`:
 
 ```javascript
 const pricing = [
-    {
-        name: 'Service Name',
-        price: 'Custom Quote',
-        description: 'Service description...',
-        features: ['Feature 1', 'Feature 2'],
-        icon: '📐',
-        popular: false
-    },
-    // Add more services...
+  {
+    name: "Service Name",
+    price: "Custom Quote",
+    description: "Service description...",
+    features: ["Feature 1", "Feature 2"],
+    icon: "📐",
+    popular: false,
+  },
+  // Add more services...
 ];
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - A modern web browser (Chrome, Firefox, Safari, Edge)
 - A code editor (VS Code, Sublime Text, etc.)
 - Basic knowledge of HTML, CSS, and JavaScript
@@ -158,6 +171,7 @@ const pricing = [
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/portfolio.git
    cd portfolio
@@ -166,13 +180,14 @@ const pricing = [
 2. **Open in browser**
    - Simply open `index.html` in your web browser
    - Or use a local server (recommended):
+
    ```bash
    # Using Python
    python -m http.server 8000
-   
+
    # Using Node.js (http-server)
    npx http-server
-   
+
    # Using VS Code Live Server extension
    Right-click on index.html → "Open with Live Server"
    ```
@@ -185,6 +200,7 @@ const pricing = [
 ## 🌐 Deployment
 
 ### GitHub Pages
+
 1. Push your code to GitHub
 2. Go to repository Settings → Pages
 3. Select branch (usually `main`) and folder (`/root`)
@@ -192,11 +208,13 @@ const pricing = [
 5. Your site will be live at `https://yourusername.github.io/portfolio`
 
 ### Netlify
+
 1. Create account at [Netlify](https://www.netlify.com/)
 2. Drag and drop your project folder
 3. Site will be live instantly
 
 ### Vercel
+
 ```bash
 npm i -g vercel
 vercel
@@ -220,21 +238,26 @@ vercel
 ## 🔧 Customization
 
 ### Changing Colors
+
 Edit CSS variables in `style.css`:
 
 ```css
 :root {
-  --color-primary: #1E293B;
-  --color-accent: #64748B;
+  --color-primary: #1e293b;
+  --color-accent: #64748b;
   /* ... modify colors ... */
 }
 ```
 
 ### Changing Fonts
+
 Update Google Fonts link in HTML files:
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=YourFont:wght@400;600;700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=YourFont:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 Then update CSS variables:
@@ -249,6 +272,7 @@ Then update CSS variables:
 ## 📧 Contact
 
 **Er. Biswajit Deb Barman**
+
 - Email: biswajitdebbarman@gmail.com
 - Phone: +91-7602120054
 - Location: Chanditala, Raiganj, Uttar Dinajpur, West Bengal, India
@@ -296,4 +320,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Made with ❤️ by Er. Biswajit Deb Barman**
 
-*Building the future, one structure at a time.*
+_Building the future, one structure at a time._
