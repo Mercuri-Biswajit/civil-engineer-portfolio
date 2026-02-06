@@ -1,0 +1,117 @@
+# ===============================
+# GENERAL FILES TO IGNORE
+# ===============================
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor/IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+*.sublime-workspace
+
+# ===============================
+# NODE.JS (if you add build tools later)
+# ===============================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Build output
+dist/
+build/
+.cache/
+
+# ===============================
+# TEMPORARY & BACKUP FILES
+# ===============================
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# ===============================
+# PROJECT SPECIFIC
+# ===============================
+
+# Minified files (keep source, ignore minified)
+*.min.css
+*.min.js
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# Test files
+coverage/
+.nyc_output/
+
+# ===============================
+# ASSETS (optional - uncomment if needed)
+# ===============================
+
+# Ignore large or unprocessed images
+# assets/raw-images/
+# assets/psd/
+
+# Ignore sensitive documents
+# assets/pdf/private/
+
+# ===============================
+# DEPLOYMENT
+# ===============================
+
+# Netlify
+.netlify/
+
+# Vercel
+.vercel/
+
+# FTP credentials
+.ftpconfig
+sftp-config.json
+
+# ===============================
+# MISC
+# ===============================
+
+# System Files
+*.pid
+*.seed
+*.pid.lock
+
+# Debug logs
+debug.log
+error.log
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
