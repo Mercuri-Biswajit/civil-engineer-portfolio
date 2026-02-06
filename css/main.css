@@ -1,82 +1,38 @@
-/* Layout components */
+/* ===========================
+   MAIN CSS FILE
+   Imports all component styles
+   =========================== */
+
+/* ===========================
+   BASE STYLES
+   Foundation styles and variables
+   =========================== */
 @import url("./base/reset.css");
 @import url("./base/variables.css");
 
-/* Layout components */
+/* ===========================
+   LAYOUT COMPONENTS
+   Header, footer, and structure
+   =========================== */
 @import url("./layout/header.css");
 @import url("./layout/footer.css");
 
-/* Utilities components */
-@import url("./utilities/utilities.css");
-@import url("./utilities/helpers.css");
-
-/* Page components */
+/* ===========================
+   COMPONENTS
+   Reusable UI components
+   =========================== */
 @import url("./components/hero.css");
 @import url("./components/projects.css");
 @import url("./components/about.css");
 @import url("./components/buttons.css");
 
 /* ===========================
-   ROOT CSS - VARIABLES & RESET
+   UTILITIES
+   Helper classes and utilities
    =========================== */
+@import url("./utilities/utilities.css");
+@import url("./utilities/helpers.css");
 
-:root {
-  /* Color Palette - Navy Blue & Light Gray Theme (Updated) */
-  --color-primary: #1E293B;
-  --color-primary-dark: #0F172A;
-  --color-accent: #64748B;
-  --color-bg-dark: #F5F7FA;
-  --color-bg-darker: #FFFFFF;
-  --color-bg-card: #FFFFFF;
-  --color-text: #1E293B;
-  --color-text-dim: #64748B;
-  --color-border: #E2E8F0;
-
-  /* Typography - Modern Sans-Serif */
-  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
-  --spacing-xl: 5rem;
-
-  /* Effects */
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-sm: 0 2px 8px rgba(30, 41, 59, 0.08);
-  --shadow-md: 0 4px 16px rgba(30, 41, 59, 0.12);
-  --shadow-lg: 0 8px 32px rgba(30, 41, 59, 0.15);
-}
-
-/* CSS Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  font-family: var(--font-body);
-  background: var(--color-bg-dark);
-  color: var(--color-text);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
 
 /* Container */
 .container {

@@ -1,6 +1,6 @@
 # Er. Biswajit Deb Barman - Portfolio Website
 
-![Portfolio Banner](./assets/images/Hero_Image_Civil_Engineer.png)
+![Portfolio Banner](./assets/icons/My__Logo.png)
 
 ## 📋 Overview
 
