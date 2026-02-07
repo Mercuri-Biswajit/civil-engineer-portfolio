@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Building Calculators | Er. Biswajit Deb Barman</title>
+    <link rel="icon" type="image/png" href="../assets/icons/favicon.ico" />
     <meta
       name="description"
       content="Professional civil engineering calculators for building estimation, material calculation, and cost analysis."
@@ -25,22 +26,25 @@
     <!-- Header Navigation -->
     <nav class="navbar">
       <div class="nav-container">
+        <!-- FIX #1: Changed ./index.html to ../index.html -->
         <div class="logo">
-          <a href="./index.html"
-            ><img
+          <a href="../index.html">
+            <img
               src="../assets/icons/My__Logo.png"
               alt="Biswajit Deb Barman"
               class="logo-img"
-          /></a>
+            />
+          </a>
         </div>
         <div class="nav-menu" id="navMenu">
-          <a href="../index.html" class="nav-link active">HOME</a>
+          <a href="../index.html" class="nav-link">HOME</a>
           <a href="./projects.html" class="nav-link">PROJECTS</a>
           <a href="./about.html" class="nav-link">ABOUT</a>
-          <a href="./calculators.html" class="nav-link">CALCULATORS</a>
+          <a href="./calculators.html" class="nav-link active">CALCULATORS</a>
         </div>
+        <!-- FIX #1: Changed ./assets to ../assets -->
         <a
-          href="./assets/files/Biswajit_Deb_Barman__CV.pdf"
+          href="../assets/files/Biswajit_Deb_Barman__CV.pdf"
           download
           class="btn-nav-cta"
           >DOWNLOAD RESUME</a
@@ -93,12 +97,13 @@
               <!-- Input Form -->
               <div class="calc-card calc-card--primary">
                 <h2 class="calc-card__title">Project Details</h2>
-                <form id="estimationForm" class="calc-form">
+                <!-- FIX #7: Added novalidate attribute -->
+                <form id="estimationForm" class="calc-form" novalidate>
                   <div class="form-group">
                     <label for="projectType" class="form-label"
                       >Building Type</label
                     >
-                    <select id="projectType" class="form-input">
+                    <select id="projectType" class="form-input" required>
                       <option value="residential">Residential</option>
                       <option value="commercial">Commercial</option>
                       <option value="institutional">Institutional</option>
@@ -109,7 +114,7 @@
                     <label for="constructionType" class="form-label"
                       >Construction Type</label
                     >
-                    <select id="constructionType" class="form-input">
+                    <select id="constructionType" class="form-input" required>
                       <option value="rcc">RCC Frame Structure</option>
                       <option value="loadbearing">
                         Load Bearing Structure
@@ -128,6 +133,7 @@
                         placeholder="40"
                         min="1"
                         step="0.1"
+                        required
                       />
                     </div>
                     <div class="form-group">
@@ -139,6 +145,7 @@
                         placeholder="30"
                         min="1"
                         step="0.1"
+                        required
                       />
                     </div>
                   </div>
@@ -155,6 +162,7 @@
                         placeholder="2"
                         min="1"
                         max="20"
+                        required
                       />
                     </div>
                     <div class="form-group">
@@ -169,6 +177,7 @@
                         min="8"
                         max="20"
                         step="0.5"
+                        required
                       />
                     </div>
                   </div>
@@ -177,7 +186,7 @@
                     <label for="finishQuality" class="form-label"
                       >Finish Quality</label
                     >
-                    <select id="finishQuality" class="form-input">
+                    <select id="finishQuality" class="form-input" required>
                       <option value="basic">Basic (Economy)</option>
                       <option value="standard">Standard</option>
                       <option value="premium">Premium</option>
@@ -301,10 +310,11 @@
           <div class="calc-content" id="materials">
             <div class="calc-card calc-card--full">
               <h2 class="calc-card__title">Material Quantity Calculator</h2>
-              <form id="materialForm" class="calc-form">
+              <!-- FIX #7: Added novalidate attribute -->
+              <form id="materialForm" class="calc-form" novalidate>
                 <div class="form-group">
                   <label for="workType" class="form-label">Type of Work</label>
-                  <select id="workType" class="form-input">
+                  <select id="workType" class="form-input" required>
                     <option value="brickwork">Brick Masonry (9" wall)</option>
                     <option value="brickwork4">
                       Brick Masonry (4.5" wall)
@@ -327,6 +337,7 @@
                       placeholder="10"
                       min="0.1"
                       step="0.1"
+                      required
                     />
                   </div>
                   <div class="form-group">
@@ -340,6 +351,7 @@
                       placeholder="10"
                       min="0.1"
                       step="0.1"
+                      required
                     />
                   </div>
                   <div class="form-group" id="thicknessGroup">
@@ -376,13 +388,14 @@
           <div class="calc-content" id="concrete">
             <div class="calc-card calc-card--full">
               <h2 class="calc-card__title">Concrete Mix Design Calculator</h2>
-              <form id="concreteForm" class="calc-form">
+              <!-- FIX #7: Added novalidate attribute -->
+              <form id="concreteForm" class="calc-form" novalidate>
                 <div class="form-row">
                   <div class="form-group">
                     <label for="concreteGrade" class="form-label"
                       >Concrete Grade</label
                     >
-                    <select id="concreteGrade" class="form-input">
+                    <select id="concreteGrade" class="form-input" required>
                       <option value="M10">M10</option>
                       <option value="M15">M15</option>
                       <option value="M20" selected>M20</option>
@@ -401,13 +414,14 @@
                       placeholder="1"
                       min="0.1"
                       step="0.1"
+                      required
                     />
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="mixType" class="form-label">Mix Type</label>
-                  <select id="mixType" class="form-input">
+                  <select id="mixType" class="form-input" required>
                     <option value="nominal">Nominal Mix</option>
                     <option value="design">Design Mix</option>
                   </select>
@@ -462,7 +476,7 @@
               standard rates and practices. Actual costs may vary based on
               location, material quality, labor rates, and market conditions.
               For detailed project estimation, please
-              <a href="#contact">contact us</a>.
+              <a href="../index.html#contact">contact us</a>.
             </p>
           </div>
         </div>
@@ -475,12 +489,14 @@
         <div class="footer-content">
           <div class="footer-brand">
             <div class="logo">
-              <a href="../index.html"
-                ><img
+              <!-- FIX #1: Changed ./index.html to ../index.html -->
+              <a href="../index.html">
+                <img
                   src="../assets/icons/My__Logo.png"
                   alt="Biswajit Deb Barman"
                   class="footer-logo-img"
-              /></a>
+                />
+              </a>
             </div>
             <p>Building the future, one structure at a time.</p>
           </div>
@@ -493,19 +509,23 @@
             </div>
             <div class="footer-column">
               <h4>Connect</h4>
+              <!-- FIX #6: Added rel="noopener noreferrer" for security -->
               <a
                 href="https://www.linkedin.com/in/biswajit-deb-barman/"
                 target="_blank"
+                rel="noopener noreferrer"
                 >LinkedIn</a
               >
               <a
                 href="https://www.facebook.com/profile.php?id=61585030424249"
                 target="_blank"
+                rel="noopener noreferrer"
                 >Facebook</a
               >
               <a
                 href="https://www.instagram.com/biswajit.deb.barman/"
                 target="_blank"
+                rel="noopener noreferrer"
                 >Instagram</a
               >
             </div>
@@ -518,7 +538,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../js/modules/calculators.js"></script>
+    <!-- FIX #2: Correct order - main.js BEFORE calculators.js -->
     <script src="../js/main.js"></script>
+    <script src="../js/modules/calculators.js"></script>
   </body>
 </html>
