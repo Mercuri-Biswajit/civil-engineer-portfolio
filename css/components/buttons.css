@@ -25,6 +25,32 @@
   white-space: nowrap;
 }
 
+/* Mirror effect for all buttons */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn > * {
+  position: relative;
+  z-index: 2;
+}
+
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -175,6 +201,7 @@
   border-radius: 50%;
   border-top-color: transparent;
   animation: spinner 0.6s linear infinite;
+  z-index: 3;
 }
 
 @keyframes spinner {
@@ -202,6 +229,29 @@
   border: 2px solid var(--color-primary);
   white-space: nowrap;
   display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mirror effect for nav CTA */
+.btn-nav-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.btn-nav-cta:hover::before {
+  left: 100%;
 }
 
 .btn-nav-cta:hover {
@@ -209,6 +259,10 @@
   border-color: var(--color-primary-dark);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+}
+
+.btn-nav-cta::after {
+  display: none;
 }
 
 /* ===========================
@@ -257,7 +311,7 @@
   overflow: hidden;
 }
 
-.btn-ripple::before {
+.btn-ripple::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -268,9 +322,10 @@
   background: rgba(255, 255, 255, 0.5);
   transform: translate(-50%, -50%);
   transition: width 0.6s, height 0.6s;
+  z-index: 3;
 }
 
-.btn-ripple:active::before {
+.btn-ripple:active::after {
   width: 300px;
   height: 300px;
 }

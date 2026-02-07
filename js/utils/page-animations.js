@@ -3,7 +3,7 @@
 // Shared animations for all pages
 // ===========================
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   // Initialize AOS (Animate On Scroll)
   if (typeof AOS !== 'undefined') {
     AOS.init({
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
       once: true,
       offset: 100,
       delay: 50,
-      disable: function () {
+      disable: function() {
         // Disable on mobile if reduced motion is preferred
         return window.innerWidth < 768 && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       }
@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize hero background animations
   initHeroBackground();
-
+  
   // Add stagger animations to cards
   addCardAnimations();
-
+  
   // Initialize scroll-triggered animations
   initScrollAnimations();
 });
@@ -36,22 +36,22 @@ document.addEventListener('DOMContentLoaded', function () {
 function initHeroBackground() {
   // Add parallax effect to shapes
   const shapes = document.querySelectorAll('.animated-shape');
-
+  
   if (shapes.length > 0) {
     window.addEventListener('mousemove', (e) => {
       const mouseX = e.clientX / window.innerWidth;
       const mouseY = e.clientY / window.innerHeight;
-
+      
       shapes.forEach((shape, index) => {
         const speed = (index + 1) * 20;
         const x = (mouseX - 0.5) * speed;
         const y = (mouseY - 0.5) * speed;
-
+        
         shape.style.transform = `translate(${x}px, ${y}px)`;
       });
     });
   }
-
+  
   // Add twinkling effect to dots
   const dots = document.querySelectorAll('.dot');
   dots.forEach((dot, index) => {
@@ -68,7 +68,7 @@ function initHeroBackground() {
 function addCardAnimations() {
   // Add AOS to all cards with stagger effect
   const allCards = document.querySelectorAll('.project-card, .skill-card, .services-card, .education-item, .competency-item');
-
+  
   allCards.forEach((card, index) => {
     // Add AOS attributes if not already set
     if (!card.hasAttribute('data-aos')) {
@@ -77,7 +77,7 @@ function addCardAnimations() {
       card.setAttribute('data-aos-duration', '600');
     }
   });
-
+  
   // Refresh AOS to recognize dynamically added attributes
   if (typeof AOS !== 'undefined') {
     AOS.refresh();
@@ -91,12 +91,12 @@ function addCardAnimations() {
 function initScrollAnimations() {
   // Observe sections for scroll-based animations
   const sections = document.querySelectorAll('section');
-
+  
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
   };
-
+  
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -104,7 +104,7 @@ function initScrollAnimations() {
       }
     });
   }, observerOptions);
-
+  
   sections.forEach(section => {
     sectionObserver.observe(section);
   });
@@ -117,23 +117,23 @@ function initScrollAnimations() {
 window.addEventListener('scroll', () => {
   const scrolled = window.pageYOffset;
   const pageHeader = document.querySelector('.page-header');
-
+  
   if (pageHeader && scrolled < 800) {
     // Parallax for the entire header
     const parallaxSpeed = 0.5;
     pageHeader.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
-
+    
     // Fade out as scrolling
     const opacity = Math.max(0, 1 - (scrolled / 800));
     pageHeader.style.opacity = opacity;
-
+    
     // Move animated shapes at different speeds
     const shapes = pageHeader.querySelectorAll('.animated-shape');
     shapes.forEach((shape, index) => {
       const speed = 0.2 + (index * 0.1);
       shape.style.transform = `translateY(${scrolled * speed}px)`;
     });
-
+    
     // Move grid slower
     const grid = pageHeader.querySelector('.animated-grid');
     if (grid) {
@@ -172,7 +172,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 if (prefersReducedMotion.matches) {
   // Disable complex animations
   document.documentElement.style.setProperty('--transition-duration', '0.1s');
-
+  
   // Reinitialize AOS with minimal animation
   if (typeof AOS !== 'undefined') {
     AOS.init({
