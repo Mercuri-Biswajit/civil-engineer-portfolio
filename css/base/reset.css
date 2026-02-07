@@ -1,9 +1,12 @@
 /* ===========================
    CSS RESET
-   Modern CSS Reset
+   Modern CSS Reset & Normalization
    =========================== */
 
-/* Box sizing rules */
+/* ===========================
+   BOX SIZING
+   =========================== */
+
 *,
 *::before,
 *::after {
@@ -12,14 +15,66 @@
   padding: 0;
 }
 
-/* Remove default margin and padding */
-body,
+/* ===========================
+   DOCUMENT & SECTIONS
+   =========================== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  background: var(--color-bg-dark);
+  color: var(--color-text);
+  line-height: var(--line-height-normal);
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===========================
+   CONTENT GROUPING
+   =========================== */
+
+main {
+  display: block;
+}
+
+hr {
+  height: 0;
+  overflow: visible;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ===========================
+   TEXT-LEVEL SEMANTICS
+   =========================== */
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
 p,
 figure,
 blockquote,
@@ -29,7 +84,63 @@ dd {
   padding: 0;
 }
 
-/* Remove list styles on ul, ol elements */
+blockquote {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after {
+  content: '';
+  content: none;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* ===========================
+   EMBEDDED CONTENT
+   =========================== */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+img {
+  border-style: none;
+}
+
+svg {
+  fill: currentColor;
+}
+
+/* ===========================
+   LISTS
+   =========================== */
+
 ul,
 ol {
   list-style: none;
@@ -37,41 +148,205 @@ ol {
   padding: 0;
 }
 
-/* Set core root defaults */
-html {
-  scroll-behavior: smooth;
-}
+/* ===========================
+   FORMS
+   =========================== */
 
-/* Set core body defaults */
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  font-family: var(--font-body);
-  background: var(--color-bg-dark);
-  color: var(--color-text);
-  line-height: 1.6;
-}
-
-/* Make images easier to work with */
-img,
-picture,
-svg {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
 button,
-textarea,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
 select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  appearance: button;
+  cursor: pointer;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+  display: table;
+  max-width: 100%;
+  white-space: normal;
+  color: inherit;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
   font: inherit;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
+/* ===========================
+   INTERACTIVE ELEMENTS
+   =========================== */
+
+a {
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
+/* ===========================
+   TABLES
+   =========================== */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  padding: 0;
+  text-align: left;
+}
+
+/* ===========================
+   ACCESSIBILITY
+   =========================== */
+
+:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+[aria-busy="true"] {
+  cursor: progress;
+}
+
+[aria-disabled="true"],
+[disabled] {
+  cursor: not-allowed;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ===========================
+   ANCHORS & SCROLL MARGIN
+   =========================== */
+
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* ===========================
+   REDUCED MOTION
+   =========================== */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -83,26 +358,46 @@ select {
   }
 }
 
-/* Remove default button styles */
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-}
+/* ===========================
+   PRINT STYLES
+   =========================== */
 
-/* Remove default link styles */
-a {
-  text-decoration: none;
-  color: inherit;
-}
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
 
-/* Make sure textareas without a rows attribute are not tiny */
-textarea:not([rows]) {
-  min-height: 10em;
-}
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
 
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }

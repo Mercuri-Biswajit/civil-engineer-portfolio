@@ -8,24 +8,41 @@
    =========================== */
 
 .btn {
+  /* Spacing */
   padding: 1rem 2rem;
+  
+  /* Typography */
   font-family: var(--font-display);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   letter-spacing: 0.05em;
   text-decoration: none;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 30px;
   text-align: center;
   white-space: nowrap;
+  
+  /* Display */
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  
+  /* Borders */
+  border: 2px solid transparent;
+  border-radius: 30px;
+  
+  /* Cursor */
+  cursor: pointer;
+  
+  /* Transition */
+  transition: var(--transition);
+  
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
-/* Mirror effect for all buttons */
+/* Mirror/Shine Effect */
 .btn::before {
   content: '';
   position: absolute;
@@ -46,12 +63,15 @@
   left: 100%;
 }
 
+/* Ensure content is above the mirror effect */
 .btn > * {
   position: relative;
   z-index: 2;
 }
 
-.btn:disabled {
+/* Disabled State */
+.btn:disabled,
+.btn[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
@@ -63,14 +83,14 @@
 
 /* Primary Button */
 .btn-primary {
-  background: var(--color-primary);
-  color: #ffffff;
-  border-color: var(--color-primary);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border-color: var(--btn-primary-border);
 }
 
 .btn-primary:hover {
-  background: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+  background: var(--btn-primary-bg-hover);
+  border-color: var(--btn-primary-border-hover);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -81,14 +101,15 @@
 
 /* Secondary Button */
 .btn-secondary {
-  background: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 2px solid var(--btn-secondary-border);
 }
 
 .btn-secondary:hover {
-  background: var(--color-primary);
-  color: #ffffff;
+  background: var(--btn-secondary-bg-hover);
+  color: var(--btn-secondary-text-hover);
+  border-color: var(--btn-secondary-border-hover);
   transform: translateY(-2px);
 }
 
@@ -98,43 +119,62 @@
 
 /* Outline Button */
 .btn-outline {
-  background: transparent;
-  border: 2px solid var(--color-border);
-  color: var(--color-text);
+  background: var(--btn-outline-bg);
+  color: var(--btn-outline-text);
+  border: 2px solid var(--btn-outline-border);
 }
 
 .btn-outline:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  background: rgba(30, 41, 59, 0.05);
+  background: var(--btn-outline-bg-hover);
+  color: var(--btn-outline-text-hover);
+  border-color: var(--btn-outline-border-hover);
 }
 
 /* Ghost Button */
 .btn-ghost {
-  background: transparent;
+  background: var(--btn-ghost-bg);
+  color: var(--btn-ghost-text);
   border: none;
-  color: var(--color-text);
   padding: 0.5rem 1rem;
 }
 
 .btn-ghost:hover {
-  background: var(--color-bg-dark);
-  color: var(--color-primary);
+  background: var(--btn-ghost-bg-hover);
+  color: var(--btn-ghost-text-hover);
 }
 
 /* Link Button */
 .btn-link {
   background: transparent;
+  color: var(--btn-link-text);
   border: none;
-  color: var(--color-primary);
   text-decoration: underline;
   padding: 0;
   border-radius: 0;
 }
 
 .btn-link:hover {
-  color: var(--color-primary-dark);
+  color: var(--btn-link-text-hover);
   text-decoration: none;
+}
+
+.btn-link::before {
+  display: none;
+}
+
+/* Gradient Button */
+.btn-gradient {
+  background: linear-gradient(135deg, 
+    var(--btn-gradient-from) 0%, 
+    var(--btn-gradient-to) 100%);
+  color: var(--btn-primary-text);
+  border: none;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, 
+    var(--btn-gradient-from-hover) 0%, 
+    var(--btn-gradient-to-hover) 100%);
 }
 
 /* ===========================
@@ -197,7 +237,7 @@
   left: 50%;
   margin-left: -8px;
   margin-top: -8px;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--btn-primary-text);
   border-radius: 50%;
   border-top-color: transparent;
   animation: spinner 0.6s linear infinite;
@@ -215,22 +255,33 @@
    =========================== */
 
 .btn-nav-cta {
+  /* Spacing */
   padding: 0.7rem 1.8rem;
-  background: var(--color-primary);
-  color: #ffffff !important;
+  margin-left: 1rem;
+  
+  /* Typography */
   font-family: var(--font-display);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   letter-spacing: 0.05em;
   text-decoration: none;
-  border-radius: 6px;
-  transition: var(--transition);
-  margin-left: 1rem;
-  border: 2px solid var(--color-primary);
   white-space: nowrap;
+  
+  /* Display */
   display: inline-block;
   position: relative;
   overflow: hidden;
+  
+  /* Colors */
+  background: var(--btn-nav-cta-bg);
+  color: var(--btn-nav-cta-text) !important;
+  border: 2px solid var(--btn-nav-cta-border);
+  
+  /* Border */
+  border-radius: 6px;
+  
+  /* Transition */
+  transition: var(--transition);
 }
 
 /* Mirror effect for nav CTA */
@@ -255,8 +306,8 @@
 }
 
 .btn-nav-cta:hover {
-  background: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+  background: var(--btn-nav-cta-bg-hover);
+  border-color: var(--btn-nav-cta-border-hover);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -330,17 +381,6 @@
   height: 300px;
 }
 
-/* Gradient Button */
-.btn-gradient {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-  border: none;
-  color: #ffffff;
-}
-
-.btn-gradient:hover {
-  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-}
-
 /* ===========================
    RESPONSIVE STYLES
    =========================== */
@@ -364,6 +404,28 @@
   .btn-group .btn {
     width: 100%;
   }
+  
+  .btn-group-attached {
+    flex-direction: column;
+  }
+  
+  .btn-group-attached .btn {
+    border-radius: 0;
+    margin-left: 0;
+    margin-top: -1px;
+  }
+  
+  .btn-group-attached .btn:first-child {
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+    border-bottom-left-radius: 0;
+  }
+  
+  .btn-group-attached .btn:last-child {
+    border-bottom-left-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+    border-top-right-radius: 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -375,5 +437,20 @@
   .btn-block {
     padding: 1.2rem;
     font-size: 0.9rem;
+  }
+  
+  .btn-sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8rem;
+  }
+  
+  .btn-lg {
+    padding: 1.1rem 2rem;
+    font-size: 0.95rem;
+  }
+  
+  .btn-xl {
+    padding: 1.3rem 2.5rem;
+    font-size: 1rem;
   }
 }
