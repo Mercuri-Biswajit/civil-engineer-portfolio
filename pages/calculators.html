@@ -64,7 +64,8 @@
             <span class="calc-hero__badge">Professional Tool</span>
             <h1 class="calc-hero__title">Comprehensive Building Calculator</h1>
             <p class="calc-hero__subtitle">
-              Accurate material estimation and cost calculation for your construction project
+              Accurate material estimation and cost calculation for your
+              construction project
             </p>
           </div>
         </div>
@@ -78,10 +79,11 @@
             <div class="calc-card calc-card--primary">
               <h2 class="calc-card__title">Project Details</h2>
               <form id="buildingCalculatorForm" class="calc-form" novalidate>
-                
                 <!-- Building Type & Construction Type -->
                 <div class="form-group">
-                  <label for="buildingType" class="form-label">Building Type</label>
+                  <label for="buildingType" class="form-label"
+                    >Building Type</label
+                  >
                   <select id="buildingType" class="form-input" required>
                     <option value="residential">Residential</option>
                     <option value="commercial">Commercial</option>
@@ -90,7 +92,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="constructionType" class="form-label">Construction Type</label>
+                  <label for="constructionType" class="form-label"
+                    >Construction Type</label
+                  >
                   <select id="constructionType" class="form-input" required>
                     <option value="rcc">RCC Frame Structure</option>
                     <option value="loadbearing">Load Bearing Structure</option>
@@ -100,7 +104,7 @@
 
                 <!-- Basic Dimensions -->
                 <h3 class="form-section-title">Building Dimensions</h3>
-                
+
                 <div class="form-row">
                   <div class="form-group">
                     <label for="length" class="form-label">Length (m)</label>
@@ -130,7 +134,9 @@
 
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="numFloors" class="form-label">Number of Floors</label>
+                    <label for="numFloors" class="form-label"
+                      >Number of Floors</label
+                    >
                     <input
                       type="number"
                       id="numFloors"
@@ -142,7 +148,9 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label for="floorHeight" class="form-label">Floor Height (m)</label>
+                    <label for="floorHeight" class="form-label"
+                      >Floor Height (m)</label
+                    >
                     <input
                       type="number"
                       id="floorHeight"
@@ -158,19 +166,31 @@
 
                 <!-- Wall Details -->
                 <h3 class="form-section-title">Wall Details</h3>
-                
+
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="externalWallThickness" class="form-label">External Wall Thickness (mm)</label>
-                    <select id="externalWallThickness" class="form-input" required>
+                    <label for="externalWallThickness" class="form-label"
+                      >External Wall Thickness (mm)</label
+                    >
+                    <select
+                      id="externalWallThickness"
+                      class="form-input"
+                      required
+                    >
                       <option value="115">115 mm (Half Brick)</option>
                       <option value="230" selected>230 mm (Full Brick)</option>
                       <option value="345">345 mm (1.5 Brick)</option>
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="internalWallThickness" class="form-label">Internal Wall Thickness (mm)</label>
-                    <select id="internalWallThickness" class="form-input" required>
+                    <label for="internalWallThickness" class="form-label"
+                      >Internal Wall Thickness (mm)</label
+                    >
+                    <select
+                      id="internalWallThickness"
+                      class="form-input"
+                      required
+                    >
                       <option value="115" selected>115 mm (Half Brick)</option>
                       <option value="230">230 mm (Full Brick)</option>
                     </select>
@@ -179,10 +199,12 @@
 
                 <!-- Foundation Details -->
                 <h3 class="form-section-title">Foundation Details</h3>
-                
+
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="foundationDepth" class="form-label">Foundation Depth (m)</label>
+                    <label for="foundationDepth" class="form-label"
+                      >Foundation Depth (m)</label
+                    >
                     <input
                       type="number"
                       id="foundationDepth"
@@ -195,7 +217,9 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label for="plinthHeight" class="form-label">Plinth Height (m)</label>
+                    <label for="plinthHeight" class="form-label"
+                      >Plinth Height (m)</label
+                    >
                     <input
                       type="number"
                       id="plinthHeight"
@@ -211,10 +235,12 @@
 
                 <!-- Slab & Beam Details -->
                 <h3 class="form-section-title">RCC Details</h3>
-                
+
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="slabThickness" class="form-label">Slab Thickness (mm)</label>
+                    <label for="slabThickness" class="form-label"
+                      >Slab Thickness (mm)</label
+                    >
                     <select id="slabThickness" class="form-input" required>
                       <option value="100">100 mm</option>
                       <option value="125" selected>125 mm</option>
@@ -223,7 +249,9 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="concreteGrade" class="form-label">Concrete Grade</label>
+                    <label for="concreteGrade" class="form-label"
+                      >Concrete Grade</label
+                    >
                     <select id="concreteGrade" class="form-input" required>
                       <option value="M15">M15</option>
                       <option value="M20" selected>M20</option>
@@ -235,11 +263,17 @@
 
                 <!-- Plaster Details -->
                 <h3 class="form-section-title">Plaster Details</h3>
-                
+
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="internalPlasterThickness" class="form-label">Internal Plaster (mm)</label>
-                    <select id="internalPlasterThickness" class="form-input" required>
+                    <label for="internalPlasterThickness" class="form-label"
+                      >Internal Plaster (mm)</label
+                    >
+                    <select
+                      id="internalPlasterThickness"
+                      class="form-input"
+                      required
+                    >
                       <option value="10">10 mm</option>
                       <option value="12" selected>12 mm</option>
                       <option value="15">15 mm</option>
@@ -247,8 +281,14 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="externalPlasterThickness" class="form-label">External Plaster (mm)</label>
-                    <select id="externalPlasterThickness" class="form-input" required>
+                    <label for="externalPlasterThickness" class="form-label"
+                      >External Plaster (mm)</label
+                    >
+                    <select
+                      id="externalPlasterThickness"
+                      class="form-input"
+                      required
+                    >
                       <option value="12">12 mm</option>
                       <option value="15">15 mm</option>
                       <option value="20" selected>20 mm</option>
@@ -257,7 +297,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="plasterRatio" class="form-label">Plaster Mortar Ratio</label>
+                  <label for="plasterRatio" class="form-label"
+                    >Plaster Mortar Ratio</label
+                  >
                   <select id="plasterRatio" class="form-input" required>
                     <option value="1:3">1:3 (Rich Mix)</option>
                     <option value="1:4" selected>1:4 (Standard)</option>
@@ -268,10 +310,12 @@
 
                 <!-- Flooring Details -->
                 <h3 class="form-section-title">Flooring Details</h3>
-                
+
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="flooringThickness" class="form-label">Flooring Thickness (mm)</label>
+                    <label for="flooringThickness" class="form-label"
+                      >Flooring Thickness (mm)</label
+                    >
                     <select id="flooringThickness" class="form-input" required>
                       <option value="40">40 mm</option>
                       <option value="50" selected>50 mm</option>
@@ -279,7 +323,9 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="flooringType" class="form-label">Flooring Type</label>
+                    <label for="flooringType" class="form-label"
+                      >Flooring Type</label
+                    >
                     <select id="flooringType" class="form-input" required>
                       <option value="tiles">Ceramic Tiles</option>
                       <option value="marble" selected>Marble/Granite</option>
@@ -290,10 +336,12 @@
 
                 <!-- Door & Window Openings -->
                 <h3 class="form-section-title">Openings (Optional)</h3>
-                
+
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="doorArea" class="form-label">Total Door Area (sq m)</label>
+                    <label for="doorArea" class="form-label"
+                      >Total Door Area (sq m)</label
+                    >
                     <input
                       type="number"
                       id="doorArea"
@@ -305,7 +353,9 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label for="windowArea" class="form-label">Total Window Area (sq m)</label>
+                    <label for="windowArea" class="form-label"
+                      >Total Window Area (sq m)</label
+                    >
                     <input
                       type="number"
                       id="windowArea"
@@ -320,7 +370,9 @@
 
                 <!-- Finish Quality -->
                 <div class="form-group">
-                  <label for="finishQuality" class="form-label">Finish Quality</label>
+                  <label for="finishQuality" class="form-label"
+                    >Finish Quality</label
+                  >
                   <select id="finishQuality" class="form-input" required>
                     <option value="basic">Basic (Economy)</option>
                     <option value="standard" selected>Standard</option>
@@ -350,11 +402,16 @@
                 <div class="results-empty__icon">📊</div>
                 <h3>Ready to Calculate</h3>
                 <p>
-                  Fill in all the project details and click calculate to see your comprehensive estimation
+                  Fill in all the project details and click calculate to see
+                  your comprehensive estimation
                 </p>
               </div>
 
-              <div class="results-content" id="resultsContent" style="display: none">
+              <div
+                class="results-content"
+                id="resultsContent"
+                style="display: none"
+              >
                 <h2 class="calc-card__title">Comprehensive Estimation</h2>
 
                 <!-- Quick Stats -->
@@ -386,8 +443,10 @@
 
                 <!-- Component-wise Material Breakdown -->
                 <div class="results-breakdown">
-                  <h3 class="breakdown-title">Component-wise Material Breakdown</h3>
-                  
+                  <h3 class="breakdown-title">
+                    Component-wise Material Breakdown
+                  </h3>
+
                   <div class="component-breakdown">
                     <h4 class="component-title">Foundation</h4>
                     <div class="breakdown-list" id="foundationBreakdown"></div>
@@ -446,7 +505,11 @@
                         stroke="currentColor"
                         stroke-width="2"
                       />
-                      <path d="M5 11h10v6H5z" stroke="currentColor" stroke-width="2" />
+                      <path
+                        d="M5 11h10v6H5z"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      />
                     </svg>
                     Print Report
                   </button>
@@ -499,8 +562,8 @@
               <strong>Note:</strong> These calculations are estimates based on
               standard rates and practices. Actual costs may vary based on
               location, material quality, labor rates, and market conditions.
-              For detailed project estimation and professional consultation, please
-              <a href="../index.html#contact">contact us</a>.
+              For detailed project estimation and professional consultation,
+              please <a href="../index.html#contact">contact us</a>.
             </p>
           </div>
         </div>
@@ -561,6 +624,6 @@
 
     <!-- Scripts -->
     <script src="../js/main.js"></script>
-    <script src="../js/modules/building-calculator.js"></script>
+    <script src="../js/modules/calculators.js"></script>
   </body>
 </html>

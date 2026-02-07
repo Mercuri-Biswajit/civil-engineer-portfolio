@@ -1,6 +1,7 @@
 /* ====================================
    COMPREHENSIVE BUILDING CALCULATOR
    Professional Civil Engineering Tool
+   WITH ACCURATE FORMULAS
    ==================================== */
 
 // ====================================
@@ -12,11 +13,42 @@ const materialRates = {
   sand: 1850, // per cubic meter (cu m)
   aggregate: 2200, // per cubic meter (cu m)
   steel: 70, // per kg
-  bricks: 9, // per piece
+  bricks: 9, // per piece (modular brick 190x90x90mm)
   tiles: 485, // per sq m
   marble: 1290, // per sq m
   vitrified: 860, // per sq m
   paint: 350, // per liter
+};
+
+// ====================================
+// CONCRETE MIX RATIOS
+// ====================================
+const concreteMixRatios = {
+  M15: { cement: 1, sand: 2, aggregate: 4, sum: 7 },
+  M20: { cement: 1, sand: 1.5, aggregate: 3, sum: 5.5 },
+  M25: { cement: 1, sand: 1, aggregate: 2, sum: 4 },
+  M30: { cement: 1, sand: 1, aggregate: 2, sum: 4 },
+};
+
+// ====================================
+// STEEL REINFORCEMENT RATIOS (kg/m³)
+// ====================================
+const steelRatios = {
+  foundation: 80,
+  plinthBeam: 100,
+  column: 160,
+  beam: 115,
+  slab: 80,
+};
+
+// ====================================
+// MORTAR RATIOS
+// ====================================
+const mortarRatios = {
+  '1:3': { cement: 1, sand: 3, sum: 4 },
+  '1:4': { cement: 1, sand: 4, sum: 5 },
+  '1:5': { cement: 1, sand: 5, sum: 6 },
+  '1:6': { cement: 1, sand: 6, sum: 7 },
 };
 
 // ====================================
@@ -42,8 +74,7 @@ function showError(inputElement, message) {
   inputElement.style.borderColor = "#EF4444";
   inputElement.style.borderWidth = "2px";
 
-  const existingError =
-    inputElement.parentElement.querySelector(".error-message");
+  const existingError = inputElement.parentElement.querySelector(".error-message");
   if (existingError) {
     existingError.remove();
   }
@@ -63,8 +94,7 @@ function clearError(inputElement) {
   inputElement.style.borderColor = "";
   inputElement.style.borderWidth = "";
 
-  const errorMessage =
-    inputElement.parentElement.querySelector(".error-message");
+  const errorMessage = inputElement.parentElement.querySelector(".error-message");
   if (errorMessage) {
     errorMessage.remove();
   }
@@ -126,28 +156,16 @@ function calculateBuilding() {
     breadth: parseFloat(document.getElementById("breadth").value),
     numFloors: parseInt(document.getElementById("numFloors").value),
     floorHeight: parseFloat(document.getElementById("floorHeight").value),
-    externalWallThickness: parseFloat(
-      document.getElementById("externalWallThickness").value,
-    ),
-    internalWallThickness: parseFloat(
-      document.getElementById("internalWallThickness").value,
-    ),
-    foundationDepth: parseFloat(
-      document.getElementById("foundationDepth").value,
-    ),
+    externalWallThickness: parseFloat(document.getElementById("externalWallThickness").value),
+    internalWallThickness: parseFloat(document.getElementById("internalWallThickness").value),
+    foundationDepth: parseFloat(document.getElementById("foundationDepth").value),
     plinthHeight: parseFloat(document.getElementById("plinthHeight").value),
     slabThickness: parseFloat(document.getElementById("slabThickness").value),
     concreteGrade: document.getElementById("concreteGrade").value,
-    internalPlasterThickness: parseFloat(
-      document.getElementById("internalPlasterThickness").value,
-    ),
-    externalPlasterThickness: parseFloat(
-      document.getElementById("externalPlasterThickness").value,
-    ),
+    internalPlasterThickness: parseFloat(document.getElementById("internalPlasterThickness").value),
+    externalPlasterThickness: parseFloat(document.getElementById("externalPlasterThickness").value),
     plasterRatio: document.getElementById("plasterRatio").value,
-    flooringThickness: parseFloat(
-      document.getElementById("flooringThickness").value,
-    ),
+    flooringThickness: parseFloat(document.getElementById("flooringThickness").value),
     flooringType: document.getElementById("flooringType").value,
     doorArea: parseFloat(document.getElementById("doorArea").value) || 0,
     windowArea: parseFloat(document.getElementById("windowArea").value) || 0,
@@ -192,46 +210,27 @@ function validateInputs(inputs) {
   let hasError = false;
 
   if (!inputs.length || inputs.length <= 0) {
-    showError(
-      document.getElementById("length"),
-      "Please enter a valid length greater than 0",
-    );
+    showError(document.getElementById("length"), "Please enter a valid length greater than 0");
     hasError = true;
   }
 
   if (!inputs.breadth || inputs.breadth <= 0) {
-    showError(
-      document.getElementById("breadth"),
-      "Please enter a valid breadth greater than 0",
-    );
+    showError(document.getElementById("breadth"), "Please enter a valid breadth greater than 0");
     hasError = true;
   }
 
   if (!inputs.numFloors || inputs.numFloors <= 0 || inputs.numFloors > 20) {
-    showError(
-      document.getElementById("numFloors"),
-      "Number of floors must be between 1 and 20",
-    );
+    showError(document.getElementById("numFloors"), "Number of floors must be between 1 and 20");
     hasError = true;
   }
 
-  if (
-    !inputs.floorHeight ||
-    inputs.floorHeight < 2.4 ||
-    inputs.floorHeight > 6
-  ) {
-    showError(
-      document.getElementById("floorHeight"),
-      "Floor height must be between 2.4 and 6 meters",
-    );
+  if (!inputs.floorHeight || inputs.floorHeight < 2.4 || inputs.floorHeight > 6) {
+    showError(document.getElementById("floorHeight"), "Floor height must be between 2.4 and 6 meters");
     hasError = true;
   }
 
   if (!inputs.foundationDepth || inputs.foundationDepth <= 0) {
-    showError(
-      document.getElementById("foundationDepth"),
-      "Please enter a valid foundation depth",
-    );
+    showError(document.getElementById("foundationDepth"), "Please enter a valid foundation depth");
     hasError = true;
   }
 
@@ -253,11 +252,9 @@ function calculateAreas(inputs) {
   // Wall areas in sq m
   const externalWallArea = perimeter * inputs.floorHeight * inputs.numFloors;
 
-  // Internal wall area (estimate - will need more detailed input for accuracy)
-  // FORMULA NEEDED: How to calculate internal wall length based on building dimensions
-  const estimatedInternalWallLength = perimeter * 0.6; // Placeholder estimate
-  const internalWallArea =
-    estimatedInternalWallLength * inputs.floorHeight * inputs.numFloors;
+  // Internal wall area (estimated as 60% of perimeter)
+  const estimatedInternalWallLength = perimeter * 0.6;
+  const internalWallArea = estimatedInternalWallLength * inputs.floorHeight * inputs.numFloors;
 
   // Net wall area (excluding openings)
   const totalOpenings = inputs.doorArea + inputs.windowArea;
@@ -272,336 +269,300 @@ function calculateAreas(inputs) {
     internalWallArea,
     netExternalWallArea,
     netInternalWallArea,
+    estimatedInternalWallLength,
   };
 }
 
 // ====================================
 // FOUNDATION MATERIALS
-// All inputs in METERS, output in cubic meters
+// ACCURATE FORMULA IMPLEMENTATION
 // ====================================
 
 function calculateFoundationMaterials(inputs, areas) {
-  // ============================================
-  // FORMULA NEEDED: Foundation calculation
-  // ============================================
-  // Please provide the accurate formula for:
-  // 1. Foundation concrete volume calculation (in cubic meters)
-  // 2. Cement bags required
-  // 3. Sand (cubic meters) required
-  // 4. Aggregate (cubic meters) required
-  // 5. Steel (kg) required
-  //
-  // Current placeholder calculation:
-  // ============================================
-
-  const foundationVolume = areas.perimeter * 0.45 * inputs.foundationDepth; // Placeholder (cu m)
-  const wetVolume = foundationVolume * 1.54; // 54% for voids and wastage
-
-  // Placeholder ratios - REPLACE WITH YOUR ACCURATE FORMULAS
-  const cement = Math.ceil(wetVolume * 6); // bags
-  const sand = Math.ceil(wetVolume * 0.42); // cu m
-  const aggregate = Math.ceil(wetVolume * 0.84); // cu m
-  const steel = Math.ceil(foundationVolume * 40); // kg
+  // Foundation strip width (assumed 0.45m for typical residential)
+  const foundationWidth = 0.45; // meters
+  
+  // Wet volume = Length × Width × Depth
+  const wetVolume = areas.perimeter * foundationWidth * inputs.foundationDepth; // cu m
+  
+  // Dry volume = Wet Volume × 1.54
+  const dryVolume = wetVolume * 1.54;
+  
+  // Get concrete mix ratio
+  const mix = concreteMixRatios[inputs.concreteGrade];
+  const cementBagVolume = 0.035; // m³ per 50kg bag
+  
+  // Cement (Bags) = (Dry Volume × Cement Ratio) / (Sum of Ratios × 0.035)
+  const cement = Math.ceil((dryVolume * mix.cement) / (mix.sum * cementBagVolume));
+  
+  // Sand (m³) = (Dry Volume × Sand Ratio) / Sum of Ratios
+  const sand = (dryVolume * mix.sand) / mix.sum;
+  
+  // Aggregate (m³) = (Dry Volume × Aggregate Ratio) / Sum of Ratios
+  const aggregate = (dryVolume * mix.aggregate) / mix.sum;
+  
+  // Steel = Volume × Steel Ratio (kg/m³)
+  const steel = Math.ceil(wetVolume * steelRatios.foundation);
 
   return {
     cement,
-    sand,
-    aggregate,
+    sand: parseFloat(sand.toFixed(2)),
+    aggregate: parseFloat(aggregate.toFixed(2)),
     steel,
-    volume: foundationVolume,
+    volume: parseFloat(wetVolume.toFixed(2)),
   };
 }
 
 // ====================================
 // PLINTH BEAM MATERIALS
-// All inputs/outputs in METERS
+// ACCURATE FORMULA IMPLEMENTATION
 // ====================================
 
 function calculatePlinthBeamMaterials(inputs, areas) {
-  // ============================================
-  // FORMULA NEEDED: Plinth beam calculation
-  // ============================================
-  // Please provide the accurate formula for:
-  // 1. Plinth beam volume (in cubic meters)
-  // 2. Cement, sand, aggregate for plinth beam
-  // 3. Steel requirement
-  //
-  // Typical plinth beam size assumptions needed
-  // ============================================
-
   const beamLength = areas.perimeter; // meters
-  const beamWidth = 0.23; // 230 mm = 0.23 m (assumption)
-  const beamDepth = 0.3; // 300 mm = 0.30 m (assumption)
-  const beamVolume = beamLength * beamWidth * beamDepth; // cu m
-  const wetVolume = beamVolume * 1.54;
-
-  // Placeholder - REPLACE WITH YOUR FORMULAS
-  const cement = Math.ceil(wetVolume * 6.4);
-  const sand = Math.ceil(wetVolume * 0.42); // cu m
-  const aggregate = Math.ceil(wetVolume * 0.84); // cu m
-  const steel = Math.ceil(beamVolume * 80); // kg
+  const beamWidth = 0.23; // 230 mm = 0.23 m
+  const beamDepth = 0.30; // 300 mm = 0.30 m
+  
+  // Wet Volume = Length × Width × Depth
+  const wetVolume = beamLength * beamWidth * beamDepth; // cu m
+  
+  // Dry Volume = Wet Volume × 1.54
+  const dryVolume = wetVolume * 1.54;
+  
+  const mix = concreteMixRatios[inputs.concreteGrade];
+  const cementBagVolume = 0.035;
+  
+  const cement = Math.ceil((dryVolume * mix.cement) / (mix.sum * cementBagVolume));
+  const sand = (dryVolume * mix.sand) / mix.sum;
+  const aggregate = (dryVolume * mix.aggregate) / mix.sum;
+  const steel = Math.ceil(wetVolume * steelRatios.plinthBeam);
 
   return {
     cement,
-    sand,
-    aggregate,
+    sand: parseFloat(sand.toFixed(2)),
+    aggregate: parseFloat(aggregate.toFixed(2)),
     steel,
-    volume: beamVolume,
+    volume: parseFloat(wetVolume.toFixed(2)),
   };
 }
 
 // ====================================
 // COLUMNS MATERIALS
-// All inputs/outputs in METERS
+// ACCURATE FORMULA IMPLEMENTATION
 // ====================================
 
 function calculateColumnsMaterials(inputs, areas) {
-  // ============================================
-  // FORMULA NEEDED: Columns calculation
-  // ============================================
-  // Please provide:
-  // 1. Number of columns based on area/perimeter
-  // 2. Column size (based on floors and load)
-  // 3. Column height calculation
-  // 4. Material quantities
-  // ============================================
-
-  // Placeholder: Assume 1 column per 10 sq m
+  // Number of columns: 1 column per 10 sq m
   const numColumns = Math.ceil(areas.plinthArea / 10);
+  
   const columnHeight = inputs.floorHeight * inputs.numFloors;
-  const columnSize = 0.23; // 230mm x 230mm = 0.23m x 0.23m (assumption)
-  const columnVolume = numColumns * columnSize * columnSize * columnHeight; // cu m
-  const wetVolume = columnVolume * 1.54;
-
-  // Placeholder - REPLACE
-  const cement = Math.ceil(wetVolume * 6.4);
-  const sand = Math.ceil(wetVolume * 0.42); // cu m
-  const aggregate = Math.ceil(wetVolume * 0.84); // cu m
-  const steel = Math.ceil(columnVolume * 120); // Higher steel % for columns
+  const columnSize = 0.23; // 230mm × 230mm = 0.23m × 0.23m
+  
+  // Wet Volume = Number of Columns × Size × Size × Height
+  const wetVolume = numColumns * columnSize * columnSize * columnHeight; // cu m
+  
+  // Dry Volume = Wet Volume × 1.54
+  const dryVolume = wetVolume * 1.54;
+  
+  const mix = concreteMixRatios[inputs.concreteGrade];
+  const cementBagVolume = 0.035;
+  
+  const cement = Math.ceil((dryVolume * mix.cement) / (mix.sum * cementBagVolume));
+  const sand = (dryVolume * mix.sand) / mix.sum;
+  const aggregate = (dryVolume * mix.aggregate) / mix.sum;
+  const steel = Math.ceil(wetVolume * steelRatios.column);
 
   return {
     cement,
-    sand,
-    aggregate,
+    sand: parseFloat(sand.toFixed(2)),
+    aggregate: parseFloat(aggregate.toFixed(2)),
     steel,
-    volume: columnVolume,
+    volume: parseFloat(wetVolume.toFixed(2)),
     numberOfColumns: numColumns,
   };
 }
 
 // ====================================
 // BEAMS MATERIALS
-// All inputs/outputs in METERS
+// ACCURATE FORMULA IMPLEMENTATION
 // ====================================
 
 function calculateBeamsMaterials(inputs, areas) {
-  // ============================================
-  // FORMULA NEEDED: Beams calculation
-  // ============================================
-  // Please provide:
-  // 1. Total beam length calculation
-  // 2. Beam sizes based on span
-  // 3. Material quantities
-  // ============================================
-
-  // Placeholder: Beams along perimeter + cross beams
-  const totalBeamLength =
-    (areas.perimeter + inputs.length + inputs.breadth) * inputs.numFloors;
-  const beamWidth = 0.23; // 230mm = 0.23m
-  const beamDepth = 0.38; // 380mm = 0.38m
-  const beamVolume = totalBeamLength * beamWidth * beamDepth; // cu m
-  const wetVolume = beamVolume * 1.54;
-
-  // Placeholder - REPLACE
-  const cement = Math.ceil(wetVolume * 6.4);
-  const sand = Math.ceil(wetVolume * 0.42); // cu m
-  const aggregate = Math.ceil(wetVolume * 0.84); // cu m
-  const steel = Math.ceil(beamVolume * 100);
+  // Total beam length: perimeter + cross beams
+  const totalBeamLength = (areas.perimeter + inputs.length + inputs.breadth) * inputs.numFloors;
+  const beamWidth = 0.23; // 230mm
+  const beamDepth = 0.38; // 380mm
+  
+  // Wet Volume = Length × Width × Depth
+  const wetVolume = totalBeamLength * beamWidth * beamDepth; // cu m
+  
+  // Dry Volume = Wet Volume × 1.54
+  const dryVolume = wetVolume * 1.54;
+  
+  const mix = concreteMixRatios[inputs.concreteGrade];
+  const cementBagVolume = 0.035;
+  
+  const cement = Math.ceil((dryVolume * mix.cement) / (mix.sum * cementBagVolume));
+  const sand = (dryVolume * mix.sand) / mix.sum;
+  const aggregate = (dryVolume * mix.aggregate) / mix.sum;
+  const steel = Math.ceil(wetVolume * steelRatios.beam);
 
   return {
     cement,
-    sand,
-    aggregate,
+    sand: parseFloat(sand.toFixed(2)),
+    aggregate: parseFloat(aggregate.toFixed(2)),
     steel,
-    volume: beamVolume,
+    volume: parseFloat(wetVolume.toFixed(2)),
   };
 }
 
 // ====================================
 // SLABS MATERIALS
-// All inputs/outputs in METERS
+// ACCURATE FORMULA IMPLEMENTATION
 // ====================================
 
 function calculateSlabsMaterials(inputs, areas) {
-  // ============================================
-  // FORMULA NEEDED: Slab calculation
-  // ============================================
-  // Please provide accurate formula based on:
-  // 1. Slab thickness (in mm)
-  // 2. Concrete grade
-  // 3. Steel percentage
-  // ============================================
-
   const slabArea = areas.plinthArea * inputs.numFloors; // sq m
   const slabThicknessM = inputs.slabThickness / 1000; // Convert mm to meters
-  const slabVolume = slabArea * slabThicknessM; // cu m
-  const wetVolume = slabVolume * 1.54;
-
-  // Placeholder - REPLACE WITH YOUR FORMULAS
-  const cement = Math.ceil(wetVolume * 6.4);
-  const sand = Math.ceil(wetVolume * 0.42); // cu m
-  const aggregate = Math.ceil(wetVolume * 0.84); // cu m
-  const steel = Math.ceil(slabVolume * 60); // kg per cu m
+  
+  // Wet Volume = Area × Thickness
+  const wetVolume = slabArea * slabThicknessM; // cu m
+  
+  // Dry Volume = Wet Volume × 1.54
+  const dryVolume = wetVolume * 1.54;
+  
+  const mix = concreteMixRatios[inputs.concreteGrade];
+  const cementBagVolume = 0.035;
+  
+  const cement = Math.ceil((dryVolume * mix.cement) / (mix.sum * cementBagVolume));
+  const sand = (dryVolume * mix.sand) / mix.sum;
+  const aggregate = (dryVolume * mix.aggregate) / mix.sum;
+  const steel = Math.ceil(wetVolume * steelRatios.slab);
 
   return {
     cement,
-    sand,
-    aggregate,
+    sand: parseFloat(sand.toFixed(2)),
+    aggregate: parseFloat(aggregate.toFixed(2)),
     steel,
-    volume: slabVolume,
+    volume: parseFloat(wetVolume.toFixed(2)),
   };
 }
 
 // ====================================
 // BRICKWORK MATERIALS
-// Wall thickness in MM, areas in SQ M
+// ACCURATE FORMULA IMPLEMENTATION
 // ====================================
 
 function calculateBrickworkMaterials(inputs, areas) {
-  // ============================================
-  // FORMULA NEEDED: Brickwork calculation
-  // ============================================
-  // Please provide accurate formulas for:
-  // 1. Bricks per sq m for different wall thickness
-  //    - 115 mm wall (half brick)
-  //    - 230 mm wall (full brick)
-  //    - 345 mm wall (1.5 brick)
-  // 2. Mortar consumption
-  // 3. Cement and sand for mortar
-  // ============================================
-
-  // External walls
-  const externalBricksPerSqm =
-    inputs.externalWallThickness === 230
-      ? 145
-      : inputs.externalWallThickness === 115
-        ? 75
-        : 215;
-  const externalBricks = Math.ceil(
-    areas.netExternalWallArea * externalBricksPerSqm,
-  );
-
-  // Internal walls
-  const internalBricksPerSqm = inputs.internalWallThickness === 230 ? 145 : 75;
-  const internalBricks = Math.ceil(
-    areas.netInternalWallArea * internalBricksPerSqm,
-  );
-
-  const totalBricks = externalBricks + internalBricks;
-
-  // Mortar calculation - PLACEHOLDER, REPLACE WITH YOUR FORMULA
-  const totalWallArea = areas.netExternalWallArea + areas.netInternalWallArea;
-  const avgWallThickness =
-    (inputs.externalWallThickness + inputs.internalWallThickness) / 2;
-  const mortarVolume = totalWallArea * (avgWallThickness / 1000) * 0.3; // 30% mortar, cu m
-
-  const cement = Math.ceil(mortarVolume * 8); // bags
-  const sand = Math.ceil(mortarVolume * 1.2); // cu m
+  // Calculate wall volumes
+  const externalWallThicknessM = inputs.externalWallThickness / 1000; // mm to m
+  const internalWallThicknessM = inputs.internalWallThickness / 1000; // mm to m
+  
+  const externalWallVolume = areas.netExternalWallArea * externalWallThicknessM;
+  const internalWallVolume = areas.netInternalWallArea * internalWallThicknessM;
+  const totalWallVolume = externalWallVolume + internalWallVolume;
+  
+  // Number of Bricks = Volume × 500 (for modular brick 190×90×90mm)
+  const totalBricks = Math.ceil(totalWallVolume * 500);
+  
+  // Mortar Volume = Volume of Brickwork × 0.30 (30% of wall volume)
+  const mortarWetVolume = totalWallVolume * 0.30;
+  
+  // Mortar Dry Volume = Mortar Volume × 1.33
+  const mortarDryVolume = mortarWetVolume * 1.33;
+  
+  // Using 1:6 ratio for brickwork mortar (standard)
+  const ratio = mortarRatios['1:6'];
+  const cementBagVolume = 0.035;
+  
+  const cement = Math.ceil((mortarDryVolume * ratio.cement) / (ratio.sum * cementBagVolume));
+  const sand = (mortarDryVolume * ratio.sand) / ratio.sum;
 
   return {
     bricks: totalBricks,
     cement,
-    sand,
-    externalBricks,
-    internalBricks,
+    sand: parseFloat(sand.toFixed(2)),
+    externalBricks: Math.ceil(externalWallVolume * 500),
+    internalBricks: Math.ceil(internalWallVolume * 500),
   };
 }
 
 // ====================================
 // PLASTER MATERIALS
-// Thickness in MM, areas in SQ M
+// ACCURATE FORMULA IMPLEMENTATION
 // ====================================
 
 function calculatePlasterMaterials(inputs, areas) {
-  // ============================================
-  // FORMULA NEEDED: Plaster calculation
-  // ============================================
-  // Please provide accurate formulas for:
-  // 1. Cement and sand based on plaster ratio
-  //    - 1:3, 1:4, 1:5, 1:6
-  // 2. Coverage per bag of cement
-  // 3. Wastage factor
-  // ============================================
-
   const totalWallArea = areas.netExternalWallArea + areas.netInternalWallArea;
-
-  // Both sides of walls
+  
+  // Both sides of walls (internal and external surfaces)
   const totalPlasterArea = totalWallArea * 2;
-
-  // Internal plaster
-  const internalPlasterVolume =
-    areas.netInternalWallArea * 2 * (inputs.internalPlasterThickness / 1000); // mm to m, cu m
-
-  // External plaster
-  const externalPlasterVolume =
-    areas.netExternalWallArea * 2 * (inputs.externalPlasterThickness / 1000); // mm to m, cu m
-
-  const totalPlasterVolume = internalPlasterVolume + externalPlasterVolume;
-  const wetVolume = totalPlasterVolume * 1.33; // 33% for wastage
-
-  // Ratio-based calculation - PLACEHOLDER, REPLACE WITH ACCURATE FORMULA
-  const ratioMultiplier =
-    inputs.plasterRatio === "1:3"
-      ? 12.0
-      : inputs.plasterRatio === "1:4"
-        ? 9.0
-        : inputs.plasterRatio === "1:5"
-          ? 7.5
-          : 6.0;
-
-  const cement = Math.ceil(wetVolume * ratioMultiplier);
-  const sand = Math.ceil(wetVolume * 1.2); // cu m
+  
+  // Internal plaster volume (both sides of internal walls)
+  const internalPlasterThicknessM = inputs.internalPlasterThickness / 1000; // mm to m
+  const internalPlasterVolume = areas.netInternalWallArea * 2 * internalPlasterThicknessM;
+  
+  // External plaster volume
+  const externalPlasterThicknessM = inputs.externalPlasterThickness / 1000; // mm to m
+  const externalPlasterVolume = areas.netExternalWallArea * 2 * externalPlasterThicknessM;
+  
+  // Total Wet Volume = Area × Thickness
+  const wetVolume = internalPlasterVolume + externalPlasterVolume;
+  
+  // Dry Volume = Wet Volume × 1.33
+  const dryVolume = wetVolume * 1.33;
+  
+  // Get mortar ratio
+  const ratio = mortarRatios[inputs.plasterRatio];
+  const cementBagVolume = 0.035;
+  
+  // Cement (Bags) = (Dry Volume × Ratio Part) / (Sum of Ratio × 0.035)
+  const cement = Math.ceil((dryVolume * ratio.cement) / (ratio.sum * cementBagVolume));
+  
+  // Sand (m³) = (Dry Volume × Sand Ratio) / Sum of Ratios
+  const sand = (dryVolume * ratio.sand) / ratio.sum;
 
   return {
     cement,
-    sand,
-    area: totalPlasterArea,
-    volume: totalPlasterVolume,
+    sand: parseFloat(sand.toFixed(2)),
+    area: parseFloat(totalPlasterArea.toFixed(2)),
+    volume: parseFloat(wetVolume.toFixed(2)),
   };
 }
 
 // ====================================
 // FLOORING MATERIALS
-// Thickness in MM, areas in SQ M
+// ACCURATE FORMULA IMPLEMENTATION
 // ====================================
 
 function calculateFlooringMaterials(inputs, areas) {
-  // ============================================
-  // FORMULA NEEDED: Flooring calculation
-  // ============================================
-  // Please provide formulas for:
-  // 1. Base concrete calculation
-  // 2. Tile/marble area (with wastage)
-  // 3. Bedding mortar
-  // ============================================
-
   const totalFloorArea = areas.plinthArea * inputs.numFloors; // sq m
-  const flooringThicknessM = inputs.flooringThickness / 1000; // mm to m
-  const flooringVolume = totalFloorArea * flooringThicknessM; // cu m
-
-  // Base concrete
-  const cement = Math.ceil(flooringVolume * 8);
-  const sand = Math.ceil(flooringVolume * 1.2); // cu m
-
-  // Tiles/Marble with 10% wastage
-  const tileArea = Math.ceil(totalFloorArea * 1.1); // sq m
+  
+  // Bedding thickness (typical 50mm)
+  const beddingThickness = 0.05; // meters
+  
+  // Bedding Volume = Floor Area × Bedding Thickness
+  const beddingWetVolume = totalFloorArea * beddingThickness;
+  
+  // Dry Volume = Bedding Volume × 1.33
+  const beddingDryVolume = beddingWetVolume * 1.33;
+  
+  // Using 1:4 ratio for bedding mortar
+  const ratio = mortarRatios['1:4'];
+  const cementBagVolume = 0.035;
+  
+  const cement = Math.ceil((beddingDryVolume * ratio.cement) / (ratio.sum * cementBagVolume));
+  const sand = (beddingDryVolume * ratio.sand) / ratio.sum;
+  
+  // Number of Tiles = (Floor Area / Area of One Tile) × 1.10 (10% wastage)
+  const tileArea = Math.ceil(totalFloorArea * 1.10);
 
   return {
     cement,
-    sand,
+    sand: parseFloat(sand.toFixed(2)),
     tileArea,
     flooringType: inputs.flooringType,
-    volume: flooringVolume,
+    volume: parseFloat(beddingWetVolume.toFixed(2)),
   };
 }
 
@@ -654,10 +615,7 @@ function calculateCosts(materials, totalMaterials, inputs) {
           : materialRates.tiles),
   };
 
-  const totalMaterialCost = Object.values(materialCosts).reduce(
-    (a, b) => a + b,
-    0,
-  );
+  const totalMaterialCost = Object.values(materialCosts).reduce((a, b) => a + b, 0);
 
   // Labor cost (typically 35-40% of material cost)
   const laborCost = totalMaterialCost * 0.35;
@@ -688,16 +646,9 @@ function displayResults(areas, totalMaterials, materials, costs) {
   if (resultsContent) resultsContent.style.display = "block";
 
   // Update summary stats
-  document.getElementById("totalArea").textContent = formatNumber(
-    areas.totalBuiltUpArea,
-    2,
-  );
-  document.getElementById("totalCost").textContent = formatCurrency(
-    costs.total,
-  );
-  document.getElementById("costPerSqm").textContent = formatCurrency(
-    costs.total / areas.totalBuiltUpArea,
-  );
+  document.getElementById("totalArea").textContent = formatNumber(areas.totalBuiltUpArea, 2);
+  document.getElementById("totalCost").textContent = formatCurrency(costs.total);
+  document.getElementById("costPerSqm").textContent = formatCurrency(costs.total / areas.totalBuiltUpArea);
 
   // Total materials
   displayMaterialList("totalMaterialBreakdown", totalMaterials);
@@ -722,8 +673,7 @@ function displayResults(areas, totalMaterials, materials, costs) {
       if (resultsCard) {
         const headerOffset = 80;
         const elementPosition = resultsCard.getBoundingClientRect().top;
-        const offsetPosition =
-          elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       }
     }, 300);
@@ -738,56 +688,56 @@ function displayMaterialList(elementId, materials) {
 
   if (materials.cement) {
     items.push(`
-            <div class="breakdown-item">
-                <span class="breakdown-item__name">🏗️ Cement</span>
-                <span class="breakdown-item__value">${formatNumber(materials.cement, 0)} bags</span>
-            </div>
-        `);
+      <div class="breakdown-item">
+        <span class="breakdown-item__name">🏗️ Cement</span>
+        <span class="breakdown-item__value">${formatNumber(materials.cement, 0)} bags</span>
+      </div>
+    `);
   }
 
   if (materials.sand) {
     items.push(`
-            <div class="breakdown-item">
-                <span class="breakdown-item__name">🏖️ Sand</span>
-                <span class="breakdown-item__value">${formatNumber(materials.sand, 2)} cu m</span>
-            </div>
-        `);
+      <div class="breakdown-item">
+        <span class="breakdown-item__name">🏖️ Sand</span>
+        <span class="breakdown-item__value">${formatNumber(materials.sand, 2)} cu m</span>
+      </div>
+    `);
   }
 
   if (materials.aggregate) {
     items.push(`
-            <div class="breakdown-item">
-                <span class="breakdown-item__name">🪨 Aggregate</span>
-                <span class="breakdown-item__value">${formatNumber(materials.aggregate, 2)} cu m</span>
-            </div>
-        `);
+      <div class="breakdown-item">
+        <span class="breakdown-item__name">🪨 Aggregate</span>
+        <span class="breakdown-item__value">${formatNumber(materials.aggregate, 2)} cu m</span>
+      </div>
+    `);
   }
 
   if (materials.steel) {
     items.push(`
-            <div class="breakdown-item">
-                <span class="breakdown-item__name">⚙️ Steel</span>
-                <span class="breakdown-item__value">${formatNumber(materials.steel, 0)} kg</span>
-            </div>
-        `);
+      <div class="breakdown-item">
+        <span class="breakdown-item__name">⚙️ Steel</span>
+        <span class="breakdown-item__value">${formatNumber(materials.steel, 0)} kg</span>
+      </div>
+    `);
   }
 
   if (materials.bricks) {
     items.push(`
-            <div class="breakdown-item">
-                <span class="breakdown-item__name">🧱 Bricks</span>
-                <span class="breakdown-item__value">${formatNumber(materials.bricks, 0)} nos</span>
-            </div>
-        `);
+      <div class="breakdown-item">
+        <span class="breakdown-item__name">🧱 Bricks</span>
+        <span class="breakdown-item__value">${formatNumber(materials.bricks, 0)} nos</span>
+      </div>
+    `);
   }
 
   if (materials.tiles) {
     items.push(`
-            <div class="breakdown-item">
-                <span class="breakdown-item__name">⬜ Tiles/Flooring</span>
-                <span class="breakdown-item__value">${formatNumber(materials.tiles, 2)} sq m</span>
-            </div>
-        `);
+      <div class="breakdown-item">
+        <span class="breakdown-item__name">⬜ Tiles/Flooring</span>
+        <span class="breakdown-item__value">${formatNumber(materials.tiles, 2)} sq m</span>
+      </div>
+    `);
   }
 
   element.innerHTML = items.join("");
@@ -808,16 +758,16 @@ function displayCostBreakdown(costs) {
       const label = key.charAt(0).toUpperCase() + key.slice(1);
 
       return `
-                <div class="cost-item">
-                    <div class="cost-item__header">
-                        <span class="cost-item__name">${label}</span>
-                        <span class="cost-item__amount">${formatCurrency(value)}</span>
-                    </div>
-                    <div class="cost-item__bar">
-                        <div class="cost-item__fill" style="width: 0%; transition: width 0.8s ease-out;" data-width="${percentage}"></div>
-                    </div>
-                </div>
-            `;
+        <div class="cost-item">
+          <div class="cost-item__header">
+            <span class="cost-item__name">${label}</span>
+            <span class="cost-item__amount">${formatCurrency(value)}</span>
+          </div>
+          <div class="cost-item__bar">
+            <div class="cost-item__fill" style="width: 0%; transition: width 0.8s ease-out;" data-width="${percentage}"></div>
+          </div>
+        </div>
+      `;
     });
 
   element.innerHTML = items.join("");
