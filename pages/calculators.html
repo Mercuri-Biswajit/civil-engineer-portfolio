@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building Calculators | Er. Biswajit Deb Barman</title>
+    <meta
+      name="description"
+      content="Professional civil engineering calculators for building estimation, material calculation, and cost analysis."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Work+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+
+  <body>
+    <!-- Header Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <a href="./index.html"
+            ><img
+              src="../assets/icons/My__Logo.png"
+              alt="Biswajit Deb Barman"
+              class="logo-img"
+          /></a>
+        </div>
+        <div class="nav-menu" id="navMenu">
+          <a href="../index.html" class="nav-link active">HOME</a>
+          <a href="./projects.html" class="nav-link">PROJECTS</a>
+          <a href="./about.html" class="nav-link">ABOUT</a>
+          <a href="./calculators.html" class="nav-link">CALCULATORS</a>
+        </div>
+        <a
+          href="./assets/files/Biswajit_Deb_Barman__CV.pdf"
+          download
+          class="btn-nav-cta"
+          >DOWNLOAD RESUME</a
+        >
+        <a class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Hero Section -->
+      <section class="calc-hero">
+        <div class="container">
+          <div class="calc-hero__content">
+            <span class="calc-hero__badge">Professional Tools</span>
+            <h1 class="calc-hero__title">Building Estimation Calculators</h1>
+            <p class="calc-hero__subtitle">
+              Accurate cost estimation and material calculation tools for
+              residential and commercial projects
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Calculator Tabs -->
+      <section class="calc-section">
+        <div class="container">
+          <div class="calc-tabs">
+            <button class="calc-tab active" data-tab="estimation">
+              <span class="calc-tab__icon">📐</span>
+              <span class="calc-tab__text">Building Estimation</span>
+            </button>
+            <button class="calc-tab" data-tab="materials">
+              <span class="calc-tab__icon">🧱</span>
+              <span class="calc-tab__text">Material Calculator</span>
+            </button>
+            <button class="calc-tab" data-tab="concrete">
+              <span class="calc-tab__icon">🏗️</span>
+              <span class="calc-tab__text">Concrete Mix</span>
+            </button>
+          </div>
+
+          <!-- Building Estimation Calculator -->
+          <div class="calc-content active" id="estimation">
+            <div class="calc-grid">
+              <!-- Input Form -->
+              <div class="calc-card calc-card--primary">
+                <h2 class="calc-card__title">Project Details</h2>
+                <form id="estimationForm" class="calc-form">
+                  <div class="form-group">
+                    <label for="projectType" class="form-label"
+                      >Building Type</label
+                    >
+                    <select id="projectType" class="form-input">
+                      <option value="residential">Residential</option>
+                      <option value="commercial">Commercial</option>
+                      <option value="institutional">Institutional</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="constructionType" class="form-label"
+                      >Construction Type</label
+                    >
+                    <select id="constructionType" class="form-input">
+                      <option value="rcc">RCC Frame Structure</option>
+                      <option value="loadbearing">
+                        Load Bearing Structure
+                      </option>
+                      <option value="mixed">Mixed Structure</option>
+                    </select>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="length" class="form-label">Length (ft)</label>
+                      <input
+                        type="number"
+                        id="length"
+                        class="form-input"
+                        placeholder="40"
+                        min="1"
+                        step="0.1"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="width" class="form-label">Width (ft)</label>
+                      <input
+                        type="number"
+                        id="width"
+                        class="form-input"
+                        placeholder="30"
+                        min="1"
+                        step="0.1"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="floors" class="form-label"
+                        >Number of Floors</label
+                      >
+                      <input
+                        type="number"
+                        id="floors"
+                        class="form-input"
+                        placeholder="2"
+                        min="1"
+                        max="20"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="floorHeight" class="form-label"
+                        >Floor Height (ft)</label
+                      >
+                      <input
+                        type="number"
+                        id="floorHeight"
+                        class="form-input"
+                        placeholder="10"
+                        min="8"
+                        max="20"
+                        step="0.5"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="finishQuality" class="form-label"
+                      >Finish Quality</label
+                    >
+                    <select id="finishQuality" class="form-input">
+                      <option value="basic">Basic (Economy)</option>
+                      <option value="standard">Standard</option>
+                      <option value="premium">Premium</option>
+                      <option value="luxury">Luxury</option>
+                    </select>
+                  </div>
+
+                  <button type="submit" class="btn btn--primary btn--full">
+                    <span>Calculate Estimation</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M4 10h12M12 6l4 4-4 4"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </form>
+              </div>
+
+              <!-- Results Display -->
+              <div class="calc-card calc-card--results" id="resultsCard">
+                <div class="results-empty" id="resultsEmpty">
+                  <div class="results-empty__icon">📊</div>
+                  <h3>Ready to Calculate</h3>
+                  <p>
+                    Fill in the project details and click calculate to see your
+                    estimation
+                  </p>
+                </div>
+
+                <div
+                  class="results-content"
+                  id="resultsContent"
+                  style="display: none"
+                >
+                  <h2 class="calc-card__title">Estimation Summary</h2>
+
+                  <!-- Quick Stats -->
+                  <div class="results-stats">
+                    <div class="stat-card">
+                      <span class="stat-label">Built-up Area</span>
+                      <span class="stat-value" id="totalArea">0</span>
+                      <span class="stat-unit">sq.ft</span>
+                    </div>
+                    <div class="stat-card stat-card--highlight">
+                      <span class="stat-label">Total Cost</span>
+                      <span class="stat-value" id="totalCost">₹0</span>
+                      <span class="stat-unit">INR</span>
+                    </div>
+                    <div class="stat-card">
+                      <span class="stat-label">Cost per sq.ft</span>
+                      <span class="stat-value" id="costPerSqft">₹0</span>
+                      <span class="stat-unit">INR</span>
+                    </div>
+                  </div>
+
+                  <!-- Material Breakdown -->
+                  <div class="results-breakdown">
+                    <h3 class="breakdown-title">Material Breakdown</h3>
+                    <div class="breakdown-list" id="materialBreakdown">
+                      <!-- Dynamically populated -->
+                    </div>
+                  </div>
+
+                  <!-- Cost Breakdown -->
+                  <div class="results-breakdown">
+                    <h3 class="breakdown-title">Cost Distribution</h3>
+                    <div class="cost-breakdown" id="costBreakdown">
+                      <!-- Dynamically populated -->
+                    </div>
+                  </div>
+
+                  <!-- Action Buttons -->
+                  <div class="results-actions">
+                    <button class="btn btn--outline" onclick="window.print()">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M5 7V3h10v4M5 13H3a1 1 0 01-1-1V8a1 1 0 011-1h14a1 1 0 011 1v4a1 1 0 01-1 1h-2"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="M5 11h10v6H5z"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        />
+                      </svg>
+                      Print Report
+                    </button>
+                    <button class="btn btn--outline" id="downloadPDF">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M10 14V3M10 14l-3-3M10 14l3-3M4 17h12"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                      Download PDF
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Material Calculator -->
+          <div class="calc-content" id="materials">
+            <div class="calc-card calc-card--full">
+              <h2 class="calc-card__title">Material Quantity Calculator</h2>
+              <form id="materialForm" class="calc-form">
+                <div class="form-group">
+                  <label for="workType" class="form-label">Type of Work</label>
+                  <select id="workType" class="form-input">
+                    <option value="brickwork">Brick Masonry (9" wall)</option>
+                    <option value="brickwork4">
+                      Brick Masonry (4.5" wall)
+                    </option>
+                    <option value="plaster">Cement Plaster</option>
+                    <option value="flooring">Flooring</option>
+                    <option value="rcc">RCC Work (Slab/Beam)</option>
+                  </select>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="matLength" class="form-label"
+                      >Length (ft)</label
+                    >
+                    <input
+                      type="number"
+                      id="matLength"
+                      class="form-input"
+                      placeholder="10"
+                      min="0.1"
+                      step="0.1"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="matWidth" class="form-label"
+                      >Width/Height (ft)</label
+                    >
+                    <input
+                      type="number"
+                      id="matWidth"
+                      class="form-input"
+                      placeholder="10"
+                      min="0.1"
+                      step="0.1"
+                    />
+                  </div>
+                  <div class="form-group" id="thicknessGroup">
+                    <label for="matThickness" class="form-label"
+                      >Thickness (inches)</label
+                    >
+                    <input
+                      type="number"
+                      id="matThickness"
+                      class="form-input"
+                      placeholder="4"
+                      min="0.1"
+                      step="0.1"
+                    />
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn--primary">
+                  Calculate Materials
+                </button>
+              </form>
+
+              <div
+                class="material-results"
+                id="materialResults"
+                style="display: none"
+              >
+                <!-- Results populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Concrete Mix Calculator -->
+          <div class="calc-content" id="concrete">
+            <div class="calc-card calc-card--full">
+              <h2 class="calc-card__title">Concrete Mix Design Calculator</h2>
+              <form id="concreteForm" class="calc-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="concreteGrade" class="form-label"
+                      >Concrete Grade</label
+                    >
+                    <select id="concreteGrade" class="form-input">
+                      <option value="M10">M10</option>
+                      <option value="M15">M15</option>
+                      <option value="M20" selected>M20</option>
+                      <option value="M25">M25</option>
+                      <option value="M30">M30</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="concreteVolume" class="form-label"
+                      >Volume (cubic meters)</label
+                    >
+                    <input
+                      type="number"
+                      id="concreteVolume"
+                      class="form-input"
+                      placeholder="1"
+                      min="0.1"
+                      step="0.1"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="mixType" class="form-label">Mix Type</label>
+                  <select id="mixType" class="form-input">
+                    <option value="nominal">Nominal Mix</option>
+                    <option value="design">Design Mix</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="btn btn--primary">
+                  Calculate Mix
+                </button>
+              </form>
+
+              <div
+                class="concrete-results"
+                id="concreteResults"
+                style="display: none"
+              >
+                <!-- Results populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Info Section -->
+      <section class="calc-info">
+        <div class="container">
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card__icon">✅</div>
+              <h3 class="info-card__title">Accurate Calculations</h3>
+              <p class="info-card__text">
+                Based on IS codes and current market rates in West Bengal
+              </p>
+            </div>
+            <div class="info-card">
+              <div class="info-card__icon">💰</div>
+              <h3 class="info-card__title">Cost Optimization</h3>
+              <p class="info-card__text">
+                Get detailed breakdowns to plan and optimize your budget
+              </p>
+            </div>
+            <div class="info-card">
+              <div class="info-card__icon">📊</div>
+              <h3 class="info-card__title">Professional Reports</h3>
+              <p class="info-card__text">
+                Generate and download detailed estimation reports
+              </p>
+            </div>
+          </div>
+          <div class="info-note">
+            <p>
+              <strong>Note:</strong> These calculations are estimates based on
+              standard rates and practices. Actual costs may vary based on
+              location, material quality, labor rates, and market conditions.
+              For detailed project estimation, please
+              <a href="#contact">contact us</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="logo">
+              <a href="../index.html"
+                ><img
+                  src="../assets/icons/My__Logo.png"
+                  alt="Biswajit Deb Barman"
+                  class="footer-logo-img"
+              /></a>
+            </div>
+            <p>Building the future, one structure at a time.</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Navigation</h4>
+              <a href="../index.html">Home</a>
+              <a href="./projects.html">Projects</a>
+              <a href="./about.html">About</a>
+            </div>
+            <div class="footer-column">
+              <h4>Connect</h4>
+              <a
+                href="https://www.linkedin.com/in/biswajit-deb-barman/"
+                target="_blank"
+                >LinkedIn</a
+              >
+              <a
+                href="https://www.facebook.com/profile.php?id=61585030424249"
+                target="_blank"
+                >Facebook</a
+              >
+              <a
+                href="https://www.instagram.com/biswajit.deb.barman/"
+                target="_blank"
+                >Instagram</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Er. Biswajit Deb Barman. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/modules/calculators.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
