@@ -33,9 +33,10 @@
 @import './components/calculators/calc-tabs.css';
 @import './components/calculators/calc-cards.css';
 @import './components/calculators/calc-forms.css';
-@import './components/calculators/calc-buttons.css';
 @import './components/calculators/calc-results.css';
 @import './components/calculators/calc-info.css';
+
+@import './buttons/calc-buttons.css';
 
 /* ====================================
    4. UTILITIES
