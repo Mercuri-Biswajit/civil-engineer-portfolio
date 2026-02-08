@@ -16,7 +16,7 @@
    COMPONENTS
    Reusable UI components
    =========================== */
-@import url("./components/buttons.css");
+@import url("./buttons/buttons.css");
 @import url("./components/hero.css");
 @import url("./components/projects.css");
 @import url("./components/about.css");
