@@ -718,3 +718,30 @@
         page-break-inside: avoid;
     }
 }
+
+/* ====================================
+   CALCULATOR PAGE STYLES
+   Standalone calculator with no portfolio conflicts
+   ==================================== */
+
+/* Import the main calculator styles */
+@import url('../css/calculator-modern.css');
+
+/* Additional calculator-specific overrides */
+.calc-page {
+    /* Ensure calculator uses its own color scheme */
+    --calc-primary: #1a3a52;
+    --calc-accent: #FF8C00;
+}
+
+/* Override any conflicting portfolio styles when on calculator page */
+body.calculator-page {
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* Ensure calculator inputs work properly */
+.calc-input-primary:focus,
+.calc-input-secondary:focus {
+    outline: none;
+    border-color: var(--calc-accent);
+}

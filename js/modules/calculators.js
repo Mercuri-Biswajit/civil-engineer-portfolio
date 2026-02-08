@@ -4,11 +4,12 @@
 // ====================================
 
 // Material calculation constants (per sq.ft)
+// Based on standard construction industry norms for RCC framed structures
 const MATERIAL_CONSTANTS = {
-    cement: 0.037,      // bags per sq.ft
-    steel: 0.372,       // kg per sq.ft
-    sand: 0.0028,       // m³ per sq.ft
-    aggregate: 0.0019   // m³ per sq.ft
+    cement: 0.4,        // bags per sq.ft (typical range 0.38-0.42)
+    steel: 4.0,         // kg per sq.ft (typical range 3.5-4.5 for residential)
+    sand: 0.044,        // m³ per sq.ft (1.55 cft converted to m³)
+    aggregate: 0.088    // m³ per sq.ft (3.1 cft converted to m³)
 };
 
 // Finishing quality rates (per sq.ft)

@@ -33,13 +33,6 @@
 @import url("./utilities/utilities.css");
 @import url("./utilities/helpers.css");
 
-/* ===========================
-   Calculators Page Styles
-   Specific styles for calculators page
-   =========================== */
-@import url("./calculators-main.css");
-@import url("./calculator-modern.css");
-
 
 /* ===========================
    GLOBAL STYLES
