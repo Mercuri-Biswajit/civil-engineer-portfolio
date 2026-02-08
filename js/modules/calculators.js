@@ -60,14 +60,20 @@ function toggleLaborInput() {
     const manualInput = document.getElementById('laborManual');
     const suffix = document.querySelector('.input-suffix');
     
+    // Safety checks
+    if (!autoCheckbox || !percentInput || !manualInput) {
+        console.warn('Labor input elements not found');
+        return;
+    }
+    
     if (autoCheckbox.checked) {
         percentInput.style.display = 'block';
         manualInput.style.display = 'none';
-        suffix.style.display = 'block';
+        if (suffix) suffix.style.display = 'block';
     } else {
         percentInput.style.display = 'none';
         manualInput.style.display = 'block';
-        suffix.style.display = 'none';
+        if (suffix) suffix.style.display = 'none';
     }
 }
 
@@ -350,10 +356,20 @@ function displaySlabResults(results) {
 // ====================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the calculator page
+    const calculatorPage = document.querySelector('.calc-page');
+    if (!calculatorPage) {
+        console.log('Not on calculator page, skipping initialization');
+        return;
+    }
+    
     console.log('Construction Cost Calculator initialized');
     
     // Set default labor toggle state
-    toggleLaborInput();
+    const laborAuto = document.getElementById('laborAuto');
+    if (laborAuto) {
+        toggleLaborInput();
+    }
     
     // Add Enter key support for main calculation
     const mainInputs = ['area', 'rate'];

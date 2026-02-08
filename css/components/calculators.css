@@ -719,13 +719,6 @@
     }
 }
 
-/* ====================================
-   CALCULATOR PAGE STYLES
-   Standalone calculator with no portfolio conflicts
-   ==================================== */
-
-/* Import the main calculator styles */
-@import url('../css/calculator-modern.css');
 
 /* Additional calculator-specific overrides */
 .calc-page {
