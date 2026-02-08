@@ -56,74 +56,114 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="main">
-      <!-- Hero Section -->
-      <section class="calc-hero">
-        <div class="container">
-          <div class="calc-hero__content">
-            <span class="calc-hero__badge">Professional Tool</span>
-            <h1 class="calc-hero__title">Comprehensive Building Calculator</h1>
-            <p class="calc-hero__subtitle">
-              Accurate material estimation and cost calculation for your
-              construction project
-            </p>
+    <main class="calc-main">
+      <div class="calc-container-modern">
+        
+        <!-- Left Column: Input Form -->
+        <div class="calc-left-panel">
+          <div class="panel-header">
+            <h1 class="panel-title">Project Details & Input</h1>
+            <button class="menu-toggle" aria-label="Toggle menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
-        </div>
-      </section>
 
-      <!-- Single Calculator Section -->
-      <section class="calc-section">
-        <div class="container">
-          <div class="calc-grid">
-            <!-- Input Form -->
-            <div class="calc-card calc-card--primary">
-              <h2 class="calc-card__title">Project Details</h2>
-              <form id="buildingCalculatorForm" class="calc-form" novalidate>
-                <!-- Building Type & Construction Type -->
-                <div class="form-group">
-                  <label for="buildingType" class="form-label"
-                    >Building Type</label
-                  >
-                  <select id="buildingType" class="form-input" required>
-                    <option value="residential">Residential</option>
-                    <option value="commercial">Commercial</option>
-                    <option value="institutional">Institutional</option>
-                  </select>
+          <form id="buildingCalculatorForm" class="calc-form-modern" novalidate>
+            
+            <!-- Basic Information Section -->
+            <div class="form-section">
+              <h3 class="section-label">Basic Information</h3>
+              
+              <div class="input-group">
+                <label for="buildingType" class="input-label">Building Type</label>
+                <select id="buildingType" class="input-field" required>
+                  <option value="residential">Residential</option>
+                  <option value="commercial">Commercial</option>
+                  <option value="institutional">Institutional</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label for="constructionType" class="input-label">Construction/Wall Thickness (mm)</label>
+                <select id="constructionType" class="input-field" required>
+                  <option value="rcc">RCC Frame Structure</option>
+                  <option value="loadbearing">Load Bearing Structure</option>
+                  <option value="mixed">Mixed Structure</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Foundation Details Section -->
+            <div class="form-section collapsible">
+              <button type="button" class="section-header" data-section="foundation">
+                <h3 class="section-label">Foundation Details</h3>
+                <span class="toggle-icon">−</span>
+              </button>
+              <div class="section-content" id="foundation-section">
+                <div class="input-group">
+                  <label for="foundationDepth" class="input-label">Foundation Depth (m)</label>
+                  <div class="input-with-icon">
+                    <input
+                      type="number"
+                      id="foundationDepth"
+                      class="input-field"
+                      placeholder="1.2"
+                      min="0.3"
+                      max="6"
+                      step="0.1"
+                      required
+                    />
+                    <span class="input-icon">📏</span>
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="constructionType" class="form-label"
-                    >Construction Type</label
-                  >
-                  <select id="constructionType" class="form-input" required>
-                    <option value="rcc">RCC Frame Structure</option>
-                    <option value="loadbearing">Load Bearing Structure</option>
-                    <option value="mixed">Mixed Structure</option>
-                  </select>
+                <div class="input-group">
+                  <label for="plinthHeight" class="input-label">Plinth Height (m)</label>
+                  <div class="input-with-icon">
+                    <input
+                      type="number"
+                      id="plinthHeight"
+                      class="input-field"
+                      placeholder="0.6"
+                      min="0.15"
+                      max="1.5"
+                      step="0.05"
+                      required
+                    />
+                    <span class="input-icon">📏</span>
+                  </div>
                 </div>
+              </div>
+            </div>
 
-                <!-- Basic Dimensions -->
-                <h3 class="form-section-title">Building Dimensions</h3>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="length" class="form-label">Length (m)</label>
+            <!-- Building Dimensions Section -->
+            <div class="form-section collapsible">
+              <button type="button" class="section-header" data-section="dimensions">
+                <h3 class="section-label">Building Dimensions</h3>
+                <span class="toggle-icon">−</span>
+              </button>
+              <div class="section-content" id="dimensions-section">
+                <div class="input-row">
+                  <div class="input-group">
+                    <label for="length" class="input-label">Length (m)</label>
                     <input
                       type="number"
                       id="length"
-                      class="form-input"
+                      class="input-field"
                       placeholder="12"
                       min="0.1"
                       step="0.1"
                       required
                     />
                   </div>
-                  <div class="form-group">
-                    <label for="breadth" class="form-label">Breadth (m)</label>
+                  <div class="input-group">
+                    <label for="breadth" class="input-label">Breadth (m)</label>
                     <input
                       type="number"
                       id="breadth"
-                      class="form-input"
+                      class="input-field"
                       placeholder="9"
                       min="0.1"
                       step="0.1"
@@ -132,29 +172,25 @@
                   </div>
                 </div>
 
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="numFloors" class="form-label"
-                      >Number of Floors</label
-                    >
+                <div class="input-row">
+                  <div class="input-group">
+                    <label for="numFloors" class="input-label">Number of Floors</label>
                     <input
                       type="number"
                       id="numFloors"
-                      class="form-input"
+                      class="input-field"
                       placeholder="2"
                       min="1"
                       max="20"
                       required
                     />
                   </div>
-                  <div class="form-group">
-                    <label for="floorHeight" class="form-label"
-                      >Floor Height (m)</label
-                    >
+                  <div class="input-group">
+                    <label for="floorHeight" class="input-label">Floor Height (m)</label>
                     <input
                       type="number"
                       id="floorHeight"
-                      class="form-input"
+                      class="input-field"
                       placeholder="3"
                       min="2.4"
                       max="6"
@@ -163,132 +199,85 @@
                     />
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <!-- Wall Details -->
-                <h3 class="form-section-title">Wall Details</h3>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="externalWallThickness" class="form-label"
-                      >External Wall Thickness (mm)</label
-                    >
-                    <select
-                      id="externalWallThickness"
-                      class="form-input"
-                      required
-                    >
-                      <option value="115">115 mm (Half Brick)</option>
-                      <option value="230" selected>230 mm (Full Brick)</option>
-                      <option value="345">345 mm (1.5 Brick)</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="internalWallThickness" class="form-label"
-                      >Internal Wall Thickness (mm)</label
-                    >
-                    <select
-                      id="internalWallThickness"
-                      class="form-input"
-                      required
-                    >
-                      <option value="115" selected>115 mm (Half Brick)</option>
-                      <option value="230">230 mm (Full Brick)</option>
-                    </select>
-                  </div>
+            <!-- Wall Details Section -->
+            <div class="form-section collapsible">
+              <button type="button" class="section-header" data-section="walls">
+                <h3 class="section-label">Wall Details</h3>
+                <span class="toggle-icon">−</span>
+              </button>
+              <div class="section-content" id="walls-section">
+                <div class="input-group">
+                  <label for="externalWallThickness" class="input-label">External Wall Thickness (mm)</label>
+                  <select id="externalWallThickness" class="input-field" required>
+                    <option value="115">115 mm (Half Brick)</option>
+                    <option value="230" selected>230 mm (Full Brick)</option>
+                    <option value="345">345 mm (1.5 Brick)</option>
+                  </select>
                 </div>
 
-                <!-- Foundation Details -->
-                <h3 class="form-section-title">Foundation Details</h3>
+                <div class="input-group">
+                  <label for="internalWallThickness" class="input-label">Internal Wall Thickness (mm)</label>
+                  <select id="internalWallThickness" class="input-field" required>
+                    <option value="115" selected>115 mm (Half Brick)</option>
+                    <option value="230">230 mm (Full Brick)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="foundationDepth" class="form-label"
-                      >Foundation Depth (m)</label
-                    >
-                    <input
-                      type="number"
-                      id="foundationDepth"
-                      class="form-input"
-                      placeholder="1.2"
-                      min="0.3"
-                      max="6"
-                      step="0.1"
-                      required
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="plinthHeight" class="form-label"
-                      >Plinth Height (m)</label
-                    >
-                    <input
-                      type="number"
-                      id="plinthHeight"
-                      class="form-input"
-                      placeholder="0.6"
-                      min="0.15"
-                      max="1.5"
-                      step="0.05"
-                      required
-                    />
-                  </div>
+            <!-- RCC Details Section -->
+            <div class="form-section collapsible">
+              <button type="button" class="section-header" data-section="rcc">
+                <h3 class="section-label">RCC Details</h3>
+                <span class="toggle-icon">−</span>
+              </button>
+              <div class="section-content" id="rcc-section">
+                <div class="input-group">
+                  <label for="slabThickness" class="input-label">Slab Thickness (mm)</label>
+                  <select id="slabThickness" class="input-field" required>
+                    <option value="100">100 mm</option>
+                    <option value="125" selected>125 mm</option>
+                    <option value="150">150 mm</option>
+                    <option value="175">175 mm</option>
+                  </select>
                 </div>
 
-                <!-- Slab & Beam Details -->
-                <h3 class="form-section-title">RCC Details</h3>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="slabThickness" class="form-label"
-                      >Slab Thickness (mm)</label
-                    >
-                    <select id="slabThickness" class="form-input" required>
-                      <option value="100">100 mm</option>
-                      <option value="125" selected>125 mm</option>
-                      <option value="150">150 mm</option>
-                      <option value="175">175 mm</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="concreteGrade" class="form-label"
-                      >Concrete Grade</label
-                    >
-                    <select id="concreteGrade" class="form-input" required>
-                      <option value="M15">M15</option>
-                      <option value="M20" selected>M20</option>
-                      <option value="M25">M25</option>
-                      <option value="M30">M30</option>
-                    </select>
-                  </div>
+                <div class="input-group">
+                  <label for="concreteGrade" class="input-label">Concrete Grade</label>
+                  <select id="concreteGrade" class="input-field" required>
+                    <option value="M15">M15</option>
+                    <option value="M20" selected>M20</option>
+                    <option value="M25">M25</option>
+                    <option value="M30">M30</option>
+                  </select>
                 </div>
+              </div>
+            </div>
 
-                <!-- Plaster Details -->
-                <h3 class="form-section-title">Plaster Details</h3>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="internalPlasterThickness" class="form-label"
-                      >Internal Plaster (mm)</label
-                    >
-                    <select
-                      id="internalPlasterThickness"
-                      class="form-input"
-                      required
-                    >
+            <!-- Plaster Details Section -->
+            <div class="form-section collapsible">
+              <button type="button" class="section-header" data-section="plaster">
+                <h3 class="section-label">Plaster Details</h3>
+                <span class="toggle-icon">−</span>
+              </button>
+              <div class="section-content" id="plaster-section">
+                <div class="input-row">
+                  <div class="input-group">
+                    <label for="internalPlasterThickness" class="input-label">Internal (mm)</label>
+                    <select id="internalPlasterThickness" class="input-field" required>
                       <option value="10">10 mm</option>
                       <option value="12" selected>12 mm</option>
                       <option value="15">15 mm</option>
                       <option value="20">20 mm</option>
                     </select>
                   </div>
-                  <div class="form-group">
-                    <label for="externalPlasterThickness" class="form-label"
-                      >External Plaster (mm)</label
-                    >
-                    <select
-                      id="externalPlasterThickness"
-                      class="form-input"
-                      required
-                    >
+
+                  <div class="input-group">
+                    <label for="externalPlasterThickness" class="input-label">External (mm)</label>
+                    <select id="externalPlasterThickness" class="input-field" required>
                       <option value="12">12 mm</option>
                       <option value="15">15 mm</option>
                       <option value="20" selected>20 mm</option>
@@ -296,278 +285,317 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="plasterRatio" class="form-label"
-                    >Plaster Mortar Ratio</label
-                  >
-                  <select id="plasterRatio" class="form-input" required>
+                <div class="input-group">
+                  <label for="plasterRatio" class="input-label">Mortar Ratio</label>
+                  <select id="plasterRatio" class="input-field" required>
                     <option value="1:3">1:3 (Rich Mix)</option>
                     <option value="1:4" selected>1:4 (Standard)</option>
                     <option value="1:5">1:5 (Economy)</option>
                     <option value="1:6">1:6 (Lean Mix)</option>
                   </select>
                 </div>
+              </div>
+            </div>
 
-                <!-- Flooring Details -->
-                <h3 class="form-section-title">Flooring Details</h3>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="flooringThickness" class="form-label"
-                      >Flooring Thickness (mm)</label
-                    >
-                    <select id="flooringThickness" class="form-input" required>
-                      <option value="40">40 mm</option>
-                      <option value="50" selected>50 mm</option>
-                      <option value="75">75 mm</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="flooringType" class="form-label"
-                      >Flooring Type</label
-                    >
-                    <select id="flooringType" class="form-input" required>
-                      <option value="tiles">Ceramic Tiles</option>
-                      <option value="marble" selected>Marble/Granite</option>
-                      <option value="vitrified">Vitrified Tiles</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- Door & Window Openings -->
-                <h3 class="form-section-title">Openings (Optional)</h3>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="doorArea" class="form-label"
-                      >Total Door Area (sq m)</label
-                    >
-                    <input
-                      type="number"
-                      id="doorArea"
-                      class="form-input"
-                      placeholder="0"
-                      min="0"
-                      step="0.1"
-                      value="0"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="windowArea" class="form-label"
-                      >Total Window Area (sq m)</label
-                    >
-                    <input
-                      type="number"
-                      id="windowArea"
-                      class="form-input"
-                      placeholder="0"
-                      min="0"
-                      step="0.1"
-                      value="0"
-                    />
-                  </div>
-                </div>
-
-                <!-- Finish Quality -->
-                <div class="form-group">
-                  <label for="finishQuality" class="form-label"
-                    >Finish Quality</label
-                  >
-                  <select id="finishQuality" class="form-input" required>
-                    <option value="basic">Basic (Economy)</option>
-                    <option value="standard" selected>Standard</option>
-                    <option value="premium">Premium</option>
-                    <option value="luxury">Luxury</option>
+            <!-- Flooring Details Section -->
+            <div class="form-section collapsible">
+              <button type="button" class="section-header" data-section="flooring">
+                <h3 class="section-label">Flooring Details</h3>
+                <span class="toggle-icon">−</span>
+              </button>
+              <div class="section-content" id="flooring-section">
+                <div class="input-group">
+                  <label for="flooringThickness" class="input-label">Thickness (mm)</label>
+                  <select id="flooringThickness" class="input-field" required>
+                    <option value="40">40 mm</option>
+                    <option value="50" selected>50 mm</option>
+                    <option value="75">75 mm</option>
                   </select>
                 </div>
 
-                <button type="submit" class="btn btn--primary btn--full">
-                  <span>Calculate Estimation</span>
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path
-                      d="M4 10h12M12 6l4 4-4 4"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+                <div class="input-group">
+                  <label for="flooringType" class="input-label">Flooring Type</label>
+                  <select id="flooringType" class="input-field" required>
+                    <option value="tiles">Ceramic Tiles</option>
+                    <option value="marble" selected>Marble/Granite</option>
+                    <option value="vitrified">Vitrified Tiles</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Openings Section (Optional) -->
+            <div class="form-section collapsible">
+              <button type="button" class="section-header" data-section="openings">
+                <h3 class="section-label">Openings (Optional)</h3>
+                <span class="toggle-icon">−</span>
+              </button>
+              <div class="section-content" id="openings-section">
+                <div class="input-group">
+                  <label for="doorArea" class="input-label">Total Door Area (sq m)</label>
+                  <input
+                    type="number"
+                    id="doorArea"
+                    class="input-field"
+                    placeholder="0"
+                    min="0"
+                    step="0.1"
+                    value="0"
+                  />
+                </div>
+
+                <div class="input-group">
+                  <label for="windowArea" class="input-label">Total Window Area (sq m)</label>
+                  <input
+                    type="number"
+                    id="windowArea"
+                    class="input-field"
+                    placeholder="0"
+                    min="0"
+                    step="0.1"
+                    value="0"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Finish Quality Section -->
+            <div class="form-section">
+              <div class="input-group">
+                <label for="finishQuality" class="input-label">Finish Quality</label>
+                <select id="finishQuality" class="input-field" required>
+                  <option value="basic">Basic (Economy)</option>
+                  <option value="standard" selected>Standard</option>
+                  <option value="premium">Premium</option>
+                  <option value="luxury">Luxury</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-calculate">
+              <span>Calculate Estimation</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M4 10h12M12 6l4 4-4 4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Right Column: Results & Summary -->
+        <div class="calc-right-panel">
+          
+          <!-- Empty State -->
+          <div class="empty-state" id="resultsEmpty">
+            <div class="empty-state-icon">
+              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                <rect x="20" y="30" width="60" height="70" rx="4" stroke="#4A5568" stroke-width="2" fill="none"/>
+                <line x1="30" y1="45" x2="70" y2="45" stroke="#4A5568" stroke-width="2"/>
+                <line x1="30" y1="55" x2="60" y2="55" stroke="#4A5568" stroke-width="2"/>
+                <line x1="30" y1="65" x2="65" y2="65" stroke="#4A5568" stroke-width="2"/>
+                <circle cx="85" cy="75" r="20" fill="#FF8C00" opacity="0.3"/>
+                <path d="M85 65v10l5 5" stroke="#FF8C00" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <h2 class="empty-state-title">Fill details & Calculate</h2>
+            <p class="empty-state-text">Enter your project specifications on the left panel and click calculate to see detailed estimates</p>
+          </div>
+
+          <!-- Results Content -->
+          <div class="results-content" id="resultsContent" style="display: none;">
+            
+            <!-- Real-time Summary Header -->
+            <div class="results-header">
+              <h2 class="results-title">Real-time Summary</h2>
+              <div class="results-actions-top">
+                <button class="action-btn" onclick="window.print()" title="Print">
+                  <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 7V3h10v4M5 13H3a1 1 0 01-1-1V8a1 1 0 011-1h14a1 1 0 011 1v4a1 1 0 01-1 1h-2" stroke="currentColor" stroke-width="2"/>
+                    <path d="M5 11h10v6H5z" stroke="currentColor" stroke-width="2"/>
                   </svg>
                 </button>
-              </form>
+                <button class="action-btn" id="downloadPDF" title="Download PDF">
+                  <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 14V3M10 14l-3-3M10 14l3-3M4 17h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
             </div>
 
-            <!-- Results Display -->
-            <div class="calc-card calc-card--results" id="resultsCard">
-              <div class="results-empty" id="resultsEmpty">
-                <div class="results-empty__icon">📊</div>
-                <h3>Ready to Calculate</h3>
-                <p>
-                  Fill in all the project details and click calculate to see
-                  your comprehensive estimation
-                </p>
-              </div>
-
-              <div
-                class="results-content"
-                id="resultsContent"
-                style="display: none"
-              >
-                <h2 class="calc-card__title">Comprehensive Estimation</h2>
-
-                <!-- Quick Stats -->
-                <div class="results-stats">
-                  <div class="stat-card">
-                    <span class="stat-label">Built-up Area</span>
-                    <span class="stat-value" id="totalArea">0</span>
-                    <span class="stat-unit">sq.m</span>
-                  </div>
-                  <div class="stat-card stat-card--highlight">
-                    <span class="stat-label">Total Cost</span>
-                    <span class="stat-value" id="totalCost">₹0</span>
-                    <span class="stat-unit">INR</span>
-                  </div>
-                  <div class="stat-card">
-                    <span class="stat-label">Cost per sq.m</span>
-                    <span class="stat-value" id="costPerSqm">₹0</span>
-                    <span class="stat-unit">INR</span>
+            <!-- Input Summary -->
+            <div class="summary-card">
+              <h3 class="summary-title">Input Summary</h3>
+              <div class="summary-items">
+                <div class="summary-item">
+                  <span class="summary-icon">🏠</span>
+                  <div class="summary-details">
+                    <span class="summary-label">Building Type</span>
+                    <span class="summary-value" id="summaryBuildingType">Residential</span>
                   </div>
                 </div>
-
-                <!-- Material Breakdown -->
-                <div class="results-breakdown">
-                  <h3 class="breakdown-title">Total Material Requirements</h3>
-                  <div class="breakdown-list" id="totalMaterialBreakdown">
-                    <!-- Dynamically populated -->
+                <div class="summary-item">
+                  <span class="summary-icon">📐</span>
+                  <div class="summary-details">
+                    <span class="summary-label">Total Area</span>
+                    <span class="summary-value" id="totalArea">0 sq.m</span>
                   </div>
                 </div>
-
-                <!-- Component-wise Material Breakdown -->
-                <div class="results-breakdown">
-                  <h3 class="breakdown-title">
-                    Component-wise Material Breakdown
-                  </h3>
-
-                  <div class="component-breakdown">
-                    <h4 class="component-title">Foundation</h4>
-                    <div class="breakdown-list" id="foundationBreakdown"></div>
+                <div class="summary-item">
+                  <span class="summary-icon">🏗️</span>
+                  <div class="summary-details">
+                    <span class="summary-label">Number of Floors</span>
+                    <span class="summary-value" id="summaryFloors">0</span>
                   </div>
-
-                  <div class="component-breakdown">
-                    <h4 class="component-title">Plinth Beam</h4>
-                    <div class="breakdown-list" id="plinthBeamBreakdown"></div>
-                  </div>
-
-                  <div class="component-breakdown">
-                    <h4 class="component-title">Columns</h4>
-                    <div class="breakdown-list" id="columnsBreakdown"></div>
-                  </div>
-
-                  <div class="component-breakdown">
-                    <h4 class="component-title">Beams</h4>
-                    <div class="breakdown-list" id="beamsBreakdown"></div>
-                  </div>
-
-                  <div class="component-breakdown">
-                    <h4 class="component-title">Slabs</h4>
-                    <div class="breakdown-list" id="slabsBreakdown"></div>
-                  </div>
-
-                  <div class="component-breakdown">
-                    <h4 class="component-title">Brickwork</h4>
-                    <div class="breakdown-list" id="brickworkBreakdown"></div>
-                  </div>
-
-                  <div class="component-breakdown">
-                    <h4 class="component-title">Plaster</h4>
-                    <div class="breakdown-list" id="plasterBreakdown"></div>
-                  </div>
-
-                  <div class="component-breakdown">
-                    <h4 class="component-title">Flooring</h4>
-                    <div class="breakdown-list" id="flooringBreakdown"></div>
-                  </div>
-                </div>
-
-                <!-- Cost Breakdown -->
-                <div class="results-breakdown">
-                  <h3 class="breakdown-title">Cost Distribution</h3>
-                  <div class="cost-breakdown" id="costBreakdown">
-                    <!-- Dynamically populated -->
-                  </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="results-actions">
-                  <button class="btn btn--outline" onclick="window.print()">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path
-                        d="M5 7V3h10v4M5 13H3a1 1 0 01-1-1V8a1 1 0 011-1h14a1 1 0 011 1v4a1 1 0 01-1 1h-2"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      />
-                      <path
-                        d="M5 11h10v6H5z"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      />
-                    </svg>
-                    Print Report
-                  </button>
-                  <button class="btn btn--outline" id="downloadPDF">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path
-                        d="M10 14V3M10 14l-3-3M10 14l3-3M4 17h12"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                      />
-                    </svg>
-                    Download PDF
-                  </button>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- Info Section -->
-      <section class="calc-info">
-        <div class="container">
-          <div class="info-grid">
-            <div class="info-card">
-              <div class="info-card__icon">✅</div>
-              <h3 class="info-card__title">IS Code Compliant</h3>
-              <p class="info-card__text">
-                All calculations follow Indian Standard codes and best practices
-              </p>
+            <!-- Estimated Costs -->
+            <div class="summary-card">
+              <h3 class="summary-title">Estimated Costs</h3>
+              <div class="cost-items">
+                <div class="cost-item-row">
+                  <div class="cost-item-info">
+                    <span class="cost-icon">🏗️</span>
+                    <span class="cost-label">Materials</span>
+                  </div>
+                  <span class="cost-value" id="costMaterials">₹0</span>
+                </div>
+                <div class="cost-item-row">
+                  <div class="cost-item-info">
+                    <span class="cost-icon">👷</span>
+                    <span class="cost-label">Labor</span>
+                  </div>
+                  <span class="cost-value" id="costLabor">₹0</span>
+                </div>
+                <div class="cost-item-row">
+                  <div class="cost-item-info">
+                    <span class="cost-icon">⚙️</span>
+                    <span class="cost-label">Equipment</span>
+                  </div>
+                  <span class="cost-value" id="costEquipment">₹0</span>
+                </div>
+              </div>
             </div>
-            <div class="info-card">
-              <div class="info-card__icon">💰</div>
-              <h3 class="info-card__title">Detailed Breakdown</h3>
-              <p class="info-card__text">
-                Component-wise material and cost analysis for better planning
-              </p>
+
+            <!-- Cost Distribution Chart -->
+            <div class="summary-card chart-card">
+              <h3 class="summary-title">Cost Distribution</h3>
+              <div class="chart-container">
+                <svg class="donut-chart" viewBox="0 0 200 200" id="costChart">
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#E2E8F0" stroke-width="40"/>
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#1a3a52" stroke-width="40" 
+                    stroke-dasharray="0 502" transform="rotate(-90 100 100)" id="chartCircle1"/>
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#FF8C00" stroke-width="40" 
+                    stroke-dasharray="0 502" transform="rotate(-90 100 100)" id="chartCircle2"/>
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#e67e22" stroke-width="40" 
+                    stroke-dasharray="0 502" transform="rotate(-90 100 100)" id="chartCircle3"/>
+                  <text x="100" y="95" text-anchor="middle" font-size="32" font-weight="700" fill="#1a3a52" id="chartPercentage">0%</text>
+                  <text x="100" y="115" text-anchor="middle" font-size="12" fill="#64748B">of budget</text>
+                </svg>
+                <div class="chart-legend">
+                  <div class="legend-item">
+                    <span class="legend-color" style="background: #1a3a52;"></span>
+                    <span class="legend-label">Materials</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color" style="background: #FF8C00;"></span>
+                    <span class="legend-label">Labor</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color" style="background: #e67e22;"></span>
+                    <span class="legend-label">Other</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="info-card">
-              <div class="info-card__icon">📊</div>
-              <h3 class="info-card__title">Accurate Estimation</h3>
-              <p class="info-card__text">
-                Based on current market rates and proven calculation methods
-              </p>
+
+            <!-- Total Project Cost -->
+            <div class="summary-card total-cost-card">
+              <h3 class="summary-title">Total Project Cost</h3>
+              <div class="total-cost-display">
+                <span class="total-cost-value" id="totalCost">₹0</span>
+                <span class="total-cost-label">Estimated Budget</span>
+              </div>
+              <div class="cost-per-unit">
+                <span class="cost-per-label">Cost per sq.m:</span>
+                <span class="cost-per-value" id="costPerSqm">₹0</span>
+              </div>
             </div>
-          </div>
-          <div class="info-note">
-            <p>
-              <strong>Note:</strong> These calculations are estimates based on
-              standard rates and practices. Actual costs may vary based on
-              location, material quality, labor rates, and market conditions.
-              For detailed project estimation and professional consultation,
-              please <a href="../index.html#contact">contact us</a>.
-            </p>
+
+            <!-- Detailed Breakdown (Collapsible) -->
+            <div class="breakdown-section">
+              <button type="button" class="breakdown-header" id="toggleBreakdown">
+                <h3 class="breakdown-title">Detailed Material Breakdown</h3>
+                <span class="breakdown-toggle">+</span>
+              </button>
+              <div class="breakdown-content" id="breakdownContent" style="display: none;">
+                
+                <!-- Total Materials -->
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Total Materials</h4>
+                  <div class="breakdown-list" id="totalMaterialBreakdown"></div>
+                </div>
+
+                <!-- Component-wise breakdown -->
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Foundation</h4>
+                  <div class="breakdown-list" id="foundationBreakdown"></div>
+                </div>
+
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Plinth Beam</h4>
+                  <div class="breakdown-list" id="plinthBeamBreakdown"></div>
+                </div>
+
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Columns</h4>
+                  <div class="breakdown-list" id="columnsBreakdown"></div>
+                </div>
+
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Beams</h4>
+                  <div class="breakdown-list" id="beamsBreakdown"></div>
+                </div>
+
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Slabs</h4>
+                  <div class="breakdown-list" id="slabsBreakdown"></div>
+                </div>
+
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Brickwork</h4>
+                  <div class="breakdown-list" id="brickworkBreakdown"></div>
+                </div>
+
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Plaster</h4>
+                  <div class="breakdown-list" id="plasterBreakdown"></div>
+                </div>
+
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Flooring</h4>
+                  <div class="breakdown-list" id="flooringBreakdown"></div>
+                </div>
+
+                <!-- Cost Distribution -->
+                <div class="breakdown-card">
+                  <h4 class="breakdown-subtitle">Cost Distribution</h4>
+                  <div class="cost-breakdown" id="costBreakdown"></div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-      </section>
+
+      </div>
     </main>
 
     <!-- Footer -->
@@ -625,5 +653,6 @@
     <!-- Scripts -->
     <script src="../js/main.js"></script>
     <script src="../js/modules/calculators.js"></script>
+    <script src="../js/utils/calculator-ui.js"></script>
   </body>
 </html>
