@@ -121,11 +121,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('%c🚀 Portfolio Website Initialized', 'color: #003366; font-size: 16px; font-weight: bold;');
     
-    // Initialize social links (from links.js)
-    if (typeof initializeSocialLinks === 'function') {
-        initializeSocialLinks();
-        console.log('%c✓ Social links initialized', 'color: #10B981; font-size: 12px;');
-    }
 
     // Log loaded modules
     const modules = [];

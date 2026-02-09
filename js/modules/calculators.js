@@ -58,7 +58,7 @@ function toggleLaborInput() {
     const autoCheckbox = document.getElementById('laborAuto');
     const percentInput = document.getElementById('laborPercent');
     const manualInput = document.getElementById('laborManual');
-    const suffix = document.querySelector('.input-suffix');
+    const suffix = document.querySelector('.calc-input-suffix');
     
     // Safety checks
     if (!autoCheckbox || !percentInput || !manualInput) {

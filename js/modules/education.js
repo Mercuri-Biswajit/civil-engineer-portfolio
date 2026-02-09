@@ -29,7 +29,6 @@ const education = [
 function renderEducation() {
     const educationTimeline = document.getElementById('educationTimeline');
     if (!educationTimeline) {
-        console.warn('Education timeline element not found');
         return;
     }
     

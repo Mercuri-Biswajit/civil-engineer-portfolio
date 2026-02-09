@@ -116,7 +116,7 @@
 }
 
 @media (max-width: 768px) {
-  * {
+   img, video, iframe {
     max-width: 100%;
   }
   

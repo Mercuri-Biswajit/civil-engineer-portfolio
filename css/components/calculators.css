@@ -721,16 +721,7 @@
 
 
 /* Additional calculator-specific overrides */
-.calc-page {
-    /* Ensure calculator uses its own color scheme */
-    --calc-primary: #1a3a52;
-    --calc-accent: #FF8C00;
-}
 
-/* Override any conflicting portfolio styles when on calculator page */
-body.calculator-page {
-    font-family: 'Work Sans', sans-serif;
-}
 
 /* Ensure calculator inputs work properly */
 .calc-input-primary:focus,
