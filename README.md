@@ -6,7 +6,9 @@
 
 Professional portfolio website for **Er. Biswajit Deb Barman**, a Civil Engineer specializing in structural design, architectural planning, and cost estimation services in West Bengal, India.
 
-**Live Website:** [Your Website URL]
+**Live Website:** [https://mercuri-biswajit.github.io/civil-engineer-portfolio/](https://mercuri-biswajit.github.io/civil-engineer-portfolio/)
+
+**GitHub Repository:** [https://github.com/Mercuri-Biswajit/civil-engineer-portfolio](https://github.com/Mercuri-Biswajit/civil-engineer-portfolio)
 
 ## 🚀 Features
 
@@ -34,46 +36,59 @@ Professional portfolio website for **Er. Biswajit Deb Barman**, a Civil Engineer
 ## 📁 Project Structure
 
 ```
-portfolio/
+civil-engineer-portfolio/
+│
 ├── index.html                 # Homepage
-├── style.css                  # Main CSS file (imports all other CSS)
-├── script.js                  # Main JavaScript file
+├── .gitignore                 # Git ignore file
+├── README.md                  # Project documentation
 │
-├── pages/
-│   ├── projects.html          # Projects showcase page
-│   └── about.html             # About me page
-│
-css/
-├── main.css
-├── base/
-│   ├── reset.css
-│   └── variables.css
-├── layout/
-│   ├── header.css
-│   └── footer.css
-├── components/
-│   ├── buttons.css
-│   ├── hero.css
-│   ├── projects.css
-│   └── about.css
-└── utilities/
-    ├── utilities.css
-    └── helpers.css
-│
-├── scripts/
-│   ├── skills.js              # Skills section data and rendering
-│   ├── projects.js            # Projects data and filtering
-│   ├── education.js           # Education timeline
-│   ├── pricing.js             # Services pricing/information
-│   └── about.js               # About page animations
-│
-├── assets/
+├── assets/                    # Static assets
+│   ├── icons/                 # Logo and icon files
 │   ├── images/                # General images
-│   ├── projects_images/       # Project portfolio images
-│   ├── logo/                  # Logo files
-│   └── pdf/                   # Resume and documents
+│   └── projects_images/       # Project portfolio images
 │
-└── README.md                  # This file
+├── css/                       # Stylesheets
+│   ├── base/
+│   │   ├── reset.css          # CSS reset
+│   │   └── variables.css      # CSS custom properties
+│   │
+│   ├── components/
+│   │   ├── about.css          # About page styles
+│   │   ├── calculators.css    # Calculator component styles
+│   │   ├── hero.css           # Hero section styles
+│   │   ├── projects.css       # Projects section styles
+│   │   └── services.css       # Services section styles
+│   │
+│   ├── layout/
+│   │   ├── footer.css         # Footer styles
+│   │   └── header.css         # Navigation/header styles
+│   │
+│   ├── utilities/
+│   │   ├── helpers.css        # Helper classes
+│   │   └── utilities.css      # Utility classes
+│   │
+│   └── main.css               # Main CSS entry point (imports all styles)
+│
+├── js/                        # JavaScript modules
+│   ├── modules/
+│   │   ├── about.js           # About page functionality
+│   │   ├── calculators.js     # Calculator tools
+│   │   ├── education.js       # Education timeline data
+│   │   ├── projects.js        # Projects data and filtering
+│   │   ├── services.js        # Services/pricing information
+│   │   └── skills.js          # Skills section data
+│   │
+│   ├── utils/
+│   │   └── page-animations.js # Page transition animations
+│   │
+│   └── main.js                # Main JavaScript entry point
+│
+├── pages/                     # HTML pages
+│   ├── about.html             # About me page
+│   ├── calculators.html       # Engineering calculators page
+│   └── projects.html          # Projects showcase page
+│
+└── docs/                      # Documentation files
 ```
 
 ## 🎨 Design System
@@ -97,7 +112,7 @@ css/
 
 ### Adding New Projects
 
-Edit `scripts/projects.js`:
+Edit `js/modules/projects.js`:
 
 ```javascript
 const projects = [
@@ -114,7 +129,7 @@ const projects = [
 
 ### Adding New Skills
 
-Edit `scripts/skills.js`:
+Edit `js/modules/skills.js`:
 
 ```javascript
 const skills = [
@@ -129,7 +144,7 @@ const skills = [
 
 ### Updating Education
 
-Edit `scripts/education.js`:
+Edit `js/modules/education.js`:
 
 ```javascript
 const education = [
@@ -144,10 +159,10 @@ const education = [
 
 ### Updating Services
 
-Edit `scripts/pricing.js`:
+Edit `js/modules/services.js`:
 
 ```javascript
-const pricing = [
+const services = [
   {
     name: "Service Name",
     price: "Custom Quote",
@@ -173,8 +188,8 @@ const pricing = [
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/portfolio.git
-   cd portfolio
+   git clone https://github.com/Mercuri-Biswajit/civil-engineer-portfolio.git
+   cd civil-engineer-portfolio
    ```
 
 2. **Open in browser**
@@ -193,8 +208,8 @@ const pricing = [
    ```
 
 3. **Start editing**
-   - Customize content in JavaScript data files
-   - Modify styles in CSS files
+   - Customize content in JavaScript modules (`js/modules/`)
+   - Modify styles in CSS files (`css/`)
    - Update personal information
 
 ## 🌐 Deployment
@@ -203,9 +218,9 @@ const pricing = [
 
 1. Push your code to GitHub
 2. Go to repository Settings → Pages
-3. Select branch (usually `main`) and folder (`/root`)
+3. Select branch (usually `master`) and folder (`/root`)
 4. Click Save
-5. Your site will be live at `https://yourusername.github.io/portfolio`
+5. Your site will be live at `https://mercuri-biswajit.github.io/civil-engineer-portfolio`
 
 ### Netlify
 
@@ -239,7 +254,7 @@ vercel
 
 ### Changing Colors
 
-Edit CSS variables in `style.css`:
+Edit CSS variables in `css/base/variables.css`:
 
 ```css
 :root {
@@ -260,7 +275,7 @@ Update Google Fonts link in HTML files:
 />
 ```
 
-Then update CSS variables:
+Then update CSS variables in `css/base/variables.css`:
 
 ```css
 :root {
@@ -313,8 +328,11 @@ This project is open source and available under the [MIT License](LICENSE).
   - Homepage with hero section
   - Projects showcase page
   - About page
+  - Engineering calculators page
   - Responsive design
   - Smooth animations
+  - Modular CSS architecture
+  - Organized JavaScript modules
 
 ---
 
