@@ -42,96 +42,14 @@
 }
 
 /* ===========================
-   COMPETENCIES GRID
+   SKILLS GRID IN ABOUT PAGE
+   Uses the same styling as homepage
    =========================== */
 
-.competencies-grid {
+.about-section .skills-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
-  margin-top: 1rem;
-}
-
-.competency-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem;
-  background: var(--color-bg-card);
-  border-left: 4px solid var(--color-primary);
-  transition: var(--transition);
-  border-radius: 6px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Original gradient animation */
-.competency-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(30, 41, 59, 0.05), transparent);
-  transition: left 0.6s ease;
-  z-index: 1;
-}
-
-.competency-item:hover::before {
-  left: 100%;
-}
-
-/* Mirror effect */
-.competency-item::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.5), 
-    transparent);
-  transition: left 0.5s ease;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.competency-item:hover::after {
-  left: 100%;
-}
-
-.competency-item:hover {
-  border-color: var(--color-primary);
-  transform: translateX(8px) scale(1.02);
-  box-shadow: var(--shadow-md);
-}
-
-.competency-icon {
-  font-size: 1.8rem;
-  color: var(--color-primary);
-  min-width: 40px;
-  text-align: center;
-  transition: transform 0.3s ease;
-  animation: pulse 2s ease-in-out infinite;
-  position: relative;
-  z-index: 3;
-}
-
-.competency-item:hover .competency-icon {
-  transform: scale(1.2) rotate(5deg);
-  animation: none;
-}
-
-.competency-name {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-text);
-  position: relative;
-  z-index: 3;
 }
 
 /* ===========================
@@ -682,8 +600,8 @@
     grid-template-columns: 1fr;
   }
 
-  .competencies-grid {
-    grid-template-columns: 1fr;
+  .about-section .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
   
   .about-content {
@@ -703,6 +621,10 @@
   
   .about-me {
     padding: 4rem 0;
+  }
+
+  .about-section .skills-grid {
+    grid-template-columns: 1fr;
   }
 
   .about-subtitle {
@@ -745,7 +667,6 @@
     background-size: 30px 30px;
   }
   
-  .competency-item,
   .education-item {
     padding: 1rem 0.75rem;
   }
@@ -759,10 +680,6 @@
 @media (max-width: 480px) {
   .about-section {
     margin-bottom: 1.5rem;
-  }
-  
-  .competency-name {
-    font-size: 0.9rem;
   }
   
   .education-degree {
