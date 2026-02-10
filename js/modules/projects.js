@@ -1,138 +1,47 @@
-// PROJECTS DATA
-const projects = [
-  {
-    id: 1,
-    category: "RESIDENTIAL",
-    title: "G-Floor Residential Layout",
-    description:
-      "Architectural and structural layout planning for a G-floor residential unit measuring approximately 41 ft × 28 ft. The plan includes two bedrooms, a combined living and dining area, and an integrated staircase block for future vertical expansion. The design follows an RCC framed structure with clearly defined room zoning, efficient circulation, and adequate natural light and ventilation.",
-    tags: [
-      "Residential Planning",
-      "G-Floor Design",
-      "RCC Structure",
-      "Staircase Block",
-      "Compact Housing",
-    ],
-    image: "../assets/images/projects/G-Floor_Model_28_x_41__foot.png",
-  },
-  {
-    id: 2,
-    category: "COMMERCIAL",
-    title: "Warehouse cum Residential Building (G+1)",
-    description:
-      "Planning and structural layout design for a G+1 mixed-use building measuring approximately 57 ft × 47 ft. The ground floor is designed as a large open-span warehouse with an RCC framed structure and integrated staircase block, allowing efficient storage and movement. The first floor accommodates a complete residential unit comprising multiple bedrooms, living and dining areas, kitchen, bathrooms, and verandas. The design ensures functional separation between commercial and residential use while maintaining structural continuity and future adaptability.",
-    tags: [
-      "Mixed-Use Building",
-      "Warehouse Design",
-      "G+1 Residential",
-      "RCC Frame Structure",
-      "Open Span Planning",
-    ],
-    image:
-      "../assets/images/projects/Warehouse_cum_Residential_(G+1)_57_x_47_foot.png",
-  },
-  {
-    id: 3,
-    category: "COMMERCIAL",
-    title: "Warehouse cum Residential Building",
-    description:
-      "Structural and space planning for a mixed-use building measuring approximately 46 ft × 30 ft, combining a large open-span warehouse area on the lower level with a dedicated residential access core. The layout includes an RCC framed structure with optimized column placement, a staircase block for vertical circulation, and clear segregation between storage and residential functions to ensure safety, usability, and future adaptability.",
-    tags: [
-      "Mixed-Use Building",
-      "Warehouse Design",
-      "Residential Structure",
-      "RCC Frame",
-      "Staircase Block",
-    ],
-    image:
-      "../assets/images/projects/Warehouse_cum_Residential_46_x_30_foot.png",
-  },
-  {
-    id: 4,
-    category: "RESIDENTIAL",
-    title: "Ground Floor Residential Layout",
-    description:
-      "Architectural and structural layout planning for a ground floor residential unit measuring approximately 28 ft × 41 ft. The plan comprises three bedrooms, a central living and dining area, and an integrated staircase block for vertical circulation. Designed with an RCC framed structure, the layout ensures efficient room zoning, smooth internal movement, and adequate natural light and ventilation through well-placed openings.",
-    tags: [
-      "Residential Planning",
-      "Ground Floor Design",
-      "RCC Frame Structure",
-      "Staircase Block",
-      "Compact Housing",
-    ],
-    image: "../assets/images/projects/Ground_Floor_28_x_41_foot.png",
-  },
-];
-
 // ===========================
-// RENDER FUNCTIONS
+// PROJECTS MODULE
+// Gallery render, modal, filter.
+// Data lives in data/models.js.
 // ===========================
 
-// Render Projects Gallery (Homepage - First 3)
-function renderProjectsPreview() {
-  const projectsPreview = document.getElementById("projectsPreview");
-  if (!projectsPreview) return;
+import { projects } from "../data/models.js";
+import { byId, qs, qsa } from "../utils/dom.js";
 
-  const topProjects = projects.slice(0, 4);
-  projectsPreview.innerHTML = topProjects
-    .map(
-      (project) => `
-        <div class="project-card" data-project-id="${project.id}">
-            <div class="project-image-wrapper">
-                <img src="${project.image}" alt="${project.title}" class="project-image-real">
-                <div class="project-image-overlay">
-                    <div class="project-gallery-info">
-                        <div class="project-category">${project.category}</div>
-                        <h3 class="project-title">${project.title}</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="project-view-hint">Click to view details</div>
-        </div>
-    `,
-    )
+// ===========================
+// RENDER — HOME PREVIEW (4 cards)
+// ===========================
+
+export function renderProjectsPreview() {
+  const container = byId("projectsPreview");
+  if (!container) return;
+
+  container.innerHTML = projects
+    .slice(0, 4)
+    .map((p) => _cardHTML(p))
     .join("");
 
-  // Add click event listeners
-  attachProjectClickHandlers();
-}
-
-// Render All Projects Gallery (Projects Page)
-function renderProjects() {
-  const projectsGrid = document.getElementById("projectsGrid");
-  if (!projectsGrid) return;
-
-  projectsGrid.innerHTML = projects
-    .map(
-      (project) => `
-        <div class="project-card" data-category="${project.category}" data-project-id="${project.id}">
-            <div class="project-image-wrapper">
-                <img src="${project.image}" alt="${project.title}" class="project-image-real">
-                <div class="project-image-overlay">
-                    <div class="project-gallery-info">
-                        <div class="project-category">${project.category}</div>
-                        <h3 class="project-title">${project.title}</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="project-view-hint">Click to view details</div>
-        </div>
-    `,
-    )
-    .join("");
-
-  // Add click event listeners
-  attachProjectClickHandlers();
+  _attachCardHandlers(container);
 }
 
 // ===========================
-// MODAL FUNCTIONALITY
+// RENDER — FULL GALLERY
 // ===========================
 
-// Create Modal Element
-function createProjectModal() {
-  // Check if modal already exists
-  if (document.getElementById("projectModal")) return;
+export function renderProjects() {
+  const grid = byId("projectsGrid");
+  if (!grid) return;
+
+  grid.innerHTML = projects.map((p) => _cardHTML(p, true)).join("");
+
+  _attachCardHandlers(grid);
+}
+
+// ===========================
+// MODAL
+// ===========================
+
+export function createProjectModal() {
+  if (byId("projectModal")) return;
 
   const modal = document.createElement("div");
   modal.id = "projectModal";
@@ -149,12 +58,9 @@ function createProjectModal() {
                 <p class="project-modal-description"></p>
                 <div class="project-modal-tags"></div>
             </div>
-        </div>
-    `;
-
+        </div>`;
   document.body.appendChild(modal);
 
-  // Close modal on click outside or close button
   modal.addEventListener("click", (e) => {
     if (
       e.target === modal ||
@@ -163,101 +69,69 @@ function createProjectModal() {
       closeProjectModal();
     }
   });
-
-  // Close on ESC key
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeProjectModal();
-    }
+    if (e.key === "Escape") closeProjectModal();
   });
 }
 
-// Open Project Modal
-function openProjectModal(projectId) {
+export function openProjectModal(projectId) {
   const project = projects.find((p) => p.id === projectId);
   if (!project) return;
 
-  const modal = document.getElementById("projectModal");
-  if (!modal) {
-    createProjectModal();
-  }
+  if (!byId("projectModal")) createProjectModal();
+  const modal = byId("projectModal");
 
-  const modalElement = document.getElementById("projectModal");
-
-  // Populate modal content
-  modalElement.querySelector(".project-modal-image").src = project.image;
-  modalElement.querySelector(".project-modal-image").alt = project.title;
-  modalElement.querySelector(".project-modal-category").textContent =
-    project.category;
-  modalElement.querySelector(".project-modal-title").textContent =
-    project.title;
-  modalElement.querySelector(".project-modal-description").textContent =
+  modal.querySelector(".project-modal-image").src = project.image;
+  modal.querySelector(".project-modal-image").alt = project.title;
+  modal.querySelector(".project-modal-category").textContent = project.category;
+  modal.querySelector(".project-modal-title").textContent = project.title;
+  modal.querySelector(".project-modal-description").textContent =
     project.description;
-
-  // Populate tags
-  const tagsContainer = modalElement.querySelector(".project-modal-tags");
-  tagsContainer.innerHTML = project.tags
-    .map((tag) => `<span class="project-modal-tag">${tag}</span>`)
+  modal.querySelector(".project-modal-tags").innerHTML = project.tags
+    .map((t) => `<span class="project-modal-tag">${t}</span>`)
     .join("");
 
-  // Show modal
-  modalElement.classList.add("active");
+  modal.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
-// Close Project Modal
-function closeProjectModal() {
-  const modal = document.getElementById("projectModal");
+export function closeProjectModal() {
+  const modal = byId("projectModal");
   if (modal) {
     modal.classList.remove("active");
     document.body.style.overflow = "";
   }
 }
 
-// Attach Click Handlers to Project Cards
-function attachProjectClickHandlers() {
-  const projectCards = document.querySelectorAll(".project-card");
-  projectCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const projectId = parseInt(card.getAttribute("data-project-id"));
-      openProjectModal(projectId);
-    });
-  });
-}
-
 // ===========================
-// FILTER FUNCTIONALITY
+// FILTER
 // ===========================
 
-// Filter Projects
-function setupProjectFilter() {
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const projectCards = document.querySelectorAll(".project-card");
+export function setupProjectFilter() {
+  const filterBtns = qsa(".filter-btn");
+  if (!filterBtns.length) return;
 
-  if (filterButtons.length === 0) return;
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter");
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const filter = button.getAttribute("data-filter");
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
 
-      // Update active button
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
-
-      // Filter projects with animation
-      projectCards.forEach((card, index) => {
-        if (filter === "all" || card.getAttribute("data-category") === filter) {
+      qsa(".project-card").forEach((card, i) => {
+        const match =
+          filter === "all" || card.getAttribute("data-category") === filter;
+        if (match) {
           setTimeout(() => {
             card.classList.remove("hidden");
             card.style.opacity = "0";
             card.style.transform = "translateY(20px)";
-
             setTimeout(() => {
               card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
               card.style.opacity = "1";
               card.style.transform = "translateY(0)";
             }, 50);
-          }, index * 50);
+          }, i * 50);
         } else {
           card.classList.add("hidden");
         }
@@ -267,49 +141,31 @@ function setupProjectFilter() {
 }
 
 // ===========================
-// INITIALIZATION
+// PRIVATE HELPERS
 // ===========================
 
-// Initialize projects when DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  // Render projects
-  renderProjectsPreview();
-  renderProjects();
+function _cardHTML(project, withCategory = false) {
+  return `
+        <div class="project-card"
+             data-project-id="${project.id}"
+             ${withCategory ? `data-category="${project.category}"` : ""}>
+            <div class="project-image-wrapper">
+                <img src="${project.image}" alt="${project.title}" class="project-image-real">
+                <div class="project-image-overlay">
+                    <div class="project-gallery-info">
+                        <div class="project-category">${project.category}</div>
+                        <h3 class="project-title">${project.title}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="project-view-hint">Click to view details</div>
+        </div>`;
+}
 
-  // Create modal
-  createProjectModal();
-
-  // Setup filters
-  setupProjectFilter();
-
-  // Set up scroll animations for project cards
-  setTimeout(() => {
-    const projectCards = document.querySelectorAll(".project-card");
-    projectCards.forEach((card, index) => {
-      card.style.opacity = "0";
-      card.style.transform = "translateY(30px)";
-
-      setTimeout(() => {
-        card.style.transition =
-          "opacity 0.6s ease-out, transform 0.6s ease-out";
-        card.style.opacity = "1";
-        card.style.transform = "translateY(0)";
-      }, index * 100);
+function _attachCardHandlers(ctx) {
+  qsa(".project-card", ctx).forEach((card) => {
+    card.addEventListener("click", () => {
+      openProjectModal(parseInt(card.getAttribute("data-project-id"), 10));
     });
-  }, 100);
-});
-
-// ===========================
-// EXPORT FOR MODULE USAGE
-// ===========================
-
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = {
-    projects,
-    renderProjects,
-    renderProjectsPreview,
-    setupProjectFilter,
-    openProjectModal,
-    closeProjectModal,
-  };
+  });
 }
