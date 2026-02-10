@@ -17,10 +17,9 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Work+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    
+
     <!-- Portfolio Base Styles -->
     <link rel="stylesheet" href="../css/main.css" />
-    
   </head>
 
   <body>
@@ -58,258 +57,472 @@
 
     <!-- Calculator Page Content -->
     <div class="calc-page">
-        <!-- Main Calculator -->
-        <main class="calc-main">
-            <div class="calc-grid">
-                
-                <!-- Input Section -->
-                <section class="calc-input-section">
-                    <div class="calc-section-header">
-                        <h2>Project Parameters</h2>
-                        <button class="calc-btn-reset" onclick="resetForm()">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8C2 4.68629 4.68629 2 8 2C10.4 2 12.5 3.2 13.6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                <path d="M11 5H14V2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            Reset
-                        </button>
-                    </div>
-
-                    <!-- Building Inputs -->
-                    <div class="calc-input-group">
-                        <label class="calc-label-primary">
-                            <span>Built-up Area</span>
-                            <span class="calc-label-unit">sq.ft</span>
-                        </label>
-                        <input type="number" id="area" class="calc-input-primary" placeholder="1300" min="1" step="1">
-                    </div>
-
-                    <div class="calc-input-group">
-                        <label class="calc-label-primary">
-                            <span>Rate per sq.ft</span>
-                            <span class="calc-label-unit">₹</span>
-                        </label>
-                        <input type="number" id="rate" class="calc-input-primary" placeholder="1800" min="1" step="10">
-                    </div>
-
-                    <div class="calc-divider"></div>
-
-                    <!-- Cost Breakdown -->
-                    <h3 class="calc-section-subtitle">Cost Breakdown</h3>
-
-                    <div class="calc-input-group">
-                        <label class="calc-label-secondary">
-                            Labor Cost
-                            <span class="calc-toggle-switch">
-                                <input type="checkbox" id="laborAuto" checked onchange="toggleLaborInput()">
-                                <span class="calc-toggle-label">Auto %</span>
-                            </span>
-                        </label>
-                        <div class="calc-dual-input">
-                            <input type="number" id="laborPercent" class="calc-input-secondary" value="40" min="0" max="100" step="1" placeholder="40">
-                            <input type="number" id="laborManual" class="calc-input-secondary" min="0" step="1000" placeholder="Manual amount" style="display:none;">
-                            <span class="calc-input-suffix">%</span>
-                        </div>
-                    </div>
-
-                    <div class="calc-input-group">
-                        <label class="calc-label-secondary">Finishing Quality</label>
-                        <select id="finishingQuality" class="calc-input-secondary calc-select-input" onchange="updateFinishingCost()">
-                            <option value="basic">Basic - ₹450/sq.ft</option>
-                            <option value="standard" selected>Standard - ₹750/sq.ft</option>
-                            <option value="premium">Premium - ₹1200/sq.ft</option>
-                        </select>
-                    </div>
-
-                    <div class="calc-input-group">
-                        <label class="calc-label-secondary">Contingency %</label>
-                        <input type="number" id="contingency" class="calc-input-secondary" value="7" min="0" max="20" step="0.5" placeholder="5-10">
-                    </div>
-
-                    <div class="calc-divider"></div>
-
-                    <!-- Material Rates -->
-                    <h3 class="calc-section-subtitle">Material Rates</h3>
-
-                    <div class="calc-material-grid">
-                        <div class="calc-input-group">
-                            <label class="calc-label-secondary">Cement <span style="font-size: 0.7rem; color: #94a3b8;">per bag</span></label>
-                            <input type="number" id="cementRate" class="calc-input-secondary" placeholder="420" min="0" step="10">
-                        </div>
-
-                        <div class="calc-input-group">
-                            <label class="calc-label-secondary">Steel <span style="font-size: 0.7rem; color: #94a3b8;">per kg</span></label>
-                            <input type="number" id="steelRate" class="calc-input-secondary" placeholder="65" min="0" step="1">
-                        </div>
-
-                        <div class="calc-input-group">
-                            <label class="calc-label-secondary">Sand <span style="font-size: 0.7rem; color: #94a3b8;">per m³</span></label>
-                            <input type="number" id="sandRate" class="calc-input-secondary" placeholder="1500" min="0" step="50">
-                        </div>
-
-                        <div class="calc-input-group">
-                            <label class="calc-label-secondary">Aggregate <span style="font-size: 0.7rem; color: #94a3b8;">per m³</span></label>
-                            <input type="number" id="aggregateRate" class="calc-input-secondary" placeholder="1400" min="0" step="50">
-                        </div>
-                    </div>
-
-                    <button class="calc-btn-primary" onclick="calculateBuilding()">
-                        <span>Calculate Estimate</span>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-
-                    <div class="calc-divider"></div>
-
-                    <!-- RCC Slab Inputs -->
-                    <h3 class="calc-section-subtitle">RCC Slab</h3>
-
-                    <div class="calc-input-group">
-                        <label class="calc-label-secondary">Slab Area <span style="font-size: 0.7rem; color: #94a3b8;">sq.ft</span></label>
-                        <input type="number" id="slabArea" class="calc-input-secondary" placeholder="1300" min="0" step="1">
-                    </div>
-
-                    <div class="calc-input-group">
-                        <label class="calc-label-secondary">Thickness <span style="font-size: 0.7rem; color: #94a3b8;">ft</span></label>
-                        <input type="number" id="slabThickness" class="calc-input-secondary" value="0.41" min="0.15" max="1.5" step="0.01">
-                    </div>
-
-                    <button class="calc-btn-secondary" onclick="calculateSlab()">
-                        Calculate Slab
-                    </button>
-                </section>
-
-                <!-- Results Section -->
-                <section class="calc-results-section">
-                    <!-- Building Results -->
-                    <div class="calc-result-card" id="buildingResults">
-                        <div class="calc-result-header">
-                            <h3>Building Estimate</h3>
-                            <div class="calc-status-badge" id="buildingStatus">Pending</div>
-                        </div>
-
-                        <div class="calc-result-total">
-                            <span class="calc-total-label">Total Project Cost</span>
-                            <span class="calc-total-amount" id="totalCost">₹ --</span>
-                        </div>
-
-                        <!-- Cost Breakdown Summary -->
-                        <div class="calc-cost-breakdown">
-                            <div class="calc-breakdown-item">
-                                <span class="calc-breakdown-label">Material Cost</span>
-                                <span class="calc-breakdown-value" id="displayMaterialCost">₹ --</span>
-                            </div>
-                            <div class="calc-breakdown-item">
-                                <span class="calc-breakdown-label">Labor Cost</span>
-                                <span class="calc-breakdown-value" id="displayLaborCost">₹ --</span>
-                            </div>
-                            <div class="calc-breakdown-item">
-                                <span class="calc-breakdown-label">Finishing Cost</span>
-                                <span class="calc-breakdown-value" id="displayFinishingCost">₹ --</span>
-                            </div>
-                            <div class="calc-breakdown-item">
-                                <span class="calc-breakdown-label">Contingency</span>
-                                <span class="calc-breakdown-value" id="displayContingency">₹ --</span>
-                            </div>
-                        </div>
-
-                        <div class="calc-divider-thin"></div>
-
-                        <!-- Material Quantities -->
-                        <h4 class="calc-subsection-title">Material Quantities</h4>
-                        <div class="calc-result-grid">
-                            <div class="calc-result-item">
-                                <div class="calc-item-icon">🔨</div>
-                                <div class="calc-item-details">
-                                    <span class="calc-item-label">Cement</span>
-                                    <span class="calc-item-value" id="cement">-- bags</span>
-                                </div>
-                            </div>
-
-                            <div class="calc-result-item">
-                                <div class="calc-item-icon">🗝️</div>
-                                <div class="calc-item-details">
-                                    <span class="calc-item-label">Steel</span>
-                                    <span class="calc-item-value" id="steel">-- kg</span>
-                                </div>
-                            </div>
-
-                            <div class="calc-result-item">
-                                <div class="calc-item-icon">⛰️</div>
-                                <div class="calc-item-details">
-                                    <span class="calc-item-label">Sand</span>
-                                    <span class="calc-item-value" id="sand">-- m³</span>
-                                </div>
-                            </div>
-
-                            <div class="calc-result-item">
-                                <div class="calc-item-icon">🪨</div>
-                                <div class="calc-item-details">
-                                    <span class="calc-item-label">Aggregate</span>
-                                    <span class="calc-item-value" id="aggregate">-- m³</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RCC Slab Results -->
-                    <div class="calc-result-card" id="slabResults">
-                        <div class="calc-result-header">
-                            <h3>RCC Slab Estimate</h3>
-                            <div class="calc-status-badge" id="slabStatus">Pending</div>
-                        </div>
-
-                        <div class="calc-slab-grid">
-                            <div class="calc-slab-item">
-                                <span class="calc-slab-label">Concrete Volume</span>
-                                <span class="calc-slab-value" id="slabConcrete">-- m³</span>
-                            </div>
-
-                            <div class="calc-slab-item">
-                                <span class="calc-slab-label">Cement Required</span>
-                                <span class="calc-slab-value" id="slabCement">-- bags</span>
-                            </div>
-
-                            <div class="calc-slab-item">
-                                <span class="calc-slab-label">Steel Required</span>
-                                <span class="calc-slab-value" id="slabSteel">-- kg</span>
-                            </div>
-                        </div>
-
-                        <div class="calc-slab-note">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                                <path d="M8 11V8M8 5H8.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
-                            <span>Based on M20 grade concrete specifications</span>
-                        </div>
-                    </div>
-
-                    <!-- Info Card -->
-                    <div class="calc-info-card">
-                        <h4>Calculation Methodology</h4>
-                        <ul>
-                            <li><strong>Materials:</strong> Cement (0.4 bags/sq.ft), Steel (4.0 kg/sq.ft), Sand (0.044 m³/sq.ft), Aggregate (0.088 m³/sq.ft)</li>
-                            <li><strong>Labor:</strong> Auto-calculated at 40% of material cost or manual input</li>
-                            <li><strong>Finishing:</strong> Basic (₹450/sq.ft), Standard (₹750/sq.ft), Premium (₹1200/sq.ft)</li>
-                            <li><strong>Contingency:</strong> Recommended 5-10% of subtotal for unforeseen expenses</li>
-                            <li><strong>RCC Slab:</strong> M20 grade concrete, 8 bags cement/m³, 1% steel by volume</li>
-                        </ul>
-                    </div>
-                </section>
+      <!-- Main Calculator -->
+      <main class="calc-main">
+        <div class="calc-grid">
+          <!-- Input Section -->
+          <section class="calc-input-section">
+            <div class="calc-section-header">
+              <h2>Project Parameters</h2>
+              <button class="calc-btn-reset" onclick="resetForm()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8C2 4.68629 4.68629 2 8 2C10.4 2 12.5 3.2 13.6 5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M11 5H14V2"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Reset
+              </button>
             </div>
-        </main>
 
-        <!-- Footer -->
-        <footer class="calc-footer">
-            <p>All estimates are approximate and for reference only. Consult a professional engineer for accurate project costing.</p>
-        </footer>
+            <!-- Building Inputs -->
+            <div class="calc-input-group">
+              <label class="calc-label-primary">
+                <span>Built-up Area</span>
+                <span class="calc-label-unit">sq.ft</span>
+              </label>
+              <input
+                type="number"
+                id="area"
+                class="calc-input-primary"
+                placeholder="1300"
+                min="1"
+                step="1"
+              />
+            </div>
+
+            <div class="calc-input-group">
+              <label class="calc-label-primary">
+                <span>Rate per sq.ft</span>
+                <span class="calc-label-unit">₹</span>
+              </label>
+              <input
+                type="number"
+                id="rate"
+                class="calc-input-primary"
+                placeholder="1800"
+                min="1"
+                step="10"
+              />
+            </div>
+
+            <div class="calc-divider"></div>
+
+            <!-- Cost Breakdown -->
+            <h3 class="calc-section-subtitle">Cost Breakdown</h3>
+
+            <div class="calc-input-group">
+              <label class="calc-label-secondary">
+                Labor Cost
+                <span class="calc-toggle-switch">
+                  <input
+                    type="checkbox"
+                    id="laborAuto"
+                    checked
+                    onchange="toggleLaborInput()"
+                  />
+                  <span class="calc-toggle-label">Auto %</span>
+                </span>
+              </label>
+              <div class="calc-dual-input">
+                <input
+                  type="number"
+                  id="laborPercent"
+                  class="calc-input-secondary"
+                  value="40"
+                  min="0"
+                  max="100"
+                  step="1"
+                  placeholder="40"
+                />
+                <input
+                  type="number"
+                  id="laborManual"
+                  class="calc-input-secondary"
+                  min="0"
+                  step="1000"
+                  placeholder="Manual amount"
+                  style="display: none"
+                />
+                <span class="calc-input-suffix">%</span>
+              </div>
+            </div>
+
+            <div class="calc-input-group">
+              <label class="calc-label-secondary">Finishing Quality</label>
+              <select
+                id="finishingQuality"
+                class="calc-input-secondary calc-select-input"
+                onchange="updateFinishingCost()"
+              >
+                <option value="basic">Basic - ₹450/sq.ft</option>
+                <option value="standard" selected>Standard - ₹750/sq.ft</option>
+                <option value="premium">Premium - ₹1200/sq.ft</option>
+              </select>
+            </div>
+
+            <div class="calc-input-group">
+              <label class="calc-label-secondary">Contingency %</label>
+              <input
+                type="number"
+                id="contingency"
+                class="calc-input-secondary"
+                value="7"
+                min="0"
+                max="20"
+                step="0.5"
+                placeholder="5-10"
+              />
+            </div>
+
+            <div class="calc-divider"></div>
+
+            <!-- Material Rates -->
+            <h3 class="calc-section-subtitle">Material Rates</h3>
+
+            <div class="calc-material-grid">
+              <div class="calc-input-group">
+                <label class="calc-label-secondary"
+                  >Cement
+                  <span style="font-size: 0.7rem; color: #94a3b8"
+                    >per bag</span
+                  ></label
+                >
+                <input
+                  type="number"
+                  id="cementRate"
+                  class="calc-input-secondary"
+                  placeholder="420"
+                  min="0"
+                  step="10"
+                />
+              </div>
+
+              <div class="calc-input-group">
+                <label class="calc-label-secondary"
+                  >Steel
+                  <span style="font-size: 0.7rem; color: #94a3b8"
+                    >per kg</span
+                  ></label
+                >
+                <input
+                  type="number"
+                  id="steelRate"
+                  class="calc-input-secondary"
+                  placeholder="65"
+                  min="0"
+                  step="1"
+                />
+              </div>
+
+              <div class="calc-input-group">
+                <label class="calc-label-secondary"
+                  >Sand
+                  <span style="font-size: 0.7rem; color: #94a3b8"
+                    >per m³</span
+                  ></label
+                >
+                <input
+                  type="number"
+                  id="sandRate"
+                  class="calc-input-secondary"
+                  placeholder="1500"
+                  min="0"
+                  step="50"
+                />
+              </div>
+
+              <div class="calc-input-group">
+                <label class="calc-label-secondary"
+                  >Aggregate
+                  <span style="font-size: 0.7rem; color: #94a3b8"
+                    >per m³</span
+                  ></label
+                >
+                <input
+                  type="number"
+                  id="aggregateRate"
+                  class="calc-input-secondary"
+                  placeholder="1400"
+                  min="0"
+                  step="50"
+                />
+              </div>
+            </div>
+
+            <button class="calc-btn-primary" onclick="calculateBuilding()">
+              <span>Calculate Estimate</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M4 10H16M16 10L11 5M16 10L11 15"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <div class="calc-divider"></div>
+
+            <!-- RCC Slab Inputs -->
+            <h3 class="calc-section-subtitle">RCC Slab</h3>
+
+            <div class="calc-input-group">
+              <label class="calc-label-secondary"
+                >Slab Area
+                <span style="font-size: 0.7rem; color: #94a3b8"
+                  >sq.ft</span
+                ></label
+              >
+              <input
+                type="number"
+                id="slabArea"
+                class="calc-input-secondary"
+                placeholder="1300"
+                min="0"
+                step="1"
+              />
+            </div>
+
+            <div class="calc-input-group">
+              <label class="calc-label-secondary"
+                >Thickness
+                <span style="font-size: 0.7rem; color: #94a3b8">ft</span></label
+              >
+              <input
+                type="number"
+                id="slabThickness"
+                class="calc-input-secondary"
+                value="0.41"
+                min="0.15"
+                max="1.5"
+                step="0.01"
+              />
+            </div>
+
+            <button class="calc-btn-secondary" onclick="calculateSlab()">
+              Calculate Slab
+            </button>
+          </section>
+
+          <!-- Results Section -->
+          <section class="calc-results-section">
+            <!-- Building Results -->
+            <div class="calc-result-card" id="buildingResults">
+              <div class="calc-result-header">
+                <h3>Building Estimate</h3>
+                <div class="calc-status-badge" id="buildingStatus">Pending</div>
+              </div>
+
+              <div class="calc-result-total">
+                <span class="calc-total-label">Total Project Cost</span>
+                <span class="calc-total-amount" id="totalCost">₹ --</span>
+              </div>
+
+              <!-- Cost Breakdown Summary -->
+              <div class="calc-cost-breakdown">
+                <div class="calc-breakdown-item">
+                  <span class="calc-breakdown-label">Material Cost</span>
+                  <span class="calc-breakdown-value" id="displayMaterialCost"
+                    >₹ --</span
+                  >
+                </div>
+                <div class="calc-breakdown-item">
+                  <span class="calc-breakdown-label">Labor Cost</span>
+                  <span class="calc-breakdown-value" id="displayLaborCost"
+                    >₹ --</span
+                  >
+                </div>
+                <div class="calc-breakdown-item">
+                  <span class="calc-breakdown-label">Finishing Cost</span>
+                  <span class="calc-breakdown-value" id="displayFinishingCost"
+                    >₹ --</span
+                  >
+                </div>
+                <div class="calc-breakdown-item">
+                  <span class="calc-breakdown-label">Contingency</span>
+                  <span class="calc-breakdown-value" id="displayContingency"
+                    >₹ --</span
+                  >
+                </div>
+              </div>
+
+              <div class="calc-divider-thin"></div>
+
+              <!-- Material Quantities -->
+              <h4 class="calc-subsection-title">Material Quantities</h4>
+              <div class="calc-result-grid">
+                <div class="calc-result-item">
+                  <div class="calc-item-icon">🔨</div>
+                  <div class="calc-item-details">
+                    <span class="calc-item-label">Cement</span>
+                    <span class="calc-item-value" id="cement">-- bags</span>
+                  </div>
+                </div>
+
+                <div class="calc-result-item">
+                  <div class="calc-item-icon">🗝️</div>
+                  <div class="calc-item-details">
+                    <span class="calc-item-label">Steel</span>
+                    <span class="calc-item-value" id="steel">-- kg</span>
+                  </div>
+                </div>
+
+                <div class="calc-result-item">
+                  <div class="calc-item-icon">⛰️</div>
+                  <div class="calc-item-details">
+                    <span class="calc-item-label">Sand</span>
+                    <span class="calc-item-value" id="sand">-- m³</span>
+                  </div>
+                </div>
+
+                <div class="calc-result-item">
+                  <div class="calc-item-icon">🪨</div>
+                  <div class="calc-item-details">
+                    <span class="calc-item-label">Aggregate</span>
+                    <span class="calc-item-value" id="aggregate">-- m³</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RCC Slab Results -->
+            <div class="calc-result-card" id="slabResults">
+              <div class="calc-result-header">
+                <h3>RCC Slab Estimate</h3>
+                <div class="calc-status-badge" id="slabStatus">Pending</div>
+              </div>
+
+              <div class="calc-slab-grid">
+                <div class="calc-slab-item">
+                  <span class="calc-slab-label">Concrete Volume</span>
+                  <span class="calc-slab-value" id="slabConcrete">-- m³</span>
+                </div>
+
+                <div class="calc-slab-item">
+                  <span class="calc-slab-label">Cement Required</span>
+                  <span class="calc-slab-value" id="slabCement">-- bags</span>
+                </div>
+
+                <div class="calc-slab-item">
+                  <span class="calc-slab-label">Steel Required</span>
+                  <span class="calc-slab-value" id="slabSteel">-- kg</span>
+                </div>
+              </div>
+
+              <div class="calc-slab-note">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="7"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M8 11V8M8 5H8.01"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <span>Based on M20 grade concrete specifications</span>
+              </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="calc-info-card">
+              <h4>Calculation Methodology</h4>
+              <ul>
+                <li>
+                  <strong>Materials:</strong> Cement (0.4 bags/sq.ft), Steel
+                  (4.0 kg/sq.ft), Sand (0.044 m³/sq.ft), Aggregate (0.088
+                  m³/sq.ft)
+                </li>
+                <li>
+                  <strong>Labor:</strong> Auto-calculated at 40% of material
+                  cost or manual input
+                </li>
+                <li>
+                  <strong>Finishing:</strong> Basic (₹450/sq.ft), Standard
+                  (₹750/sq.ft), Premium (₹1200/sq.ft)
+                </li>
+                <li>
+                  <strong>Contingency:</strong> Recommended 5-10% of subtotal
+                  for unforeseen expenses
+                </li>
+                <li>
+                  <strong>RCC Slab:</strong> M20 grade concrete, 8 bags
+                  cement/m³, 1% steel by volume
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-brand">
+              <div class="logo">
+                <a href="../index.html"
+                  ><img
+                    src="../assets/icons/My__Logo.png"
+                    alt="Biswajit Deb Barman"
+                    class="footer-logo-img"
+                /></a>
+              </div>
+              <p>Building the future, one structure at a time.</p>
+            </div>
+            <div class="footer-links">
+              <div class="footer-column">
+                <h4>Navigation</h4>
+                <a href="../index.html">Home</a>
+                <a href="./projects.html">Projects</a>
+                <a href="./about.html">About</a>
+              </div>
+              <div class="footer-column">
+                <h4>Connect</h4>
+                <a
+                  href="https://www.linkedin.com/in/biswajit-deb-barman/"
+                  target="_blank"
+                  >LinkedIn</a
+                >
+                <a
+                  href="https://www.facebook.com/profile.php?id=61585030424249"
+                  target="_blank"
+                  >Facebook</a
+                >
+                <a
+                  href="https://www.instagram.com/biswajit.deb.barman/"
+                  target="_blank"
+                  >Instagram</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2026 Er. Biswajit Deb Barman. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <!-- Portfolio JavaScript -->
     <script src="../js/main.js"></script>
-    
+
     <!-- Calculator JavaScript -->
     <script src="../js/modules/calculators.js"></script>
   </body>
