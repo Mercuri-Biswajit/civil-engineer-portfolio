@@ -1,6 +1,6 @@
 /* ===========================
    UTILITY STYLES
-   Section Components & Patterns
+   Section Components & Common Patterns
    =========================== */
 
 /* ===========================
@@ -47,104 +47,7 @@
 }
 
 /* ===========================
-   SKILLS SECTION
-   Skills grid and cards
-   =========================== */
-
-.skills {
-  padding: var(--spacing-xl) 0;
-  background: var(--color-bg-dark);
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.skill-card {
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  padding: 2rem;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.skill-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--color-primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: var(--transition);
-}
-
-/* Mirror Effect for Skill Cards */
-.skill-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg,
-      transparent,
-      rgba(255, 255, 255, 0.4),
-      transparent);
-  transition: left 0.6s ease;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.skill-card:hover::after {
-  left: 100%;
-}
-
-.skill-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-}
-
-.skill-card:hover::before {
-  transform: scaleX(1);
-}
-
-.skill-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
-  position: relative;
-  z-index: 2;
-}
-
-.skill-name {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--color-text);
-  position: relative;
-  z-index: 2;
-}
-
-.skill-description {
-  color: var(--color-text-dim);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  position: relative;
-  z-index: 2;
-}
-
-/* ===========================
-   TESTIMONIALS (Optional)
+   TESTIMONIALS
    =========================== */
 
 .testimonials {
@@ -346,7 +249,6 @@
     font-size: 2.5rem;
   }
 
-  .skills-grid,
   .testimonials-grid {
     grid-template-columns: 1fr;
   }
@@ -381,61 +283,7 @@
     font-size: 1.25rem;
   }
 
-  .skill-card,
   .testimonial-card {
     padding: 1.5rem;
-  }
-}
-
-/* ===========================
-   SCROLL ANIMATIONS
-   Applied via JavaScript
-   =========================== */
-
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.animate-on-scroll.animated {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===========================
-   LOADING STATES
-   =========================== */
-
-.loading-spinner {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--color-border);
-  border-top-color: var(--color-primary);
-  border-radius: 50%;
-  animation: spinner 0.8s linear infinite;
-}
-
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.skeleton {
-  background: linear-gradient(90deg, var(--color-bg-dark) 25%, var(--color-border) 50%, var(--color-bg-dark) 75%);
-  background-size: 200% 100%;
-  animation: skeleton-loading 1.5s ease-in-out infinite;
-  border-radius: 4px;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-position: 200% 0;
-  }
-
-  100% {
-    background-position: -200% 0;
   }
 }
