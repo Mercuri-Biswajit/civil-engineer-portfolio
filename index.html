@@ -30,12 +30,13 @@
     <nav class="navbar">
       <div class="nav-container">
         <div class="logo">
-          <a href="./index.html"
-            ><img
+          <a href="./index.html">
+            <img
               src="./assets/icons/My__Logo.png"
               alt="Biswajit Deb Barman"
               class="logo-img"
-          /></a>
+            />
+          </a>
         </div>
         <div class="nav-menu" id="navMenu">
           <a href="index.html" class="nav-link active">HOME</a>
@@ -73,12 +74,8 @@
             Cost Estimation Solutions
           </p>
           <div class="hero-cta">
-            <a href="./pages/projects.html" class="btn btn-primary"
-              >VIEW PROJECTS
-            </a>
-            <a href="./pages/about.html" class="btn btn-secondary"
-              >LEARN MORE
-            </a>
+            <a href="./pages/projects.html" class="btn btn-primary">VIEW PROJECTS</a>
+            <a href="./pages/about.html" class="btn btn-secondary">LEARN MORE</a>
           </div>
         </div>
         <div class="hero-visual">
@@ -105,7 +102,7 @@
           <h2 class="section-title">SOFTWARE EXPERTISE</h2>
         </div>
         <div class="skills-grid" id="skillsGrid">
-          <!-- Skills will be added here via JavaScript with AOS attributes -->
+          <!-- Populated by app.js → modules/skills.js -->
         </div>
       </div>
     </section>
@@ -118,12 +115,10 @@
           <h2 class="section-title">FEATURED WORK</h2>
         </div>
         <div class="projects-preview" id="projectsPreview">
-          <!-- Top 3 projects will be added here via JavaScript with AOS attributes -->
+          <!-- Populated by app.js → modules/projects.js -->
         </div>
         <div class="section-cta" data-aos="fade-up" data-aos-delay="400">
-          <a href="./pages/projects.html" class="btn btn-primary"
-            >VIEW ALL PROJECTS
-          </a>
+          <a href="./pages/projects.html" class="btn btn-primary">VIEW ALL PROJECTS</a>
         </div>
       </div>
     </section>
@@ -140,7 +135,7 @@
           commitment to quality.
         </p>
         <div class="services-grid" id="servicesGrid">
-          <!-- Services cards will be added here via JavaScript with AOS attributes -->
+          <!-- Populated by app.js → modules/services.js -->
         </div>
       </div>
     </section>
@@ -184,33 +179,21 @@
               client expectations.
             </p>
             <div class="about-highlights">
-              <div
-                class="highlight-item"
-                data-aos="zoom-in"
-                data-aos-delay="100"
-              >
+              <div class="highlight-item" data-aos="zoom-in" data-aos-delay="100">
                 <div class="highlight-icon">🎓</div>
                 <div class="highlight-content">
                   <h4>Education</h4>
                   <p>Bachelor of Engineering in Civil Engineering</p>
                 </div>
               </div>
-              <div
-                class="highlight-item"
-                data-aos="zoom-in"
-                data-aos-delay="200"
-              >
+              <div class="highlight-item" data-aos="zoom-in" data-aos-delay="200">
                 <div class="highlight-icon">💼</div>
                 <div class="highlight-content">
                   <h4>Experience</h4>
                   <p>Specialized in Structural & Architectural Design</p>
                 </div>
               </div>
-              <div
-                class="highlight-item"
-                data-aos="zoom-in"
-                data-aos-delay="300"
-              >
+              <div class="highlight-item" data-aos="zoom-in" data-aos-delay="300">
                 <div class="highlight-icon">📍</div>
                 <div class="highlight-content">
                   <h4>Location</h4>
@@ -219,9 +202,7 @@
               </div>
             </div>
             <div class="about-cta" data-aos="fade-up" data-aos-delay="400">
-              <a href="./pages/about.html" class="btn btn-primary"
-                >MORE ABOUT ME</a
-              >
+              <a href="./pages/about.html" class="btn btn-primary">MORE ABOUT ME</a>
               <a
                 href="./assets/files/Biswajit_Deb_Barman__CV.pdf"
                 download
@@ -240,12 +221,13 @@
         <div class="footer-content">
           <div class="footer-brand">
             <div class="logo">
-              <a href="./index.html"
-                ><img
+              <a href="./index.html">
+                <img
                   src="./assets/icons/My__Logo.png"
                   alt="Biswajit Deb Barman"
                   class="footer-logo-img"
-              /></a>
+                />
+              </a>
             </div>
             <p>Building the future, one structure at a time.</p>
           </div>
@@ -258,21 +240,9 @@
             </div>
             <div class="footer-column">
               <h4>Connect</h4>
-              <a
-                href="https://www.linkedin.com/in/biswajit-deb-barman/"
-                target="_blank"
-                >LinkedIn</a
-              >
-              <a
-                href="https://www.facebook.com/profile.php?id=61585030424249"
-                target="_blank"
-                >Facebook</a
-              >
-              <a
-                href="https://www.instagram.com/biswajit.deb.barman/"
-                target="_blank"
-                >Instagram</a
-              >
+              <a href="https://www.linkedin.com/in/biswajit-deb-barman/" target="_blank">LinkedIn</a>
+              <a href="https://www.facebook.com/profile.php?id=61585030424249" target="_blank">Facebook</a>
+              <a href="https://www.instagram.com/biswajit.deb.barman/" target="_blank">Instagram</a>
             </div>
           </div>
         </div>
@@ -282,10 +252,9 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- AOS (CDN, not a module) -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    <!-- Single entry point — replaces all old script tags -->
     <script type="module" src="./js/app.js"></script>
-
   </body>
 </html>
