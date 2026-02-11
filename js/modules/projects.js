@@ -4,7 +4,7 @@
 // Data lives in data/models.js.
 // ===========================
 
-import { projects } from "../data/models.js";
+import { projects } from "../data/projects.js";
 import { byId, qs, qsa } from "../utils/dom.js";
 
 // ===========================

@@ -4,7 +4,7 @@
 // Data lives in data/models.js.
 // ===========================
 
-import { education } from "../data/models.js";
+import { education } from "../data/education.js";
 import { byId } from "../utils/dom.js";
 
 /**

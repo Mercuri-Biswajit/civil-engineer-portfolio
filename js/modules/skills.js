@@ -4,7 +4,7 @@
 // Data lives in data/models.js.
 // ===========================
 
-import { skills } from "../data/models.js";
+import { skills } from "../data/skills.js";
 import { byId } from "../utils/dom.js";
 
 /**
