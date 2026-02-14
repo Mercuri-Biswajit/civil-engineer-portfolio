@@ -33,6 +33,7 @@ import {
 } from './modules/projects.js';
 import { initAboutPage }          from './modules/about.js';
 import { initCalculator }         from './modules/calculator/index.js';
+import { initHomeCalculator }     from './modules/home-calculator.js';
 
 // ===========================
 // BOOT
@@ -47,6 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothAnchors();
     initResizeHandler();
     initReducedMotion();
+
+    // ── Home page — Home Calculator ──────────────────────
+    if (document.getElementById('homeCalcBtn')) {
+        initHomeCalculator();
+    }
 
     // ── Home page — Skills ───────────────────────────────
     // Render first, THEN immediately wire the stagger-reveal observer.

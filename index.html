@@ -94,20 +94,81 @@
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills">
+    <!-- Calculator Section -->
+    <section class="home-calculator">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <span class="section-number">01</span>
-          <h2 class="section-title">SOFTWARE EXPERTISE</h2>
+          <h2 class="section-title">QUICK COST ESTIMATOR</h2>
         </div>
-        <div class="skills-grid" id="skillsGrid">
-          <!-- Populated by app.js → modules/skills.js -->
+        <div class="home-calculator-content" data-aos="fade-up" data-aos-delay="200">
+          <div class="calculator-inputs">
+            <div class="calc-input-group">
+              <label for="homeArea">Area (sq.ft)</label>
+              <input type="number" id="homeArea" placeholder="Enter area" min="1" />
+            </div>
+            <div class="calc-input-group">
+              <label for="homeRate">Rate (₹/sq.ft)</label>
+              <input type="number" id="homeRate" placeholder="Enter rate" min="1" />
+            </div>
+          </div>
+          <div class="calculator-button-group">
+            <button class="btn btn-primary" id="homeCalcBtn">Click for Material</button>
+          </div>
+          <div class="calculator-result" id="homeCalcResult" style="display: none;">
+            <div class="result-total">
+              <h3>Total Cost</h3>
+              <p class="total-amount" id="homeTotalCost">₹ --</p>
+              <button class="btn btn-primary" id="showMaterialBtn" style="display: none;">Show Material Quantities</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Recent Projects Teaser -->
+    <!-- Material Modal -->
+    <div class="material-modal" id="materialModal">
+      <div class="material-modal-content">
+        <button class="material-modal-close" id="closeMaterialModal" aria-label="Close modal">&times;</button>
+        <div class="material-modal-header">
+          <h3>Material Quantities</h3>
+        </div>
+        <div class="material-modal-body">
+          <div class="material-grid">
+            <div class="material-item">
+              <span class="material-icon">🔨</span>
+              <div class="material-details">
+                <span class="material-label">Cement</span>
+                <span class="material-value" id="homeCement">-- bags</span>
+              </div>
+            </div>
+            <div class="material-item">
+              <span class="material-icon">🗝️</span>
+              <div class="material-details">
+                <span class="material-label">Steel</span>
+                <span class="material-value" id="homeSteel">-- kg</span>
+              </div>
+            </div>
+            <div class="material-item">
+              <span class="material-icon">⛰️</span>
+              <div class="material-details">
+                <span class="material-label">Sand</span>
+                <span class="material-value" id="homeSand">-- m³</span>
+              </div>
+            </div>
+            <div class="material-item">
+              <span class="material-icon">🪨</span>
+              <div class="material-details">
+                <span class="material-label">Aggregate</span>
+                <span class="material-value" id="homeAggregate">-- m³</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Projects Section -->
     <section class="recent-projects">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -123,46 +184,19 @@
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <span class="section-number">03</span>
-          <h2 class="section-title">SERVICES PROVIDED</h2>
-        </div>
-        <p class="services-subtitle" data-aos="fade-up" data-aos-delay="100">
-          Professional engineering design services with transparent and
-          commitment to quality.
-        </p>
-        <div class="services-grid" id="servicesGrid">
-          <!-- Populated by app.js → modules/services.js -->
-        </div>
-      </div>
-    </section>
-
     <!-- About Me Section -->
     <section class="about-me">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <span class="section-number">04</span>
+          <span class="section-number">03</span>
           <h2 class="section-title">ABOUT ME</h2>
         </div>
         <div class="about-content">
           <div
-            class="about-image-wrapper"
-            data-aos="fade-right"
+            class="about-text-content"
+            data-aos="fade-left"
             data-aos-duration="800"
           >
-            <div class="about-image-container">
-              <img
-                src="./assets/images/hero/Hero_Image_Civil_Engineer.png"
-                alt="Er. Biswajit Deb Barman"
-                class="about-image"
-              />
-              <div class="about-image-overlay"></div>
-            </div>
-          </div>
-          <div class="about-text" data-aos="fade-left" data-aos-duration="800">
             <h3 class="about-subtitle">Professional Summary</h3>
             <p class="about-description">
               Hello! I'm <strong>Er. Biswajit Deb Barman</strong>, a dedicated
@@ -201,16 +235,26 @@
                 </div>
               </div>
             </div>
-            <div class="about-cta" data-aos="fade-up" data-aos-delay="400">
-              <a href="./pages/about.html" class="btn btn-primary">MORE ABOUT ME</a>
-              <a
-                href="./assets/files/Biswajit_Deb_Barman__CV.pdf"
-                download
-                class="btn btn-secondary"
-                >DOWNLOAD RESUME</a
-              >
+          </div>
+          <div
+            class="about-skills-content"
+            data-aos="fade-right"
+            data-aos-duration="800"
+          >
+            <h3 class="about-subtitle">My Skills</h3>
+            <div class="skills-grid" id="skillsGrid">
+              <!-- Populated by app.js → modules/skills.js -->
             </div>
           </div>
+        </div>
+        <div class="about-cta" data-aos="fade-up" data-aos-delay="400">
+          <a href="./pages/about.html" class="btn btn-primary">MORE ABOUT ME</a>
+          <a
+            href="./assets/files/Biswajit_Deb_Barman__CV.pdf"
+            download
+            class="btn btn-secondary"
+            >DOWNLOAD RESUME</a
+          >
         </div>
       </div>
     </section>

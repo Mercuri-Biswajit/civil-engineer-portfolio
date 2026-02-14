@@ -1,0 +1,399 @@
+/* ===========================
+   HOME CALCULATOR COMPONENT
+   Quick cost estimator on homepage
+   =========================== */
+
+.home-calculator {
+  padding: var(--spacing-xl) 0;
+  background: var(--color-bg-dark);
+}
+
+.home-calculator-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  padding: 3rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mirror effect */
+.home-calculator-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home-calculator-content:hover::before {
+  left: 100%;
+}
+
+.calculator-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.calc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.calc-input-group label {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  letter-spacing: 0.05em;
+}
+
+.calc-input-group input {
+  padding: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  transition: var(--transition);
+  background: #ffffff;
+  height: 56px;
+}
+
+.calc-input-group input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+}
+
+.calculator-button-group {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.calculator-result {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #F5F7FA 0%, #E0F2FE 100%);
+  border-radius: var(--radius-lg);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.result-total h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-dim);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.total-amount {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: 0 0 1.5rem 0;
+}
+
+/* ===========================
+   MATERIAL MODAL
+   =========================== */
+
+.material-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.material-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.material-modal-content {
+  background: var(--color-bg-card);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-xl);
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.material-modal.active .material-modal-content {
+  transform: scale(1);
+}
+
+.material-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  font-size: 1.5rem;
+  color: var(--color-text-dim);
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.material-modal-close:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  transform: rotate(90deg);
+}
+
+.material-modal-header {
+  padding: 2.5rem 3rem 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.material-modal-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.material-modal-body {
+  padding: 2rem 3rem 2.5rem;
+}
+
+.material-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.material-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #F5F7FA 0%, #E0F2FE 100%);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.material-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.material-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.material-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.material-label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.material-value {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+/* About Me Section Updates */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+.about-text-content,
+.about-skills-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-subtitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.about-subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.about-highlights {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.about-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+@media (max-width: 1024px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-calculator-content {
+    padding: 2rem;
+  }
+
+  .calculator-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .material-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .material-modal {
+    padding: 1rem;
+  }
+
+  .material-modal-content {
+    max-height: 95vh;
+  }
+
+  .material-modal-header {
+    padding: 2rem 1.5rem 1rem;
+  }
+
+  .material-modal-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .material-modal-body {
+    padding: 1.5rem;
+  }
+
+  .material-modal-close {
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .about-content {
+    gap: 2rem;
+  }
+
+  .about-cta {
+    flex-direction: column;
+  }
+
+  .about-cta .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-calculator-content {
+    padding: 1.5rem;
+  }
+
+  .total-amount {
+    font-size: 2rem;
+  }
+
+  .calculator-result {
+    padding: 1.5rem;
+  }
+
+  .material-modal-body {
+    padding: 1.25rem;
+  }
+
+  .material-item {
+    padding: 1rem;
+  }
+}
